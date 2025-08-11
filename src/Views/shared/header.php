@@ -11,11 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- CSS -->
-     <link rel="stylesheet" href="lib/css/site.css">
-     <link rel="stylesheet" href="lib/css/aurora.css">
-     <!-- Ícone -->
+    <link rel="stylesheet" href="lib/css/site.css">
+    <link rel="stylesheet" href="lib/css/aurora.css">
+    <!-- Ícone -->
     <link rel="icon" href="lib/img/icone.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="header bg-preto-azulado-escuro hg-80 wd-100 pd-t-2">
         <div class="container">
@@ -24,9 +25,9 @@
                 <a href="index.php">
                     <h1 class="fonte36 fnc-branco">Imobiliária<span class="fonte22 fw-300"> - Vetor256.</span></h1>
                 </a> mg-l-3
-                <i class="fa-brands fa-facebook-f  fonte22 fnc-branco mg-r-3 mg-l-10"></i>
-                <i class="fa-brands fa-linkedin-in fonte22 fnc-branco mg-r-3"></i>
-                <i class="fa-brands fa-youtube     fonte22 fnc-branco mg-r-3"></i>
+                <a href="https://www.facebook.com/NewProfileIsaiasLourenco" target="_blank" title="Visite nosso Facebook"><i class="fa-brands fa-facebook-f  fonte22 fnc-branco mg-r-3 fnc-vermelho-hover mg-l-10"></i></a>
+                <a href="https://www.linkedin.com/in/isaias-lourenco/" target="_blank" title="Visite nosso Linkedin"><i class="fa-brands fa-linkedin-in fonte22 fnc-branco mg-r-3 fnc-vermelho-hover"></i></a>
+                <a href="https://www.youtube.com/@vetor256.-62" target="_blank" title="Visite nosso canal no Youtube"><i class="fa-brands fa-youtube fonte22 fnc-branco mg-r-3 fnc-vermelho-hover"></i></a>
             </div>
 
             <div class="box-6">

@@ -985,6 +985,12 @@ select :focus{
     transition: .15s ease-in-out;
 }
 
+.fnc-azul-hover:hover {
+    color: blue;
+    font-weight: bold;
+    transition: .15s ease-in-out;
+}
+
 .fnc-preto-azulado-claro-hover:hover {
     color: #1d2d42;
     transition: .15s ease-in-out;
