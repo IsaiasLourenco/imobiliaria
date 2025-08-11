@@ -1,0 +1,17 @@
+{
+    "name": "isaias/imobiliaria",
+    "description": "Sistema imobiliário Vetor256.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Isaias"
+        }
+    ],
+    "require": {}
+}

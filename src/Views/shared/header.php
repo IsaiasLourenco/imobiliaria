@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imobiliaria - Vetor256.</title>
+    <!-- Fontawesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Fontes Externas -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- CSS -->
+     <link rel="stylesheet" href="lib/css/site.css">
+     <link rel="stylesheet" href="lib/css/aurora.css">
+     <!-- Ícone -->
+    <link rel="icon" href="lib/img/icone.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header bg-preto-azulado-escuro hg-80 wd-100 pd-t-2">
+        <div class="container">
+
+            <div class="box-6 flex justify-start item-centro">
+                <a href="index.php">
+                    <h1 class="fonte36 fnc-branco">Imobiliária<span class="fonte22 fw-300"> - Vetor256.</span></h1>
+                </a> mg-l-3
+                <i class="fa-brands fa-facebook-f  fonte22 fnc-branco mg-r-3 mg-l-10"></i>
+                <i class="fa-brands fa-linkedin-in fonte22 fnc-branco mg-r-3"></i>
+                <i class="fa-brands fa-youtube     fonte22 fnc-branco mg-r-3"></i>
+            </div>
+
+            <div class="box-6">
+                <nav class="wd-100 mg-t-1">
+                    <ul class="flex justify-end">
+                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
+                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Vendas</a></li>
+                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Compras</a></li>
+                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Aluguéis</a></li>
+                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="limpar"></div>
+        <div class="barra bg-vermelho"></div>
+    </header>
+    <div class="limpar"></div>
