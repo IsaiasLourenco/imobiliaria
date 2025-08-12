@@ -13,6 +13,8 @@ require_once 'Views/shared/header.php';
     </div>
 </section>
 <div class="limpar"></div>
+<div class="divider mg-t-2"></div>
+<!-- SEÇÃO CASA DOS SONHOS -->
 <section class="conquista mg-t-2">
     <div class="container">
         <h3 class="fonte22 espaco-letra fw-300 txt-c">Qual tipo de moradia te satisfaz hoje?</h3>
@@ -35,6 +37,7 @@ require_once 'Views/shared/header.php';
     </div>
 </section>
 <div class="limpar"></div>
+<div class="divider mg-t-2"></div>
 <!-- SEÇÃO DE COMPRAS -->
 <section class="produtos" id="comprar">
     <div class="container">
@@ -195,6 +198,102 @@ require_once 'Views/shared/header.php';
                 <button title="Anterior" class="prev">←</button>
                 <button title="Próximo" class="next">→</button>
             </div>
+        </div>
+    </div>
+</section>
+<div class="limpar"></div>
+<section class="paralax">
+    <div class="container">
+        <div class="box-12 hg-20 pd-20 bg-preto-azulado-escuro"></div>
+    </div>
+</section>
+<div class="limpar"></div>
+<div class="divider mg-t-2"></div>
+<!-- SEÇÃO DE CONTATO -->
+<section class="contato bg-gradiente-azul-roxo" id="contato">
+    <div class="container">
+        <div class="box-12">
+            <h3 class="fonte22 fnc-preto-azulado fw-bold espaco-letra txt-c mg-t-2 mg-b-2">
+                Conte com nosso time para comprar seu sonho!
+            </h3>
+        </div>
+        <div class="box-12 justify-center item-centro">
+            <div class="box-4 txt-c">
+                <i class="fa-brands fa-square-whatsapp fonte20"></i>
+                <span class="fonte20 espaco-letra fnc-preto-azulado fw-bold">Whatsapp</span>
+                <p class="fonte12 espaco-letra">
+                    <a href="https://wa.me/5519996745466?text=Contato%20referente%20a%20um%20im%C3%B3vel%20para%20negocia%C3%A7%C3%A3o."
+                        target="_blank"
+                        title="Clique para nos mandar um Whastsapp"
+                        rel="noopener noreferrer">
+                        (19) 99674-5466
+                    </a>
+                </p>
+            </div>
+            <div class="box-4 txt-c">
+                <i class="fa-solid fa-map-location-dot fonte20"></i>
+                <span class="fonte20 espaco-letra fnc-preto-azulado fw-bold">Localização</span>
+                <p class="fonte12 espaco-letra mg-b-2">
+                    <a href="https://www.google.com/maps?q=Rua+Mococa,+880+-+Jardim+Itacolomi,+Mogi+Guaçu+-+SP"
+                        target="_blank"
+                        title="Clique aqui para nos localizar no mapa."
+                        rel="noopener noreferrer">
+                        Rua Mococa, 880 - Jardim Itacolomi <br> Mogi Guaçu - SP
+                    </a>
+                </p>
+            </div>
+            <div class="box-4 txt-c">
+                <i class="fa-solid fa-at fonte20"></i>
+                <span class="fonte20 espaco-letra fnc-preto-azulado fw-bold">E-mail</span>
+                <p class="fonte12 espaco-letra">Contate-nos via e-mail <br> isaias@vetor256.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="limpar mg-t-2"></div>
+<!-- ENVIO -->
+<section class="contato-form bg-preto-azulado-escuro ">
+    <div class="container">
+        <div class="box-6">
+            <div class="box-6">
+                <h3 class="fonte22 fnc-branco espaco-letra txt-c mg-t-2">Fale conosco!</h3>
+                <p class="fonte20 fw-300 fnc-branco mg-t-2 mg-b-2">
+                    Estamos prontos para ajudar você a encontrar o imóvel dos seus sonhos! Não perca tempo, envie sua mensagem agora mesmo
+                    e dê o primeiro passo rumo à sua nova casa.
+                </p>
+            </div>
+        </div>
+        <!-- FORMULÁRIO PARA ENVIO -->
+        <div class="box-6">
+            <h3 class="fonte22 fnc-branco espaco-letra txt-c mg-t-2 mg-b-2">Entre em contato!</h3>
+            <form action="" method="POST">
+                <div class="box-12 mg-b-2">
+                    <label class="fnc-branco" for="nome">Nome</label>
+                    <input type="text" name="nome">
+                </div>
+                <div class="box-12 mg-b-2">
+                    <label class="fnc-branco" for="email">E-mail</label>
+                    <input type="email" name="email">
+                </div>
+                <div class="box-12 flex mg-b-2">
+                    <div class="box-3 flex justify-start">
+                        <label class="fnc-branco" for="motivo">Motivo</label>
+                    </div>
+                    <div class="box-4 flex" style="align-items: center;">
+                        <span class="fnc-branco">Comprar</span><input type="radio" name="motivo">
+                    </div>
+                    <div class="box-4 flex" style="align-items: center;">
+                        <span class="fnc-branco">Alugar</span><input type="radio" name="motivo">
+                    </div>
+                </div>
+                <div class="box-12 mg-b-2">
+                    <label class="fnc-branco" for="mensagem">Mensagem</label>
+                    <textarea name="mensagem" id="mensagem" rows="5" placeholder="Digite sua mensagem aqui..."></textarea>
+                </div>
+                <div class="box-12 mg-b-2">
+                    <input type="submit" class="btn bg-vermelho bg-vermelho-claro-hover fnc-branco mg-b-2">
+                </div>
+            </form>
         </div>
     </div>
 </section>

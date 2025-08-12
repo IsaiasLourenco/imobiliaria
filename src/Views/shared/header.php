@@ -26,8 +26,8 @@
             <div class="box-6 flex justify-start item-centro">
                 <a href="index.php">
                     <h1 class="fonte36 fnc-branco">Imobiliária<span class="fonte22 fw-300"> - Vetor256.</span></h1>
-                </a> mg-l-3
-                <a href="https://www.facebook.com/NewProfileIsaiasLourenco" target="_blank" title="Visite nosso Facebook"><i class="fa-brands fa-facebook-f  fonte22 fnc-branco mg-r-3 fnc-vermelho-hover mg-l-10"></i></a>
+                </a>
+                <a href="https://www.facebook.com/NewProfileIsaiasLourenco" target="_blank" title="Visite nosso Facebook"><i class="fa-brands fa-facebook-f  fonte22 fnc-branco mg-r-3 fnc-vermelho-hover mg-l-14"></i></a>
                 <a href="https://www.linkedin.com/in/isaias-lourenco/" target="_blank" title="Visite nosso Linkedin"><i class="fa-brands fa-linkedin-in fonte22 fnc-branco mg-r-3 fnc-vermelho-hover"></i></a>
                 <a href="https://www.youtube.com/@vetor256.-62" target="_blank" title="Visite nosso canal no Youtube"><i class="fa-brands fa-youtube fonte22 fnc-branco mg-r-3 fnc-vermelho-hover"></i></a>
             </div>
