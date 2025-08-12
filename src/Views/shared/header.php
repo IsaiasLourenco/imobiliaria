@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imobiliaria - Vetor256.</title>
+    <!-- CARREGANDO JS -->
+     <script src="lib/js/animacoes.js"></script>
     <!-- Fontawesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
     <!-- Fontes Externas -->
@@ -33,11 +35,11 @@
             <div class="box-6">
                 <nav class="wd-100 mg-t-1">
                     <ul class="flex justify-end">
-                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
-                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Vendas</a></li>
-                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Compras</a></li>
-                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Aluguéis</a></li>
-                        <li class="mg-l-3"><a href="" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Contato</a></li>
+                        <li class="mg-l-3"><a href="#home" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
+                        <li class="mg-l-3"><a href="#comprar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Compras</a></li>
+                        <li class="mg-l-3"><a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Aluguéis</a></li>
+                        <li class="mg-l-3"><a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Depoimentos</a></li>
+                        <li class="mg-l-3"><a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Contato</a></li>
                     </ul>
                 </nav>
             </div>
