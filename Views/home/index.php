@@ -7,7 +7,9 @@ require_once 'Views/shared/header.php';
             <div class="box-12">
                 <h2 class="fonte46 espaco-letra txt-c">A casa dos seus sonhos a um clique!</h2>
                 <span class="block txt-c fonte22 fw-300">Oportunidade de casas online.</span>
-                <a href="index.php?controller=PainelController&metodo=index" class="btn bg-vermelho fnc-branco mg-auto mg-t-2 bg-vermelho-claro-hover">Saiba Mais</a>
+                <a href="index.php?controller=PainelController&metodo=index" class="btn bg-vermelho fnc-branco mg-auto mg-t-2 bg-vermelho-claro-hover">
+                    Painel de Operação
+                </a>
             </div>
         </div>
     </div>
@@ -15,7 +17,7 @@ require_once 'Views/shared/header.php';
 <div class="limpar"></div>
 <div class="divider mg-t-2"></div>
 <!-- SEÇÃO CASA DOS SONHOS -->
-<section class="conquista mg-t-2">
+<!-- <section class="conquista mg-t-2">
     <div class="container">
         <h3 class="fonte22 espaco-letra fw-300 txt-c">Qual tipo de moradia te satisfaz hoje?</h3>
         <div class="box-12 flex justify-center pd-t-2">
@@ -37,7 +39,7 @@ require_once 'Views/shared/header.php';
     </div>
 </section>
 <div class="limpar"></div>
-<div class="divider mg-t-2"></div>
+<div class="divider mg-t-2"></div> -->
 <!-- SEÇÃO DE COMPRAS -->
 <section class="produtos" id="comprar">
     <div class="container">

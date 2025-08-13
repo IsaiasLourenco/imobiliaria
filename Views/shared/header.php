@@ -1,3 +1,9 @@
+<?php 
+    if ($_GET) {
+        $controller = strtolower(string: str_replace(search: "Controller", replace: "", subject: $_GET['controller']));
+        $metodo = strtolower(string: $_GET['metodo']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
