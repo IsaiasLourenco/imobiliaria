@@ -33,10 +33,17 @@ use PDO;
                 die('Erro ao executar consulta no Banco de Dados!'. $e->getMessage());
             }
         }
+        // LISTA OBJETOS DO BANCO DE DADOS
         protected function listar($tabela, $condicao = "", $parametro = []): mixed {
             $sql = "SELECT * FROM {$tabela} {$condicao} ORDER BY ID DESC";
             $stmt = $this->executarConsulta(sql: $sql, valores: $parametro);
             return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        // INSERINDO OBJETOS NO BANCO DE DADOS
+        protected function inserir($tabela, $atributos, $valores): mixed {
+            $sql = "INSERT INTO {$tabela} (" . implode(",", $atributos) . ") VALUES (" . implode(",", array_fill(0, count($valores), "?")) . ")";
+            $stmt = $this->executarConsulta(sql: $sql, valores: $valores);
+            return self::getConexao()->lastInsertId(); 
         }
     }
 ?>
