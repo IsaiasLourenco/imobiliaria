@@ -141,3 +141,28 @@
     background-color: #2294f1;
     border-color: #2294f1;
 }
+
+.container-cem {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex; /* garante que os filhos fiquem lado a lado */
+    align-items: stretch; /* estica verticalmente se necessário */
+}
+
+.box-2 {
+    width: 200px; /* ou 20%, ou o que quiser */
+    background-color: #222; /* só pra visualizar melhor */
+}
+
+.box-dois {
+    border: 2px solid red;
+}
+
+.painel .box-dois ul li {
+    border-bottom: 2px solid #ccc;
+}
+
+.painel .box-dois ul li a:hover {
+    color: red;
+}
