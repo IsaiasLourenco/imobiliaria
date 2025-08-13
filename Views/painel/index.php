@@ -37,12 +37,20 @@
             </ul>
         </div>
         <!-- FIM MENU DE NAVEGAÇÃO -->
-        <section>
-            <div class="box-10">
+        <section class="wd-100">
+            <div class="wd-100 coluna bg-branco pd-b-2">
+                <ul class="wd-100 flex justify-end mg-t-1 mg-b-1">
+                    <li style="margin-left: auto;">
+                        <a href="index.php?controller=PainelController&metodo=index" class="fnc-vermelho-hover fonte14 fnc-preto-azulado mg-r-1">
+                            <i class="fa-solid fa-house-chimney"></i>
+                            Home Painel
+                        </a>
+                    </li>
+                </ul>
+                <div class="divider mg-t-1 mg-b-1"></div>
                 <?php if ($_GET['controller'] == 'PainelController' && $_GET['metodo'] == 'index'): ?>
-                    Olá!
                 <?php else:
-                    require_once "Views/".$controller."/".$metodo.".php";
+                    require_once "Views/" . $controller . "/" . $metodo . ".php";
                 endif; ?>
             </div>
         </section>

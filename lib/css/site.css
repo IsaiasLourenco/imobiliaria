@@ -46,7 +46,8 @@
     background-size: cover;
 }
 
-.fundoComprar, .fundoAlugar {
+.fundoComprar,
+.fundoAlugar {
     width: 100%;
     height: 400px;
 }
@@ -81,15 +82,20 @@
 }
 
 @keyframes slide-fade {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0;
     }
-    25%, 75% {
+
+    25%,
+    75% {
         opacity: 1;
     }
 }
 
-.prev, .next {
+.prev,
+.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -119,14 +125,14 @@
     background-attachment: fixed;
 }
 
-.contato-form form input, 
+.contato-form form input,
 .contato-form form textarea {
     border: none;
     border-bottom: 1px solid #f4f4f4;
 }
 
 .contato-form form input[type="radio"] {
-    transform:scale(.5);
+    transform: scale(.5);
     margin: 0;
     vertical-align: middle;
     appearance: none;
@@ -146,13 +152,17 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    display: flex; /* garante que os filhos fiquem lado a lado */
-    align-items: stretch; /* estica verticalmente se necessário */
+    display: flex;
+    /* garante que os filhos fiquem lado a lado */
+    align-items: stretch;
+    /* estica verticalmente se necessário */
 }
 
 .box-2 {
-    width: 200px; /* ou 20%, ou o que quiser */
-    background-color: #222; /* só pra visualizar melhor */
+    width: 200px;
+    /* ou 20%, ou o que quiser */
+    background-color: #222;
+    /* só pra visualizar melhor */
 }
 
 .box-dois {
@@ -165,4 +175,9 @@
 
 .painel .box-dois ul li a:hover {
     color: red;
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
 }
