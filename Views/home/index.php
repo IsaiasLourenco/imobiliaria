@@ -150,7 +150,7 @@ require_once 'Views/shared/header.php';
 <section class="depoimentos mg-t-2" id="depoimentos">
     <div class="container">
         <h2 class="txt-c mg-b-2">DEPOIMENTOS</h2>
-        <div class="box-12 bg-preto-azulado-escuro flex justify-center item-centro pd-20">
+        <div class="box-12 bg-preto-azulado-claro flex justify-center item-centro pd-20">
             <div class="carrossel">
                 <div class="slides">
                     <!-- SLIDE 1 -->
@@ -204,7 +204,7 @@ require_once 'Views/shared/header.php';
 <div class="limpar"></div>
 <section class="paralax">
     <div class="container">
-        <div class="box-12 hg-20 pd-20 bg-preto-azulado-escuro"></div>
+        <div class="box-12 hg-20 pd-20 bg-preto-azulado-claro"></div>
     </div>
 </section>
 <div class="limpar"></div>
@@ -252,7 +252,7 @@ require_once 'Views/shared/header.php';
 </section>
 <div class="limpar mg-t-2"></div>
 <!-- ENVIO -->
-<section class="contato-form bg-preto-azulado-escuro ">
+<section class="contato-form bg-preto-azulado-claro ">
     <div class="container">
         <div class="box-6">
             <div class="box-6">
