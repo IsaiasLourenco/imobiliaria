@@ -21,5 +21,17 @@ use PDO;
         protected static function closeConexao(): void {
             self::$conexao = null;
         }
+        protected function executarConsulta($sql, $valores = []): mixed {
+            try {
+                $stmt = self::getConexao()->prepare($sql);
+                foreach($valores as $key => $valor) {
+                    $stmt->bindValue($key + 1, $valor);
+                }
+                $stmt->execute();
+                return $stmt;
+            } catch(PDOException $e) {
+                die('Erro ao executar consulta no Banco de Dados!'. $e->getMessage());
+            }
+        }
     }
 ?>
