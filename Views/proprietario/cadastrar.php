@@ -27,14 +27,14 @@
             </div>
         </div>
         <div class="box-3">
-            <label for="contato">Contato - Fone</label>
+            <label for="contato">Fone</label>
             <input type="text" name="contato" id="telefone">
         </div>
         <div class="box-3">
             <label for="cep">CEP</label>
             <input type="text" name="cep" id="cep">
         </div>
-    </div>
+    </div>>
     <div class="row">
         <div class="box-3">
             <label for="rua">Rua</label>
