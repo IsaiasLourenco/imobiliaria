@@ -181,3 +181,34 @@
     display: flex;
     flex-direction: column;
 }
+
+tbody tr:nth-child(odd) {
+    background-color: #000;
+    color: #fff;
+}
+tbody tr:nth-child(even) {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-novo-proprietario {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #007bff; /* azul */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-novo-proprietario i {
+    font-size: 1.6rem;
+}
+
+.btn-novo-proprietario:hover {
+    background-color: #0056b3;
+}
