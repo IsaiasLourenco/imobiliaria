@@ -16,30 +16,6 @@ require_once 'Views/shared/header.php';
 </section>
 <div class="limpar"></div>
 <div class="divider mg-t-2"></div>
-<!-- SEÇÃO CASA DOS SONHOS -->
-<!-- <section class="conquista mg-t-2">
-    <div class="container">
-        <h3 class="fonte22 espaco-letra fw-300 txt-c">Qual tipo de moradia te satisfaz hoje?</h3>
-        <div class="box-12 flex justify-center pd-t-2">
-            <div class="comprar">
-                <div class="fundoComprar">
-                    <a href="#comprar">
-                        <h3 class="fonte40 espaco-letra txt-c fw-900 fnc-branco fnc-vermelho-claro-hover">Compra</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="alugar">
-                <div class="fundoAlugar">
-                    <a href="#alugar">
-                        <h3 class="fonte40 espaco-letra fw-900 fnc-branco txt-c fnc-preto-azulado-hover">Aluguel</h3>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<div class="limpar"></div>
-<div class="divider mg-t-2"></div> -->
 <!-- SEÇÃO DE COMPRAS -->
 <section class="produtos" id="comprar">
     <div class="container">

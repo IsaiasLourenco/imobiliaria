@@ -13,6 +13,11 @@
     <title>Imobiliaria - Vetor256.</title>
     <!-- CARREGANDO JS -->
      <script src="lib/js/animacoes.js"></script>
+     <script src="lib/js/passaComEnter.js"></script>
+     <script src="lib/js/buscaCep.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+     <script src="lib/js/mascaras.js"></script>
     <!-- Fontawesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
     <!-- Fontes Externas -->

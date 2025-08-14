@@ -212,3 +212,30 @@ tbody tr:nth-child(even) {
 .btn-novo-proprietario:hover {
     background-color: #0056b3;
 }
+
+.radio-group {
+    display: flex;
+    gap: 20px; /* espaço entre os botões */
+    align-items: center;
+    margin-top: 5px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem; /* ou use sua classe .fonte14 */
+    font-weight: 400;
+    color: #333; /* ou sua cor padrão */
+    margin-right: 15px;
+    line-height: 1; /* ajuda no alinhamento vertical */
+}
+
+.radio-group input[type="radio"] {
+    width: auto;
+    height: auto;
+    transform: scale(1); /* garante que não fiquem ampliados */
+    vertical-align: middle;
+    margin-right: 5px;
+    position: relative;
+    top: 5px; /* ajuste fino para alinhar a bolinha com o texto */
+}

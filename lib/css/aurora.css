@@ -995,7 +995,7 @@ select :focus{
     transition: .15s ease-in-out;
 }
 
-.c:hover {
+.fnc-vermelho-hover:hover {
     color: #E50E0B;
     transition: .15s ease-in-out;
 }

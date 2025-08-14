@@ -8,10 +8,10 @@
     </div>
 
     <div class="box-4 flex justify-center item-centro">
-        <button class="btn-novo-proprietario">
+        <a href="index.php?controller=ProprietarioController&metodo=cadastrar" class="btn-novo-proprietario">
             <i class="fa-solid fa-user-plus"></i>
             Novo Proprietário
-        </button>
+        </a>
     </div>
 
 </div>

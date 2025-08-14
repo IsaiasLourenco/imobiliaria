@@ -11,7 +11,7 @@
             </div>
             <ul class="pd-10">
                 <li class="mg-b-1 pd-b-1">
-                    <a href="index.php?controller=ProprietarioController&metodo=index" class="fonte14 fnc-cinza">
+                    <a href="index.php?controller=ProprietarioController&metodo=listar" class="fonte14 fnc-cinza">
                         <i class="fa-solid fa-user-tie"></i>
                         Proprietário
                     </a>
