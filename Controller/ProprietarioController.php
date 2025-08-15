@@ -19,9 +19,19 @@ class ProprietarioController extends Notifications
 
     function index(): void
     {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $proprietario = $this->proprietarioDao->usuarioId($id);
+        }
+
         if ($_POST) {
-            $this->inserir($_POST);
-            return; // Evita carregar a view novamente
+            if (empty($_POST['id'])):
+                $this->inserir($_POST);
+                return;
+            else:
+                $this->editar($_POST);
+                return;
+            endif;
         }
         require_once 'Views/painel/index.php';
     }
@@ -30,9 +40,9 @@ class ProprietarioController extends Notifications
     {
         $retorno = $this->proprietarioService->cadastrarProprietario($dados);
         if ($retorno) {
-            echo $this->success('Proprietario', 'Cadastrar', 'listar');
+            echo $this->success('Proprietario', 'Cadastrado', 'listar');
         } else {
-            echo $this->error('Proprietario', 'Cadastrar', 'cadastrar');
+            echo $this->error('Proprietario', 'Cadastrado', 'cadastrar');
         }
     }
 
@@ -44,12 +54,33 @@ class ProprietarioController extends Notifications
 
     public function cadastrar(): void
     {
-        // Aqui está o ajuste: trata o POST dentro do método correto
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->inserir($_POST);
-            return; // Evita carregar a view novamente após o envio
+        $id = $_GET['id'] ?? null;
+        $proprietario = null;
+
+        if ($id) {
+            $proprietario = $this->proprietarioDao->usuarioId($id);
         }
 
-        require_once 'Views/painel/index.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty($_POST['id'])) {
+                $this->inserir($_POST);
+            } else {
+                $this->editar($_POST);
+            }
+            return;
+        }
+
+        $view = 'Views/proprietario/cadastrar.php';
+        require 'Views/painel/index.php';
+    }
+
+    function editar($dados): void
+    {
+        $retorno = $this->proprietarioService->editarProprietario($dados);
+        if ($retorno) {
+            echo $this->success('Proprietario', 'Editado', 'listar');
+        } else {
+            echo $this->error('Proprietario', 'Cadastrado', 'cadastrar');
+        }
     }
 }

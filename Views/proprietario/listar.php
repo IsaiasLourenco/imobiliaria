@@ -19,10 +19,10 @@
 <table class="grid wd-100">
     <thead>
         <tr>
-            <th class="fonte14 espaco-letra fw-bold bg-azul-escuro fnc-branco">Nome</th>
-            <th class="fonte14 espaco-letra fw-bold bg-azul-escuro fnc-branco">Contato</th>
-            <th class="fonte14 espaco-letra fw-bold bg-azul-escuro fnc-branco">Ativo</th>
-            <th class="fonte14 espaco-letra fw-bold bg-azul-escuro fnc-branco   ">Ações</th>
+            <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Nome</th>
+            <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Contato</th>
+            <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Ativo</th>
+            <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +31,9 @@
             foreach ($proprietario as $valores):
         ?>
                 <tr>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->CONTATO; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->NOME; ?></td>
+                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->CONTATO; ?></td>
+                    <td class="fonte12 espaco-letra fw-300 txt-c">
                         <?php if ($valores->ATIVO == '1'): ?>
                             <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
                         <?php else: ?>
@@ -41,8 +41,12 @@
                         <?php endif; ?>
                     </td>
                     <td class="fonte10 espaco-letra fw-300 txt-c">
-                        <a href=""><i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i></a>
-                        <a href=""><i class="fa-solid fa-pen fnc-azul fonte14" title="Editar Registro"></i></a>
+                        <a href="">
+                            <i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i>
+                        </a>
+                        <a href="index.php?controller=ProprietarioController&metodo=cadastrar&id=<?= $valores->ID; ?>">
+                            <i class="fa-solid fa-pen fnc-azul fonte14" title="Editar Registro"></i>
+                        </a>
                     </td>
                 </tr>
             <?php endforeach;

@@ -76,11 +76,6 @@ class Proprietario
         ];
     }
 
-    // public function atributosPreenchidos(): array {
-    // return array_filter($this->toArray(), function($value) {
-    //     return $value !== null && ($value !== '' || $value === '0');
-    // });
-    // }
     public function atributosPreenchidos(): array
     {
         return $this->toArray(); // sem filtro nenhum
