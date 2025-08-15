@@ -41,7 +41,7 @@
                         <?php endif; ?>
                     </td>
                     <td class="fonte10 espaco-letra fw-300 txt-c">
-                        <a href="">
+                        <a href="index.php?controller=ProprietarioController&metodo=apagar&id=<?= $valores->ID; ?>">
                             <i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i>
                         </a>
                         <a href="index.php?controller=ProprietarioController&metodo=cadastrar&id=<?= $valores->ID; ?>">

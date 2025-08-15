@@ -28,4 +28,8 @@ class ProprietarioDao extends Conexao
         $valores = array_values($proprietario->atributosPreenchidos());
         return $this->update('proprietario', $atributos, $valores, $proprietario->getId());
     }
+
+    public function apagar($id) {
+        return $this->deletar('proprietario', $id);
+    }
 }

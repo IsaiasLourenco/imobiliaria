@@ -83,4 +83,21 @@ class ProprietarioController extends Notifications
             echo $this->error('Proprietario', 'Cadastrado', 'cadastrar');
         }
     }
+
+    function apagar(): void {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            echo $this->confirm('Excluír', 'Proprietario', '' , $id);
+        }
+        require 'Views/shared/header.php';
+    }
+    
+    function excluir(): void {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $this->proprietarioDao->apagar($id);
+            echo $this->success('Proprietario', 'Excluído', 'listar');
+        }
+        require 'Views/shared/header.php';
+    }
 }
