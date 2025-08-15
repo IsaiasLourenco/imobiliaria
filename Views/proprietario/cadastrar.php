@@ -7,38 +7,43 @@
 </div>
 <div class="limpar"></div>
 <div class="divider mg-b-2 mg-t-2"></div>
-<form action="" class="box-12">
+<form action="" method="POST" class="box-12">
+
     <div class="row">
         <div class="box-3">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" autofocus>
+            <label>
+                Nome
+                <input type="text" name="nome" autofocus>
+            </label>
         </div>
         <div class="box-3">
-            <label class="fonte14">Sexo</label>
-            <div class="radio-group">
-                <label class="fonte14">
-                    <input type="radio" name="sexo" value="masculino">
-                    Masculino
-                </label>
-                <label class="fonte14">
-                    <input type="radio" name="sexo" value="feminino">
-                    Feminino
-                </label>
-            </div>
+            <fieldset class="fonte14">
+                <legend>Sexo</legend>
+                <div class="radio-group">
+                    <label class="fonte14">
+                        <input type="radio" name="sexo" value="M">
+                        Masculino
+                    </label>
+                    <label class="fonte14">
+                        <input type="radio" name="sexo" value="F">
+                        Feminino
+                    </label>
+                </div>
+            </fieldset>
         </div>
         <div class="box-3">
-            <label for="contato">Fone</label>
+            <label for="telefone">Fone</label>
             <input type="text" name="contato" id="telefone">
         </div>
         <div class="box-3">
             <label for="cep">CEP</label>
             <input type="text" name="cep" id="cep">
         </div>
-    </div>>
+    </div>
     <div class="row">
         <div class="box-3">
-            <label for="rua">Rua</label>
-            <input type="text" name="rua" id="rua">
+            <label for="logradouro">Rua</label>
+            <input type="text" name="logradouro" id="rua">
         </div>
         <div class="box-1">
             <label for="numero">Numero</label>
@@ -57,8 +62,29 @@
             <input type="text" name="estado" id="estado">
         </div>
     </div>
-    <div class="box-3">
-        <input type="submit" value="Cadastrar" class="btn bg-vermelho bg-vermelho-claro-hover fnc-branco mg-t-2">
+    <div class="row">
+        <div class="box-3">
+            <fieldset class="fonte14">
+                <legend>Ativo</legend>
+                <div class="radio-group">
+                    <label class="fonte14">
+                        <input type="radio" name="ativo" value="1" checked>
+                        Sim
+                    </label>
+                    <label class="fonte14">
+                        <input type="radio" name="ativo" value="0">
+                        Não
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="box-3">
+            <input type="submit" value="Cadastrar" class="btn bg-vermelho bg-vermelho-claro-hover fnc-branco mg-t-2">
+        </div>
+            <div class="box-3">
+                <input name="id" type="hidden" value="0">
+                <!-- <?php echo @$id ?> -->
+            </div>
     </div>
 </form>
 <script src=""></script>

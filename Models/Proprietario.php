@@ -4,30 +4,31 @@ namespace App\Models;
 
 class Proprietario
 {
-    private int $id;
-    private string $nome;
-    private string $contato;
-    private string $cep;
-    private string $logradouro;
-    private string $numero;
-    private string $bairro;
-    private string $cidade;
-    private string $estado;
-    private string $sexo;
-    private string $ativo;
+    private $id;
+    private $nome;
+    private $contato;
+    private $cep;
+    private $logradouro;
+    private $numero;
+    private $bairro;
+    private $cidade;
+    private $estado;
+    private $sexo;
+    private $ativo;
 
-    public function __construct(?int $id = null, 
-                                ?string $nome = null, 
-                                ?string $contato = null,
-                                ?string $cep = null,
-                                ?string $logradouro = null,
-                                ?string $numero = null,
-                                ?string $bairro = null,
-                                ?string $cidade = null,
-                                ?string $estado = null,
-                                ?string $sexo = null,
-                                ?string $ativo = null)
-    {
+    public function __construct(
+        ?int $id = 0,
+        ?string $nome = '',
+        ?string $contato = '',
+        ?string $cep = '',
+        ?string $logradouro = '',
+        ?string $numero = '',
+        ?string $bairro = '',
+        ?string $cidade = '',
+        ?string $estado = '',
+        ?string $sexo = '',
+        ?string $ativo = ''
+    ) {
         $this->id = $id;
         $this->nome = $nome;
         $this->contato = $contato;
@@ -41,21 +42,25 @@ class Proprietario
         $this->ativo = $ativo;
     }
 
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
-    public function setId($id): void {
+    public function setId($id): void
+    {
         $this->id = $id;
     }
 
-    public function __set($chave, $valor): void {
-        if (property_exists(object_or_class: $this, property: $chave)) {
+    public function __set($chave, $valor): void
+    {
+        if (property_exists($this, $chave)) {
             $this->$chave = $valor;
         }
     }
 
-    public function toArray(): array {
+    public function toArray(): array
+    {
         return [
             'id' => $this->id,
             'nome' => $this->nome,
@@ -67,11 +72,17 @@ class Proprietario
             'cidade' => $this->cidade,
             'estado' => $this->estado,
             'sexo' => $this->sexo,
-            'ativo' => $this->ativo 
+            'ativo' => $this->ativo
         ];
     }
 
-    public function atributosPreenchidos(): array {
-        return array_filter(array: $this->toArray(), callback: fn($value): bool => $value !== null && $value !=='');
+    // public function atributosPreenchidos(): array {
+    // return array_filter($this->toArray(), function($value) {
+    //     return $value !== null && ($value !== '' || $value === '0');
+    // });
+    // }
+    public function atributosPreenchidos(): array
+    {
+        return $this->toArray(); // sem filtro nenhum
     }
 }

@@ -26,34 +26,29 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td class="fonte10 espaco-letra fw-300 txt-c">Isaias Lourenço</td>
-            <td class="fonte10 espaco-letra fw-300 txt-c">(19)99674-5466</td>
-            <td class="fonte10 espaco-letra fw-300 txt-c">
-                <?php if (1 == 2): ?>
-                    <i class="fa-solid fa-lock fnc-error fonte14" title="Desativado"></i>
-                <?php endif; ?>
-                <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
-            </td>
-            <td class="fonte10 espaco-letra fw-300 txt-c">
-                <a href=""><i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i></a>
-                <a href=""><i class="fa-solid fa-pen fnc-azul fonte14" title="Editar Registro"></i></a>
-            </td>
-        </tr>
-        <tr class="zebra">
-            <td class="fonte10 espaco-letra fw-300 txt-c">João Custódio</td>
-            <td class="fonte10 espaco-letra fw-300 txt-c">(19)990799-0265</td>
-            <td class="fonte10 espaco-letra fw-300 txt-c">
-                <?php if (1 == 2): ?>
-                    <i class="fa-solid fa-lock fnc-error fonte14" title="Desativado"></i>
-                <?php endif; ?>
-                <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
-            </td>
-            <td class="fonte10 espaco-letra fw-300 txt-c">
-                <a href=""><i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i></a>
-                <a href=""><i class="fa-solid fa-pen fnc-azul fonte14" title="Editar Registro"></i></a>
-            </td>
-        </tr>
+        <?php
+        if (isset($proprietario) && count($proprietario) > 0):
+            foreach ($proprietario as $valores):
+        ?>
+                <tr>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->CONTATO; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                        <?php if ($valores->ATIVO == '1'): ?>
+                            <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
+                        <?php else: ?>
+                            <i class="fa-solid fa-lock fnc-error fonte14" title="Desativado"></i>
+                        <?php endif; ?>
+                    </td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                        <a href=""><i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i></a>
+                        <a href=""><i class="fa-solid fa-pen fnc-azul fonte14" title="Editar Registro"></i></a>
+                    </td>
+                </tr>
+            <?php endforeach;
+        else: ?>
+            <h6>Nenhum Registro encontrado!</h6>
+        <?php endif; ?>
     </tbody>
     <tfoot>
 
