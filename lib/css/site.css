@@ -186,6 +186,7 @@ tbody tr:nth-child(odd) {
     background-color: #000;
     color: #fff;
 }
+
 tbody tr:nth-child(even) {
     background-color: #fff;
     color: #000;
@@ -195,7 +196,8 @@ tbody tr:nth-child(even) {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: #007bff; /* azul */
+    background-color: #007bff;
+    /* azul */
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -215,7 +217,8 @@ tbody tr:nth-child(even) {
 
 .radio-group {
     display: flex;
-    gap: 20px; /* espaço entre os botões */
+    gap: 20px;
+    /* espaço entre os botões */
     align-items: center;
     margin-top: 5px;
 }
@@ -223,21 +226,26 @@ tbody tr:nth-child(even) {
 .radio-group label {
     display: flex;
     align-items: center;
-    font-size: 1.4rem; /* ou use sua classe .fonte14 */
+    font-size: 1.4rem;
+    /* ou use sua classe .fonte14 */
     font-weight: 400;
-    color: #333; /* ou sua cor padrão */
+    color: #333;
+    /* ou sua cor padrão */
     margin-right: 15px;
-    line-height: 1; /* ajuda no alinhamento vertical */
+    line-height: 1;
+    /* ajuda no alinhamento vertical */
 }
 
 .radio-group input[type="radio"] {
     width: auto;
     height: auto;
-    transform: scale(1); /* garante que não fiquem ampliados */
+    transform: scale(1);
+    /* garante que não fiquem ampliados */
     vertical-align: middle;
     margin-right: 5px;
     position: relative;
-    top: 5px; /* ajuste fino para alinhar a bolinha com o texto */
+    top: 5px;
+    /* ajuste fino para alinhar a bolinha com o texto */
 }
 
 fieldset {
@@ -250,4 +258,10 @@ legend {
     font-size: 14px;
     color: #333;
     font-family: inherit;
+}
+
+.btn-centralizado {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

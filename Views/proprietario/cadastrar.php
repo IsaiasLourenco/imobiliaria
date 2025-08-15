@@ -71,22 +71,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="box-3">
-            <fieldset class="fonte14">
-                <legend>Ativo</legend>
-                <div class="radio-group">
-                    <label class="fonte14">
-                        <input type="radio" name="ativo" value="1" checked <?= (isset($proprietario[0]) && $proprietario[0]->ATIVO == '1') ? 'checked' : '' ?>>
-                        Sim
-                    </label>
-                    <label class="fonte14">
-                        <input type="radio" name="ativo" value="0" <?= (isset($proprietario[0]) && $proprietario[0]->ATIVO == '0') ? 'checked' : '' ?>>
-                        Não
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-        <div class="box-3">
+        <div class="btn-centralizado">
             <button type="submit"
                 class="btn <?= !empty($proprietario) ? 'bg-azul bg-azul-claro-hover' : 'bg-vermelho bg-vermelho-claro-hover' ?> fnc-branco mg-t-2">
                 <i class="fas <?= !empty($proprietario) ? 'fa-sync-alt' : 'fa-plus' ?>"></i>

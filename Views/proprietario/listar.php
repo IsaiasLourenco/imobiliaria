@@ -35,9 +35,13 @@
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->CONTATO; ?></td>
                     <td class="fonte12 espaco-letra fw-300 txt-c">
                         <?php if ($valores->ATIVO == '1'): ?>
-                            <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
+                            <span class="ativo" data-id="<?= $valores->ID; ?>" data-status="0">
+                                <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
+                            </span>
                         <?php else: ?>
-                            <i class="fa-solid fa-lock fnc-error fonte14" title="Desativado"></i>
+                            <span class="ativo" data-id="<?= $valores->ID; ?>" data-status="1">
+                                <i class="fa-solid fa-lock fnc-error fonte14" title="Desativado"></i>
+                            </span>
                         <?php endif; ?>
                     </td>
                     <td class="fonte10 espaco-letra fw-300 txt-c">

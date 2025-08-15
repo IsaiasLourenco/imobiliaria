@@ -31,4 +31,9 @@ class ProprietarioService
         }
         return $this->proprietarioDao->editar($proprietario);
     }
+
+    public function atualizarStatus($id, $ativo): bool
+    {
+        return $this->proprietarioDao->atualizarStatus($id, $ativo);
+    }
 }

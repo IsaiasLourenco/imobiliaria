@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Models\Dao\ProprietarioDao;
 use App\Services\ProprietarioService;
 use App\Models\Notifications;
+use App\Models\Proprietario;
 
 class ProprietarioController extends Notifications
 {
@@ -84,20 +85,33 @@ class ProprietarioController extends Notifications
         }
     }
 
-    function apagar(): void {
+    function apagar(): void
+    {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            echo $this->confirm('Excluír', 'Proprietario', '' , $id);
+            echo $this->confirm('Excluír', 'Proprietario', '', $id);
         }
         require 'Views/shared/header.php';
     }
-    
-    function excluir(): void {
+
+    function excluir(): void
+    {
         $id = $_GET['id'] ?? null;
         if ($id) {
             $this->proprietarioDao->apagar($id);
             echo $this->success('Proprietario', 'Excluído', 'listar');
         }
         require 'Views/shared/header.php';
+    }
+
+    public function alterarCadeado(): void
+    {
+        echo "Chegou no controller!";
+        $id = $_GET['id'] ?? null;
+        $ativo = $_GET['ativo'] ?? null;
+
+        if ($id !== null && $ativo !== null) {
+            $this->proprietarioService->atualizarStatus($id, $ativo);
+        }
     }
 }
