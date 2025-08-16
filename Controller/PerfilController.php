@@ -2,30 +2,27 @@
 
 namespace App\Controller;
 
-use App\Models\Dao\UsuarioDao;
-use App\Services\UsuarioService;
-use App\Models\Notifications;
-use App\Models\Usuario;
 use App\Models\Dao\PerfilDao;
+use App\Services\PerfilService;
+use App\Models\Notifications;
+use App\Models\Perfil;
 
-class UsuarioController extends Notifications
+class PerfilController extends Notifications
 {
-    private $usuarioService;
-    private $usuarioDao;
-    private $perfil;
+    private $perfilService;
+    private $perfilDao;
 
     public function __construct()
     {
-        $this->perfil = new PerfilDao();
-        $this->usuarioDao = new UsuarioDao();
-        $this->usuarioService = new UsuarioService($this->usuarioDao);
+        $this->perfilDao = new PerfilDao();
+        $this->perfilService = new PerfilService($this->perfilDao);
     }
 
     function index(): void
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $usuario = $this->usuarioDao->usuarioId($id);
+            $perfil = $this->perfilDao->usuarioId($id);
         }
 
         if ($_POST) {
@@ -37,33 +34,32 @@ class UsuarioController extends Notifications
                 return;
             endif;
         }
-        
         require_once 'Views/painel/index.php';
     }
 
     public function inserir($dados): void
     {
-        $retorno = $this->usuarioService->cadastrarUsuario($dados);
+        $retorno = $this->perfilService->cadastrarPerfil($dados);
         if ($retorno) {
-            echo $this->success('Usuario', 'Cadastrado', 'listar');
+            echo $this->success('Perfil', 'Cadastrado', 'listar');
         } else {
-            echo $this->error('Usuario', 'Cadastrado', 'cadastrar');
+            echo $this->error('Perfil', 'Cadastrado', 'cadastrar');
         }
     }
 
     function listar(): void
     {
-        $usuario = $this->usuarioDao->listarTodos();
+        $proprietario = $this->perfilDao->listarTodos();
         require_once 'Views/painel/index.php';
     }
 
     public function cadastrar(): void
     {
         $id = $_GET['id'] ?? null;
-        $usuario = null;
+        $perefil = null;
 
         if ($id) {
-            $usuario = $this->usuarioDao->usuarioId($id);
+            $perfil = $this->perfilDao->usuarioId($id);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -75,17 +71,17 @@ class UsuarioController extends Notifications
             return;
         }
 
-        $view = 'Views/usuarios/cadastrar.php';
+        // $view = 'Views/proprietario/cadastrar.php';
         require 'Views/painel/index.php';
     }
 
     function editar($dados): void
     {
-        $retorno = $this->usuarioService->editarUsuario($dados);
+        $retorno = $this->perfilService->editarPerfil($dados);
         if ($retorno) {
-            echo $this->success('Usuario', 'Editado', 'listar');
+            echo $this->success('Perfil', 'Editado', 'listar');
         } else {
-            echo $this->error('Usuario', 'Cadastrado', 'cadastrar');
+            echo $this->error('Perfil', 'Cadastrado', 'cadastrar');
         }
     }
 
@@ -93,7 +89,7 @@ class UsuarioController extends Notifications
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            echo $this->confirm('Excluír', 'Usuario', '', $id);
+            echo $this->confirm('Excluír', 'Perfil', '', $id);
         }
         require 'Views/shared/header.php';
     }
@@ -102,20 +98,9 @@ class UsuarioController extends Notifications
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $this->usuarioDao->apagar($id);
-            echo $this->success('Usuario', 'Excluído', 'listar');
+            $this->perfilDao->apagar($id);
+            echo $this->success('Perfil', 'Excluído', 'listar');
         }
         require 'Views/shared/header.php';
     }
-
-    public function alterarCadeado(): void
-    {
-        $id = $_GET['id'] ?? null;
-        $ativo = $_GET['ativo'] ?? null;
-
-        if ($id !== null && $ativo !== null) {
-            $this->usuarioService->atualizarStatus($id, $ativo);
-        }
-    }
 }
- 

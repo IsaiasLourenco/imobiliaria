@@ -3,13 +3,13 @@
         <h2 class="fonte20">
             <i class="fa-solid fa-pen-ruler"></i>
             <i class="fa-solid fa-user-tie"></i>
-            Editar Proprietários
+            Editar Proprietário
         </h2>
     <?php else: ?>
         <h2 class="fonte20">
             <i class="fa-solid fa-notes-medical"></i>
             <i class="fa-solid fa-user-tie"></i>
-            Cadastrar Proprietários
+            Cadastrar Proprietário
         </h2>
     <?php endif; ?>
 </div>
@@ -83,4 +83,3 @@
         <?php endif; ?>
     </div>
 </form>
-<script src=""></script>

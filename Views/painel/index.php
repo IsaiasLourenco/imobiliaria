@@ -17,13 +17,13 @@
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
-                    <a href="index.php?controller=ImovelController&metodo=index" class="fonte14 fnc-cinza">
+                    <a href="index.php?controller=ImovelController&metodo=listar" class="fonte14 fnc-cinza">
                         <i class="fa-solid fa-house-chimney"></i>
                         Imóvel
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
-                    <a href="index.php?controller=UsuarioController&metodo=index" class="fonte14 fnc-cinza">
+                    <a href="index.php?controller=UsuarioController&metodo=listar" class="fonte14 fnc-cinza">
                         <i class="fa-solid fa-keyboard"></i>
                         Usuário
                     </a>

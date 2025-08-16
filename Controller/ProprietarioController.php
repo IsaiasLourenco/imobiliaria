@@ -106,7 +106,6 @@ class ProprietarioController extends Notifications
 
     public function alterarCadeado(): void
     {
-        echo "Chegou no controller!";
         $id = $_GET['id'] ?? null;
         $ativo = $_GET['ativo'] ?? null;
 

@@ -192,7 +192,7 @@ tbody tr:nth-child(even) {
     color: #000;
 }
 
-.btn-novo-proprietario {
+.btn-novo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -207,11 +207,11 @@ tbody tr:nth-child(even) {
     transition: background-color 0.3s ease;
 }
 
-.btn-novo-proprietario i {
+.btn-novo i {
     font-size: 1.6rem;
 }
 
-.btn-novo-proprietario:hover {
+.btn-novo:hover {
     background-color: #0056b3;
 }
 

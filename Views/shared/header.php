@@ -1,7 +1,7 @@
 <?php 
     if ($_GET) {
-        $controller = strtolower(string: str_replace(search: "Controller", replace: "", subject: $_GET['controller']));
-        $metodo = strtolower(string: $_GET['metodo']);
+        $controller = strtolower(str_replace("Controller", "", $_GET['controller']));
+        $metodo = strtolower($_GET['metodo']);
     }
 ?>
 <!DOCTYPE html>
@@ -16,6 +16,7 @@
      <script src="lib/js/passaComEnter.js"></script>
      <script src="lib/js/buscaCep.js"></script>
      <script src="lib/js/cadeado.js"></script>
+     <script src="lib/js/verSenha.js"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
      <script src="lib/js/mascaras.js"></script>
