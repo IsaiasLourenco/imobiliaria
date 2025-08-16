@@ -76,30 +76,32 @@
         <div class="box-6">
             <label for="perfil">Perfil</label>
             <select name="perfil" id="perfil">
-                <?php if (!empty($usuario[1]) && isset($usuario[1]->PERFIL)): ?>
-                    <option value="<?= $usuario[1]->PERFIL; ?>" selected>
-                        <?= $usuario[1]->PERFIL == 1 ? 'Administrador' : 'Usuário' ?>
-                    </option>
-                <?php else: ?>
-                    <option value="" selected>Selecione um perfil</option>
+                <?php if (!isset($id) || $id == ''): ?>
+                    <option value="" selected disabled>Selecione um perfil...</option>
                 <?php endif; ?>
-                <option value="1">Administrador</option>
-                <option value="2">Usuário</option>
+
+                <?php if (isset($perfil) && count($perfil) > 0):
+                    foreach ($perfil as $valores):
+                        $selected  = (isset($id) && $id != '' && $usuario[0]->PERFIL == $valores->ID) ? 'selected' : '';
+                        $descricao = $valores->DESCRICAO;
+                        echo "<option value='{$valores->ID}' {$selected}> {$descricao} </option>";
+                    endforeach;
+                endif; ?>
             </select>
         </div>
 
         <div class="box-6">
-            <?php 
-                $imagem = isset($id) && $id != '' ? $usuario[0]->IMAGEM : 'user-padrao.png';
-                $dirImagem = 'lib/img/users-imagens/'.$imagem;
-                $imagemAlt = $imagem === 'user-padrao.png' ? 'Escolha uma imagem...' : 'Imagem do Usuário.';
+            <?php
+            $imagem = isset($id) && $id != '' ? $usuario[0]->IMAGEM : 'user-padrao.png';
+            $dirImagem = 'lib/img/users-imagens/' . $imagem;
+            $imagemAlt = $imagem === 'user-padrao.png' ? 'Escolha uma imagem...' : 'Imagem do Usuário.';
             ?>
             <label for="" class="fonte14 fnc-preto-azulado">
                 <i class="fa-solid fa-file-image fonte20"></i>
-                <?php echo $imagemAlt;?>
+                <?php echo $imagemAlt; ?>
             </label>
-            <input type="file" name="imagem" value="<?php echo $imagem;?>">
-            <img class="logo-100" src="<?php echo $dirImagem ?>" alt="<?php echo $imagemAlt;?>">
+            <input type="file" name="imagem" value="<?php echo $imagem; ?>">
+            <img class="logo-100" src="<?php echo $dirImagem ?>" alt="<?php echo $imagemAlt; ?>">
         </div>
 
     </div>

@@ -19,29 +19,20 @@ class Perfil
     {
         return $this->id;
     }
+    
+    public function getDescricao(): string
+    {
+        return $this->descricao;
+    }
 
     public function setId($id): void
     {
         $this->id = $id;
     }
-
-    public function __set($chave, $valor): void
+    
+    public function setDescricao($descricao): void
     {
-        if (property_exists($this, $chave)) {
-            $this->$chave = $valor;
-        }
+        $this->descricao = $descricao;
     }
 
-    public function toArray(): array
-    {
-        return [
-            'id' => $this->id,
-            'descricao' => $this->descricao
-        ];
-    }
-
-    public function atributosPreenchidos(): array
-    {
-        return $this->toArray(); // sem filtro nenhum
-    }
 }

@@ -37,7 +37,7 @@ class UsuarioController extends Notifications
                 return;
             endif;
         }
-        
+        $perfil = $this->perfil->listarTodos();
         require_once 'Views/painel/index.php';
     }
 
@@ -74,7 +74,7 @@ class UsuarioController extends Notifications
             }
             return;
         }
-
+        $perfil = $this->perfil->listarTodos();
         $view = 'Views/usuarios/cadastrar.php';
         require 'Views/painel/index.php';
     }
