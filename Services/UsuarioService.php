@@ -18,6 +18,10 @@ class UsuarioService
     {
         $usuario = new Usuario();
         $dados['imagem'] = $imagem;
+
+        // se não vier do formulário, seta como ativo = 1
+        $dados['ativo'] = isset($dados['ativo']) ? (int)$dados['ativo'] : 1;
+
         foreach ($dados as $key => $valores) {
             if ($key == 'senha') {
                 $valores = password_hash($valores, PASSWORD_BCRYPT);
@@ -26,6 +30,7 @@ class UsuarioService
         }
         return $this->usuarioDao->adicionar($usuario);
     }
+
 
     public function editarUsuario($dados, $imagem)
     {
@@ -42,6 +47,6 @@ class UsuarioService
 
     public function atualizarStatus($id, $ativo): bool
     {
-        return $this->usuarioDao->atualizarStatus($id, $ativo);
+        return $this->usuarioDao->atualizarStatus((int)$id, (int)$ativo);
     }
 }

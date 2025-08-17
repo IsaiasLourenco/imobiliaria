@@ -10,6 +10,7 @@ class Proprietario
     private $cep;
     private $logradouro;
     private $numero;
+    private $complemento;
     private $bairro;
     private $cidade;
     private $estado;
@@ -23,6 +24,7 @@ class Proprietario
         ?string $cep = '',
         ?string $logradouro = '',
         ?string $numero = '',
+        ?string $complemento = '',
         ?string $bairro = '',
         ?string $cidade = '',
         ?string $estado = '',
@@ -35,6 +37,7 @@ class Proprietario
         $this->cep = $cep;
         $this->logradouro = $logradouro;
         $this->numero = $numero;
+        $this->complemento = $complemento;
         $this->bairro = $bairro;
         $this->cidade = $cidade;
         $this->estado = $estado;
@@ -68,6 +71,7 @@ class Proprietario
             'cep' => $this->cep,
             'logradouro' => $this->logradouro,
             'numero' => $this->numero,
+            'complemento' => $this->complemento,
             'bairro' => $this->bairro,
             'cidade' => $this->cidade,
             'estado' => $this->estado,

@@ -55,7 +55,7 @@ class UsuarioController extends Notifications
         if ($retorno) {
             echo $this->success('Usuario', 'Cadastrado', 'listar');
         } else {
-            echo $this->error('Usuario', 'Cadastrado', 'cadastrar');
+            echo $this->error('Usuario', 'Cadastrar', 'cadastrar');
         }
     }
 
@@ -94,7 +94,7 @@ class UsuarioController extends Notifications
         if ($retorno) {
             echo $this->success('Usuario', 'Editado', 'listar');
         } else {
-            echo $this->error('Usuario', 'Cadastrado', 'cadastrar');
+            echo $this->error('Usuario', 'Editar', 'cadastrar');
         }
     }
 

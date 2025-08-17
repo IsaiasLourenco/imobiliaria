@@ -14,7 +14,7 @@ class ProprietarioDao extends Conexao
 
     public function usuarioId($id)
     {
-        return $this->listar("proprietario", "WHERE ID = ?", [$id]);
+        return $this->listar("proprietario", "WHERE id = ?", [$id]);
     }
 
     public function adicionar(Proprietario $proprietario)

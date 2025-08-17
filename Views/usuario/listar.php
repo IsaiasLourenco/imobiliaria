@@ -36,29 +36,29 @@
         ?>
                 <tr>
                     <td class="fonte10 espaco-letra fw-300 txt-c">
-                        <?= date('d/m/Y H:i:s', strtotime($valores->DATACADASTRO)); ?>
+                        <?= date('d/m/Y H:i:s', strtotime($valores->datacadastro)); ?>
                     </td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->USUARIO; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->EMAIL; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->TELEFONE; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->nome; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->usuario; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->email; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->telefone; ?></td>
                     <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME_PERFIL ?? '—'; ?></td>
                     <td class="fonte10 espaco-letra fw-300 txt-c">
-                        <?php if ($valores->ATIVO == '1'): ?>
-                            <span class="ativo" data-id="<?= $valores->ID; ?>" data-status="0">
+                        <?php if ($valores->ativo == '1'): ?>
+                            <span class="ativo" data-id="<?= $valores->id; ?>" data-status="0">
                                 <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
                             </span>
                         <?php else: ?>
-                            <span class="ativo" data-id="<?= $valores->ID; ?>" data-status="1">
+                            <span class="ativo" data-id="<?= $valores->id; ?>" data-status="1">
                                 <i class="fa-solid fa-lock fnc-error fonte14" title="Desativado"></i>
                             </span>
                         <?php endif; ?>
                     </td>
                     <td class="fonte10 espaco-letra fw-300 txt-c">
-                        <a href="index.php?controller=UsuarioController&metodo=apagar&id=<?= $valores->ID; ?>">
+                        <a href="index.php?controller=UsuarioController&metodo=apagar&id=<?= $valores->id; ?>">
                             <i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i>
                         </a>
-                        <a href="index.php?controller=UsuarioController&metodo=cadastrar&id=<?= $valores->ID; ?>">
+                        <a href="index.php?controller=UsuarioController&metodo=cadastrar&id=<?= $valores->id; ?>">
                             <i class="fa-solid fa-pen fnc-azul fonte14" title="Editar Registro"></i>
                         </a>
                     </td>

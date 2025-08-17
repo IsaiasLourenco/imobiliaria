@@ -21,7 +21,7 @@
         <div class="box-3">
             <label>
                 Nome
-                <input type="text" name="nome" value="<?= $proprietario[0]->NOME ?? '' ?>" autofocus>
+                <input tabindex="1" type="text" name="nome" value="<?= $proprietario[0]->nome ?? '' ?>" autofocus required>
             </label>
         </div>
         <div class="box-3">
@@ -29,11 +29,11 @@
                 <legend>Sexo</legend>
                 <div class="radio-group">
                     <label class="fonte14">
-                        <input type="radio" name="sexo" value="M" <?= (isset($proprietario[0]) && $proprietario[0]->SEXO === 'M') ? 'checked' : '' ?>>
+                        <input type="radio" name="sexo" value="M" <?= (isset($proprietario[0]) && $proprietario[0]->sexo === 'M') ? 'checked' : '' ?> required>
                         Masculino
                     </label>
                     <label class="fonte14">
-                        <input type="radio" name="sexo" value="F" <?= (isset($proprietario[0]) && $proprietario[0]->SEXO === 'F') ? 'checked' : '' ?>>
+                        <input type="radio" name="sexo" value="F" <?= (isset($proprietario[0]) && $proprietario[0]->sexo === 'F') ? 'checked' : '' ?> required>
                         Feminino
                     </label>
                 </div>
@@ -41,33 +41,37 @@
         </div>
         <div class="box-3">
             <label for="telefone">Fone</label>
-            <input type="text" name="contato" id="telefone" value="<?= $proprietario[0]->CONTATO ?? '' ?>">
+            <input tabindex="2" type="text" name="contato" id="telefone" value="<?= $proprietario[0]->contato ?? '' ?>" required>
         </div>
         <div class="box-3">
             <label for="cep">CEP</label>
-            <input type="text" name="cep" id="cep" value="<?= $proprietario[0]->CEP ?? '' ?>">
+            <input tabindex="3" type="text" name="cep" id="cep" value="<?= $proprietario[0]->cep ?? '' ?>" required>
         </div>
     </div>
     <div class="row">
-        <div class="box-3">
+        <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="logradouro">Rua</label>
-            <input type="text" name="logradouro" id="rua" value="<?= $proprietario[0]->LOGRADOURO ?? '' ?>">
+            <input type="text" name="logradouro" id="rua" value="<?= $proprietario[0]->logradouro ?? '' ?>" required readonly>
         </div>
         <div class="box-1">
             <label for="numero">Numero</label>
-            <input type="text" name="numero" id="numero" value="<?= $proprietario[0]->NUMERO ?? '' ?>">
+            <input tabindex="4" type="text" name="numero" id="numero" value="<?= $proprietario[0]->numero ?? '' ?>" required>
+        </div>
+        <div class="box-2" style="background-color: transparent; color: #333;">
+            <label for="complemento">Complemento</label>
+            <input tabindex="5" type="text" name="complemento" id="complemento" value="<?= $proprietario[0]->complemento ?? '' ?>">
         </div>
         <div class="box-3">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro" value="<?= $proprietario[0]->BAIRRO ?? '' ?>">
+            <input type="text" name="bairro" id="bairro" readonly value="<?= $proprietario[0]->bairro ?? '' ?>" required>
         </div>
-        <div class="box-3">
+        <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" id="cidade" value="<?= $proprietario[0]->CIDADE ?? '' ?>">
+            <input type="text" name="cidade" id="cidade" readonly value="<?= $proprietario[0]->cidade ?? '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="estado">Estado</label>
-            <input type="text" name="estado" id="estado" value="<?= $proprietario[0]->ESTADO ?? '' ?>">
+            <input type="text" name="estado" id="estado" readonly value="<?= $proprietario[0]->estado ?? '' ?>" required>
         </div>
     </div>
     <div class="row">
@@ -78,8 +82,8 @@
                 <?= !empty($proprietario) ? 'Atualizar' : 'Cadastrar' ?>
             </button>
         </div>
-        <?php if (!empty($proprietario[0]->ID)): ?>
-            <input type="hidden" name="id" value="<?= $proprietario[0]->ID ?>">
+        <?php if (!empty($proprietario[0]->id)): ?>
+            <input type="hidden" name="id" value="<?= $proprietario[0]->id ?>">
         <?php endif; ?>
     </div>
 </form>

@@ -39,7 +39,7 @@ class Conexao {
 
     // LISTA OBJETOS DO BANCO DE DADOS
     protected function listar($tabela, $condicao = "", $parametro = []) {
-        $sql = "SELECT * FROM {$tabela} {$condicao} ORDER BY ID DESC";
+        $sql = "SELECT * FROM {$tabela} {$condicao} ORDER BY id DESC";
         $stmt = $this->executarConsulta($sql, $parametro);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -56,14 +56,14 @@ class Conexao {
         $set = implode(',', array_map(function($campo) {
             return "$campo = ?";
         }, $campos));
-        $sql = "UPDATE {$tabela} SET {$set} WHERE ID = ?";
+        $sql = "UPDATE {$tabela} SET {$set} WHERE id = ?";
         $stmt = $this->executarConsulta($sql, array_merge($valores, [$id]));
         return $stmt->rowCount();
     }
 
     // DELETANDO OBJETOS DO BANCO DE DADOS
     protected function deletar($tabela, $id) {
-        $sql = "DELETE FROM {$tabela} WHERE ID = ?";
+        $sql = "DELETE FROM {$tabela} WHERE id = ?";
         $stmt = $this->executarConsulta($sql, [$id]);
         return $stmt->rowCount();
     }

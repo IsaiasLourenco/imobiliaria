@@ -43,7 +43,7 @@ class ProprietarioController extends Notifications
         if ($retorno) {
             echo $this->success('Proprietario', 'Cadastrado', 'listar');
         } else {
-            echo $this->error('Proprietario', 'Cadastrado', 'cadastrar');
+            echo $this->error('Proprietario', 'Cadastrar', 'cadastrar');
         }
     }
 
@@ -81,7 +81,7 @@ class ProprietarioController extends Notifications
         if ($retorno) {
             echo $this->success('Proprietario', 'Editado', 'listar');
         } else {
-            echo $this->error('Proprietario', 'Cadastrado', 'cadastrar');
+            echo $this->error('Proprietario', 'Editar', 'cadastrar');
         }
     }
 
