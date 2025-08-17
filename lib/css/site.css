@@ -265,3 +265,11 @@ legend {
     display: flex;
     justify-content: center;
 }
+
+input[type='file'] {
+    display: none;
+}
+
+.ativo i {
+    cursor: pointer;
+}

@@ -9,7 +9,12 @@ class UsuarioDao extends Conexao
 {
     public function listarTodos()
     {
-        return $this->listar("usuario");
+        $sql = "SELECT u.*, p.DESCRICAO AS NOME_PERFIL
+            FROM usuario u
+            LEFT JOIN perfil p ON u.PERFIL = p.ID";
+        $stmt = self::getConexao()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function usuarioId($id)

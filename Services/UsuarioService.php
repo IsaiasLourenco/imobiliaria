@@ -14,19 +14,27 @@ class UsuarioService
         $this->usuarioDao = $usuarioDao;
     }
 
-    public function cadastrarUsuario($dados)
+    public function cadastrarUsuario($dados, $imagem)
     {
         $usuario = new Usuario();
+        $dados['imagem'] = $imagem;
         foreach ($dados as $key => $valores) {
+            if ($key == 'senha') {
+                $valores = password_hash($valores, PASSWORD_BCRYPT);
+            }
             $usuario->__set($key, $valores);
         }
         return $this->usuarioDao->adicionar($usuario);
     }
 
-    public function editarUsuario($dados)
+    public function editarUsuario($dados, $imagem)
     {
         $usuario = new Usuario();
+        $dados['imagem'] = $imagem;
         foreach ($dados as $key => $valores) {
+            if ($key == 'senha') {
+                $valores = password_hash($valores, PASSWORD_BCRYPT);
+            }
             $usuario->__set($key, $valores);
         }
         return $this->usuarioDao->editar($usuario);

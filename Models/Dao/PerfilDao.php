@@ -5,7 +5,7 @@
  class PerfilDao extends Conexao
  {
     public function listarTodos(){
-        return $this->listar("PERFIL");
+        return $this->listar("perfil");
     }
     
  }

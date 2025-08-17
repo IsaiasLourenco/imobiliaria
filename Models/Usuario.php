@@ -36,6 +36,7 @@ class Usuario
         ?string $cidade = '',
         ?string $estado = '',
         ?string $imagem = '',
+        ?string $datacadastro = '',
         ?string $ativo = ''
     ) {
         $this->id = $id;
@@ -52,7 +53,7 @@ class Usuario
         $this->cidade = $cidade;
         $this->estado = $estado;
         $this->imagem = $imagem;
-        $this->datacadastro = '';
+        $this->datacadastro = !empty($datacadastro) ? $datacadastro : date('Y-m-d H:i:s');
         $this->ativo = $ativo;
     }
 

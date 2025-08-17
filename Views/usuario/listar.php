@@ -19,6 +19,7 @@
 <table class="grid wd-100">
     <thead>
         <tr>
+            <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Data Cadastro</th>
             <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Nome</th>
             <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Usuário</th>
             <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Email</th>
@@ -34,14 +35,15 @@
             foreach ($usuario as $valores):
         ?>
                 <tr>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->NOME; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->USUARIO; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->EMAIL; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->TELEFONE; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?php if ($valores->PERFIL == '1'): echo 'ADMINISTRADOR';
-                                                                    else: 'USUARIO';
-                                                                endif; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c">
+                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                        <?= date('d/m/Y H:i:s', strtotime($valores->DATACADASTRO)); ?>
+                    </td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->USUARIO; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->EMAIL; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->TELEFONE; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME_PERFIL ?? '—'; ?></td>
+                    <td class="fonte10 espaco-letra fw-300 txt-c">
                         <?php if ($valores->ATIVO == '1'): ?>
                             <span class="ativo" data-id="<?= $valores->ID; ?>" data-status="0">
                                 <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>

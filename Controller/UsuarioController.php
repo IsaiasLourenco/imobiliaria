@@ -7,18 +7,25 @@ use App\Services\UsuarioService;
 use App\Models\Notifications;
 use App\Models\Usuario;
 use App\Models\Dao\PerfilDao;
+use App\Services\FileUploadService;
 
 class UsuarioController extends Notifications
 {
     private $usuarioService;
     private $usuarioDao;
     private $perfil;
+    private $fileUploadServiceUsuarios;
+    private $fileUploadServiceImoveis;
+
+
 
     public function __construct()
     {
         $this->perfil = new PerfilDao();
         $this->usuarioDao = new UsuarioDao();
         $this->usuarioService = new UsuarioService($this->usuarioDao);
+        $this->fileUploadServiceUsuarios = new FileUploadService('lib/img/users-imagens');
+        $this->fileUploadServiceImoveis = new FileUploadService('lib/img/imagens');
     }
 
     function index(): void
@@ -30,10 +37,10 @@ class UsuarioController extends Notifications
 
         if ($_POST) {
             if (empty($_POST['id'])):
-                $this->inserir($_POST);
+                $this->inserir($_POST, $_FILES);
                 return;
             else:
-                $this->editar($_POST);
+                $this->editar($_POST, $_FILES);
                 return;
             endif;
         }
@@ -41,9 +48,10 @@ class UsuarioController extends Notifications
         require_once 'Views/painel/index.php';
     }
 
-    public function inserir($dados): void
+    public function inserir($dados, $file): void
     {
-        $retorno = $this->usuarioService->cadastrarUsuario($dados);
+        $imagem = $this->fileUploadServiceUsuarios->uploadUsers($file['imagem']);
+        $retorno = $this->usuarioService->cadastrarUsuario($dados, $imagem);
         if ($retorno) {
             echo $this->success('Usuario', 'Cadastrado', 'listar');
         } else {
@@ -68,9 +76,9 @@ class UsuarioController extends Notifications
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty($_POST['id'])) {
-                $this->inserir($_POST);
+                $this->inserir($_POST, $_FILES);
             } else {
-                $this->editar($_POST);
+                $this->editar($_POST, $_FILES);
             }
             return;
         }
@@ -79,9 +87,10 @@ class UsuarioController extends Notifications
         require 'Views/painel/index.php';
     }
 
-    function editar($dados): void
+    function editar($dados, $file): void
     {
-        $retorno = $this->usuarioService->editarUsuario($dados);
+        $imagem = $this->fileUploadServiceUsuarios->uploadUsers($file['imagem']);
+        $retorno = $this->usuarioService->editarUsuario($dados, $imagem);
         if ($retorno) {
             echo $this->success('Usuario', 'Editado', 'listar');
         } else {
@@ -118,4 +127,3 @@ class UsuarioController extends Notifications
         }
     }
 }
- 

@@ -15,8 +15,10 @@
      <script src="lib/js/animacoes.js"></script>
      <script src="lib/js/passaComEnter.js"></script>
      <script src="lib/js/buscaCep.js"></script>
-     <script src="lib/js/cadeado.js"></script>
+     <script src="lib/js/cadeadoProprietario.js"></script>
+     <script src="lib/js/cadeadoUsuario.js"></script>
      <script src="lib/js/verSenha.js"></script>
+     <script src="lib/js/carregarImagem.js"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
      <script src="lib/js/mascaras.js"></script>
