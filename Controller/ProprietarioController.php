@@ -22,7 +22,7 @@ class ProprietarioController extends Notifications
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $proprietario = $this->proprietarioDao->usuarioId($id);
+            $proprietario = $this->proprietarioDao->buscarProprietarioPorId($id);
         }
 
         if ($_POST) {
@@ -59,7 +59,7 @@ class ProprietarioController extends Notifications
         $proprietario = null;
 
         if ($id) {
-            $proprietario = $this->proprietarioDao->usuarioId($id);
+            $proprietario = $this->proprietarioDao->buscarProprietarioPorId($id);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

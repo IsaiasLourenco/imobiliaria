@@ -17,7 +17,7 @@ class UsuarioDao extends Conexao
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
-    public function usuarioId($id)
+    public function buscarUsuarioPorId($id)
     {
         return $this->listar("usuario", "WHERE id = ?", [$id]);
     }

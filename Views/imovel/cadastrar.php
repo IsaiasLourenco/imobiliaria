@@ -80,11 +80,11 @@ $areaConstruidaFormatada = isset($imovel[0]->areaconstruida) ? $imovel[0]->areac
             <input tabindex="8" type="text" name="garagem" id="garagem" value="<?= $garagemFormatado ?>" required>
         </div>
         <div class="box-1">
-            <label for="areatotal">Área → Total</label>
+            <label for="areatotal">Área Total</label>
             <input tabindex="9" type="text" name="areatotal" id="areatotal" value="<?= $areaTotalFormatada ?>" required>
         </div>
         <div class="box-1">
-            <label for="areaconstruida">Construída</label>
+            <label for="areaconstruida">Área Const</label>
             <input tabindex="10" type="text" name="areaconstruida" id="areaconstruida" value="<?= $areaConstruidaFormatada ?>" required>
         </div>
     </div>
@@ -170,6 +170,19 @@ $areaConstruidaFormatada = isset($imovel[0]->areaconstruida) ? $imovel[0]->areac
     </div>
 
     <div class="row">
+        <div class="box-4">
+            <?php if (!empty($imovel[0]->id)): ?>
+                <a href="index.php?controller=ImovelController&metodo=fotos&id=<?= (int)$imovel[0]->id ?>" class="btn-ver-fotos">
+                    📸 Ver galeria de fotos
+                </a>
+                <div class="limpar" style="margin-bottom: 1rem;"></div>
+                <label for="imagem_galeria" class="fonte14 fnc-preto-azulado" style="cursor: pointer;">
+                    <i class="fa-solid fa-images fonte20"></i>
+                    Adicionar imagens à galeria
+                </label>
+                <input type="file" name="imagem_galeria" id="imagem_galeria" accept="image/*">
+            <?php endif; ?>
+        </div>
         <div class="btn-centralizado">
             <button type="submit"
                 class="btn <?= !empty($usuario) ? 'bg-azul bg-azul-claro-hover' : 'bg-vermelho bg-vermelho-claro-hover' ?> fnc-branco mg-t-2">

@@ -6,7 +6,7 @@ use PDO;
 
 class Conexao {
     private static $conexao;
-
+    // LOCALHOST
     protected static function getConexao() {
         if (self::$conexao === null) {
             $info = "mysql:host=localhost; dbname=imobiliaria";
@@ -19,6 +19,19 @@ class Conexao {
         }
         return self::$conexao; 
     }
+    // HOSPEDADO
+    // protected static function getConexao() {
+    //     if (self::$conexao === null) {
+    //         $info = "mysql:host=localhost; dbname=isaia876_imobiliaria";
+    //         try {
+    //             self::$conexao = new PDO($info, "isaia876_imobiliaria", "ImobVetor256", [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
+    //             self::$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //         } catch(PDOException $e) {
+    //             die('Erro de conexão com Banco de Dados. '.$e->getMessage());
+    //         }
+    //     }
+    //     return self::$conexao; 
+    // }
 
     protected static function closeConexao() {
         self::$conexao = null;

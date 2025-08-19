@@ -30,6 +30,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="lib/css/site.css">
     <link rel="stylesheet" href="lib/css/aurora.css">
+    <link rel="stylesheet" href="lib/css/detalhes.css">
     <!-- Ícone -->
     <link rel="icon" href="lib/img/icone.ico" type="image/x-icon">
 </head>

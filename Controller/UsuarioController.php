@@ -32,7 +32,7 @@ class UsuarioController extends Notifications
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $usuario = $this->usuarioDao->usuarioId($id);
+            $usuario = $this->usuarioDao->buscarUsuarioPorId($id);
         }
 
         if ($_POST) {
@@ -71,7 +71,7 @@ class UsuarioController extends Notifications
         $usuario = null;
 
         if ($id) {
-            $usuario = $this->usuarioDao->usuarioId($id);
+            $usuario = $this->usuarioDao->buscarUsuarioPorId($id);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

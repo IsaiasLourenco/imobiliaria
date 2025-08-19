@@ -7,6 +7,7 @@ class Proprietario
     private $id;
     private $nome;
     private $contato;
+    private $email;
     private $cep;
     private $logradouro;
     private $numero;
@@ -21,6 +22,7 @@ class Proprietario
         ?int $id = 0,
         ?string $nome = '',
         ?string $contato = '',
+        ?string $email = '',
         ?string $cep = '',
         ?string $logradouro = '',
         ?string $numero = '',
@@ -34,6 +36,7 @@ class Proprietario
         $this->id = $id;
         $this->nome = $nome;
         $this->contato = $contato;
+        $this->email = $email;
         $this->cep = $cep;
         $this->logradouro = $logradouro;
         $this->numero = $numero;
@@ -68,6 +71,7 @@ class Proprietario
             'id' => $this->id,
             'nome' => $this->nome,
             'contato' => $this->contato,
+            'email' => $this->email,
             'cep' => $this->cep,
             'logradouro' => $this->logradouro,
             'numero' => $this->numero,

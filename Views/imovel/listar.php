@@ -1,3 +1,9 @@
+<?php
+$valorFormatado = isset($imovel[0]->valor)
+    ? 'R$ ' . number_format($imovel[0]->valor, 2, ',', '.')
+    : '';
+?>
+
 <div class="wd-100">
 
     <div class="box-8">
@@ -16,6 +22,7 @@
 
 </div>
 <div class="limpar"></div>
+
 <table class="grid wd-100">
     <thead>
         <tr>
@@ -42,10 +49,10 @@
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->bairro; ?></td>
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->cidade; ?></td>
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->estado; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->valor; ?></td>
+                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valorFormatado; ?></td>
                     <td class="fonte12 espaco-letra fw-300 txt-c">
-                        Fotos do Imóvel
-                        <a href="index.php?controller=ImovelController&metodo=detalhes&id=<?= $valores->id; ?>" title="Ver mais Fotos">
+                        Detalhes do Imóvel
+                        <a href="index.php?controller=ImovelController&metodo=detalhes&id=<?= $valores->id; ?>" title="Detalhes do Imóvel">
                             <i class="fa-solid fa-circle-info fnc-azul"></i>
                         </a>
                     </td>

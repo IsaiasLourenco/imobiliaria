@@ -37,7 +37,7 @@ class ImovelController extends Notifications
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $imovel = $this->imovelDao->usuarioId($id);
+            $imovel = $this->imovelDao->buscarImovelPorId($id);
         }
 
         if ($_POST) {
@@ -75,7 +75,7 @@ class ImovelController extends Notifications
         $imovel = null;
 
         if ($id) {
-            $imovel = $this->imovelDao->usuarioId($id);
+            $imovel = $this->imovelDao->buscarImovelPorId($id);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -107,6 +107,28 @@ class ImovelController extends Notifications
         } else {
             echo $this->error('Imovel', 'Editar', 'cadastrar');
         }
+
+        if (!empty($_FILES['imagem_galeria']['name'])) {
+            $tmp = $_FILES['imagem_galeria']['tmp_name'];
+            $nomeOriginal = $_FILES['imagem_galeria']['name'];
+            $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
+            $destino = 'lib/img/imagens/' . $nomeFinal;
+
+            if (move_uploaded_file($tmp, $destino)) {
+                $salvou = $this->imagemImovelDao->inserirImagem([
+                    'imagem' => $nomeFinal,
+                    'imovel' => $dados['id']
+                ]);
+
+                if ($salvou) {
+                    echo $this->success('Imagem', 'Adicionada à galeria', 'fotos&id=' . $dados['id']);
+                } else {
+                    echo $this->error('Imagem', 'Erro ao salvar no banco', 'fotos&id=' . $dados['id']);
+                }
+            } else {
+                echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $dados['id']);
+            }
+        }
     }
 
     function apagar()
@@ -127,12 +149,12 @@ class ImovelController extends Notifications
         }
         require 'Views/shared/header.php';
     }
-    
+
     public function detalhes()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $imovel = $this->imovelDao->usuarioId($id);
+            $imovel = $this->imovelDao->buscarImovelPorId($id);
             $imagens = $this->imagemImovelDao->buscarPorImovel($id);
             $view = 'Views/imovel/detalhes.php';
             require 'Views/painel/index.php';
@@ -141,4 +163,18 @@ class ImovelController extends Notifications
         }
     }
 
+    public function fotos()
+    {
+        $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+        if ($id) {
+            $imovel = $this->imovelDao->buscarImovelPorId($id); // Pega os dados do imóvel
+            $fotos = $this->imagemImovelDao->buscarGaleriaPorImovel($id); // Pega as imagens
+
+            $view = 'Views/imovel/fotos.php';
+            require 'Views/painel/index.php';
+        } else {
+            echo $this->error('Imovel', 'Visualizar Fotos', 'listar');
+        }
+    }
 }

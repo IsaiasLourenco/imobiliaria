@@ -18,7 +18,7 @@
 <form action="" method="POST" class="box-12">
 
     <div class="row">
-        <div class="box-3">
+        <div class="box-2" style="background-color: transparent; color: #333;">
             <label>
                 Nome
                 <input tabindex="1" type="text" name="nome" value="<?= $proprietario[0]->nome ?? '' ?>" autofocus required>
@@ -39,39 +39,43 @@
                 </div>
             </fieldset>
         </div>
-        <div class="box-3">
+        <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="telefone">Fone</label>
             <input tabindex="2" type="text" name="contato" id="telefone" value="<?= $proprietario[0]->contato ?? '' ?>" required>
         </div>
         <div class="box-3">
+            <label for="email">Email</label>
+            <input tabindex="3" type="email" name="email" id="email" value="<?= $proprietario[0]->email ?? '' ?>" required>
+        </div>
+        <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="cep">CEP</label>
-            <input tabindex="3" type="text" name="cep" id="cep" value="<?= $proprietario[0]->cep ?? '' ?>" required>
+            <input tabindex="4" type="text" name="cep" id="cep" value="<?= $proprietario[0]->cep ?? '' ?>" required>
         </div>
     </div>
     <div class="row">
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="logradouro">Rua</label>
-            <input type="text" name="logradouro" id="rua" value="<?= $proprietario[0]->logradouro ?? '' ?>" required readonly>
+            <input readonly type="text" name="logradouro" id="rua" value="<?= $proprietario[0]->logradouro ?? '' ?>" required>
         </div>
         <div class="box-1">
             <label for="numero">Numero</label>
-            <input tabindex="4" type="text" name="numero" id="numero" value="<?= $proprietario[0]->numero ?? '' ?>" required>
+            <input tabindex="5" type="text" name="numero" id="numero" value="<?= $proprietario[0]->numero ?? '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="complemento">Complemento</label>
-            <input tabindex="5" type="text" name="complemento" id="complemento" value="<?= $proprietario[0]->complemento ?? '' ?>">
+            <input tabindex="6" type="text" name="complemento" id="complemento" value="<?= $proprietario[0]->complemento ?? '' ?>">
         </div>
         <div class="box-3">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro" readonly value="<?= $proprietario[0]->bairro ?? '' ?>" required>
+            <input readonly type="text" name="bairro" id="bairro" value="<?= $proprietario[0]->bairro ?? '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" id="cidade" readonly value="<?= $proprietario[0]->cidade ?? '' ?>" required>
+            <input readonly type="text" name="cidade" id="cidade" value="<?= $proprietario[0]->cidade ?? '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="estado">Estado</label>
-            <input type="text" name="estado" id="estado" readonly value="<?= $proprietario[0]->estado ?? '' ?>" required>
+            <input readonly type="text" name="estado" id="estado" value="<?= $proprietario[0]->estado ?? '' ?>" required>
         </div>
     </div>
     <div class="row">

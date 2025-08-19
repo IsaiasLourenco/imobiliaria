@@ -1,0 +1,90 @@
+/* Intro */
+.intro h1 {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+    color: #222;
+}
+.intro .preco {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #d93025;
+    margin-bottom: 1rem;
+}
+.btn-ver-fotos {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    background: #128217;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.btn-ver-fotos:hover {
+    background: #2db334;
+}
+
+/* Blocos */
+.detalhes-bloco {
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+}
+.detalhes-bloco h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.3rem;
+    color: #444;
+}
+.detalhes-bloco p,
+.detalhes-bloco li {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+}
+.detalhes-bloco ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* =========================
+   AÇÕES (favoritar, compartilhar)
+   ========================= */
+.acoes {
+    display: flex;             /* flex container para os botões */
+    gap: 2rem;                 /* espaço entre os botões */
+    width: 100%;               /* ocupa toda a largura do container */
+    justify-content: center;   /* centraliza os botões horizontalmente */
+    margin-top: 0.5rem !important;          /* espaço acima das ações */
+}
+
+.acoes button {
+    flex: 1;                   /* se quiser que tenham mesma largura, ou remova para tamanho natural */
+    max-width: 180px;          /* largura máxima para não ficarem gigantes */
+    padding: 0.8rem 1rem;      /* espaçamento interno */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-favoritar {
+    background: #fb0835;
+    color: white;
+}
+
+.btn-favoritar:hover {
+    background: #da576d;
+}
+
+.btn-compartilhar {
+    background: #2c6cd1;
+    color: white;
+}
+
+.btn-compartilhar:hover {
+    background: #5785cf;
+}

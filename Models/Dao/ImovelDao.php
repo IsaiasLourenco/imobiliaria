@@ -12,7 +12,7 @@ class ImovelDao extends Conexao
         return $this->listar("imovel");
     }
 
-    public function usuarioId($id)
+    public function buscarImovelPorId($id)
     {
         return $this->listar("imovel", "WHERE id = ?", [$id]);
     }
