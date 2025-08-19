@@ -16,7 +16,7 @@
                 move_uploaded_file($file['tmp_name'], $fileDir);
                 return $fileName;
             }
-            return null;
+            return '';
         }
 
         public function uploadUsers($file) {
@@ -26,7 +26,7 @@
                 move_uploaded_file($file['tmp_name'], $fileDir);
                 return $fileName;
             }
-            return null;
+            return '';
         }
     }
 ?>

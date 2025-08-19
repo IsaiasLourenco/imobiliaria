@@ -36,7 +36,7 @@ class ProprietarioDao extends Conexao
         return $this->deletar('proprietario', $id);
     }
 
-    public function atualizarStatus($id, $ativo): bool
+    public function atualizarStatus($id, $ativo)
     {
         $sql = "UPDATE proprietario SET ativo = :ativo WHERE id = :id";
         $stmt = self::getConexao()->prepare($sql);

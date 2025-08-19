@@ -45,7 +45,7 @@ class UsuarioService
         return $this->usuarioDao->editar($usuario);
     }
 
-    public function atualizarStatus($id, $ativo): bool
+    public function atualizarStatus($id, $ativo)
     {
         return $this->usuarioDao->atualizarStatus((int)$id, (int)$ativo);
     }

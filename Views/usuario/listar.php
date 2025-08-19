@@ -65,7 +65,7 @@
                 </tr>
             <?php endforeach;
         else: ?>
-            <td colspan="7">
+            <td colspan="8">
                 <h6 class="txt-c fonte16 poppins-medium">Nenhum Registro encontrado!</h6>
             </td>
         <?php endif; ?>

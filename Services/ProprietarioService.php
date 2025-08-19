@@ -32,7 +32,7 @@ class ProprietarioService
         return $this->proprietarioDao->editar($proprietario);
     }
 
-    public function atualizarStatus($id, $ativo): bool
+    public function atualizarStatus($id, $ativo)
     {
         return $this->proprietarioDao->atualizarStatus($id, $ativo);
     }

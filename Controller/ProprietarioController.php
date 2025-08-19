@@ -18,7 +18,7 @@ class ProprietarioController extends Notifications
         $this->proprietarioService = new ProprietarioService($this->proprietarioDao);
     }
 
-    function index(): void
+    function index()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
@@ -37,7 +37,7 @@ class ProprietarioController extends Notifications
         require_once 'Views/painel/index.php';
     }
 
-    public function inserir($dados): void
+    public function inserir($dados)
     {
         $retorno = $this->proprietarioService->cadastrarProprietario($dados);
         if ($retorno) {
@@ -47,13 +47,13 @@ class ProprietarioController extends Notifications
         }
     }
 
-    function listar(): void
+    function listar()
     {
         $proprietario = $this->proprietarioDao->listarTodos();
         require_once 'Views/painel/index.php';
     }
 
-    public function cadastrar(): void
+    public function cadastrar()
     {
         $id = $_GET['id'] ?? null;
         $proprietario = null;
@@ -75,7 +75,7 @@ class ProprietarioController extends Notifications
         require 'Views/painel/index.php';
     }
 
-    function editar($dados): void
+    function editar($dados)
     {
         $retorno = $this->proprietarioService->editarProprietario($dados);
         if ($retorno) {
@@ -85,7 +85,7 @@ class ProprietarioController extends Notifications
         }
     }
 
-    function apagar(): void
+    function apagar()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
@@ -94,7 +94,7 @@ class ProprietarioController extends Notifications
         require 'Views/shared/header.php';
     }
 
-    function excluir(): void
+    function excluir()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
@@ -104,7 +104,7 @@ class ProprietarioController extends Notifications
         require 'Views/shared/header.php';
     }
 
-    public function alterarCadeado(): void
+    public function alterarCadeado()
     {
         $id = $_GET['id'] ?? null;
         $ativo = $_GET['ativo'] ?? null;

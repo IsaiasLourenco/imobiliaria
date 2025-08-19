@@ -28,7 +28,7 @@ class UsuarioController extends Notifications
         $this->fileUploadServiceImoveis = new FileUploadService('lib/img/imagens');
     }
 
-    function index(): void
+    function index()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
@@ -48,7 +48,7 @@ class UsuarioController extends Notifications
         require_once 'Views/painel/index.php';
     }
 
-    public function inserir($dados, $file): void
+    public function inserir($dados, $file)
     {
         $imagem = $this->fileUploadServiceUsuarios->uploadUsers($file['imagem']);
         $retorno = $this->usuarioService->cadastrarUsuario($dados, $imagem);
@@ -59,13 +59,13 @@ class UsuarioController extends Notifications
         }
     }
 
-    function listar(): void
+    function listar()
     {
         $usuario = $this->usuarioDao->listarTodos();
         require_once 'Views/painel/index.php';
     }
 
-    public function cadastrar(): void
+    public function cadastrar()
     {
         $id = $_GET['id'] ?? null;
         $usuario = null;
@@ -87,7 +87,7 @@ class UsuarioController extends Notifications
         require 'Views/painel/index.php';
     }
 
-    function editar($dados, $file): void
+    function editar($dados, $file)
     {
         $imagem = $this->fileUploadServiceUsuarios->uploadUsers($file['imagem']);
         $retorno = $this->usuarioService->editarUsuario($dados, $imagem);
@@ -98,7 +98,7 @@ class UsuarioController extends Notifications
         }
     }
 
-    function apagar(): void
+    function apagar()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
@@ -107,7 +107,7 @@ class UsuarioController extends Notifications
         require 'Views/shared/header.php';
     }
 
-    function excluir(): void
+    function excluir()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
@@ -117,7 +117,7 @@ class UsuarioController extends Notifications
         require 'Views/shared/header.php';
     }
 
-    public function alterarCadeado(): void
+    public function alterarCadeado()
     {
         $id = $_GET['id'] ?? null;
         $ativo = $_GET['ativo'] ?? null;
