@@ -26,6 +26,7 @@ $valorFormatado = isset($imovel[0]->valor)
 <table class="grid wd-100">
     <thead>
         <tr>
+            <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Código Imóvel</th>
             <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Rua</th>
             <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Número</th>
             <th class="fonte16 espaco-letra fw-bold bg-azul-escuro fnc-branco">Complemento</th>
@@ -43,6 +44,7 @@ $valorFormatado = isset($imovel[0]->valor)
             foreach ($imovel as $valores):
         ?>
                 <tr>
+                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->codigo; ?></td>
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->logradouro; ?></td>
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->numero; ?></td>
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->complemento; ?></td>

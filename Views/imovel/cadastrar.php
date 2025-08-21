@@ -28,13 +28,9 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
 <form action="" method="POST" class="box-12" enctype="multipart/form-data">
 
     <div class="row">
-        <!-- <div class="box-1">
-            <label for="codigo_imovel">Código</label>
-            <input tabindex="1" type="text" name="codigo_imovel" value="<?= isset($imovel) && isset($imovel->codigo) ? $imovel->codigo : '' ?>" autofocus required>
-        </div> -->
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="valor">Valor</label>
-            <input tabindex="2" type="text" name="valor" id="valor" value="<?= $valorFormatado ?>" required>
+            <input tabindex="2" type="text" name="valor" id="valor" value="<?= $valorFormatado ?>" required autofocus>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="cep">CEP</label>

@@ -14,8 +14,10 @@ class ProprietarioDao extends Conexao
 
     public function buscarProprietarioPorId($id)
     {
-        return $this->listar("proprietario", "WHERE id = ?", [$id]);
+        $result = $this->listar("proprietario", "WHERE id = ?", [$id]);
+        return $result ? $result[0] : null; // Retorna o primeiro item ou null
     }
+
 
     public function adicionar(Proprietario $proprietario)
     {

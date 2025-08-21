@@ -68,13 +68,15 @@ class ImovelController extends Notifications
         // Normaliza os dados e trata upload da CAPA
         $dadosNormalizados = $this->imovelService->normalizarEntrada($_POST, $_FILES, 'inserir');
 
-        // Gera código automático do imóvel
-        $dadosNormalizados['codigo'] = $this->imovelService->gerarCodigoImovel(
-            $dadosNormalizados['cidade'],
-            $dadosNormalizados['estado']
-        );
+        // Verifica se o código já foi atribuído no form, se não, gera um novo código
+        if (empty($dadosNormalizados['codigo'])) {
+            $dadosNormalizados['codigo'] = $this->imovelService->gerarCodigoImovel(
+                $dadosNormalizados['cidade'],
+                $dadosNormalizados['estado']
+            );
+        }
 
-        // Chama serviço para cadastrar o imóvel
+        // Chama o serviço para cadastrar o imóvel
         $retorno = $this->imovelService->cadastrarImovel($dadosNormalizados);
 
         if ($retorno) {
@@ -123,9 +125,18 @@ class ImovelController extends Notifications
     // Editar imóvel existente
     public function editar($dados)
     {
-        // Normaliza dados e upload da CAPA
-        $dadosNormalizados = $this->imovelService->normalizarEntrada($_POST, $_FILES, 'editar');
+        // Recupera o imóvel do banco para garantir que o código não seja alterado
+        $imovel = $this->imovelDao->buscarUnicoImovelPorId($dados['id']);
 
+        // Garantir que o código não seja sobrescrito durante a edição
+        if (isset($imovel->codigo) && empty($dados['codigo'])) {
+            $dados['codigo'] = $imovel->codigo; // Mantém o código existente
+        }
+
+        // Normaliza dados e upload da CAPA
+        $dadosNormalizados = $this->imovelService->normalizarEntrada($dados, $_FILES, 'editar');
+
+        // Chama o serviço para editar o imóvel
         $retorno = $this->imovelService->editarImovel($dadosNormalizados);
 
         if ($retorno) {
@@ -173,8 +184,28 @@ class ImovelController extends Notifications
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $this->imovelDao->apagar($id);
-            echo $this->success('Imovel', 'Excluído', 'listar');
+            // 1. Buscar imagens associadas ao imóvel
+            $imagens = $this->imagemImovelDao->buscarPorImovel($id);
+
+            // 2. Excluir as imagens da tabela imagemimovel
+            foreach ($imagens as $imagem) {
+                // Excluir a imagem fisicamente do servidor, se necessário
+                if (file_exists('lib/img/imagens/' . $imagem->imagem)) {
+                    unlink('lib/img/imagens/' . $imagem->imagem); // Remove o arquivo da pasta
+                }
+
+                // Excluir a imagem do banco de dados
+                $this->imagemImovelDao->deletarImagem($imagem->imagem);
+            }
+
+            // 3. Excluir o imóvel da tabela imovel
+            $retorno = $this->imovelDao->apagar($id);
+
+            if ($retorno) {
+                echo $this->success('Imovel', 'Excluído', 'listar');
+            } else {
+                echo $this->error('Imovel', 'Excluir', 'listar');
+            }
         }
         require 'Views/shared/header.php';
     }
@@ -212,6 +243,31 @@ class ImovelController extends Notifications
             require 'Views/painel/index.php';
         } else {
             echo $this->error('Imovel', 'Visualizar Fotos', 'listar');
+        }
+    }
+
+    // Excluir uma imagem do banco de dados e do servidor
+    function excluirImagem($imagemId)
+    {
+        // Buscar a imagem no banco
+        $imagem = $this->imagemImovelDao->buscarImagemPorId($imagemId);
+
+        if ($imagem) {
+            // 1. Excluir a imagem fisicamente do servidor
+            if (file_exists('lib/img/imagens/' . $imagem->imagem)) {
+                unlink('lib/img/imagens/' . $imagem->imagem); // Remove o arquivo da pasta
+            }
+
+            // 2. Excluir a imagem do banco de dados
+            $deletado = $this->imagemImovelDao->deletarImagem($imagem->imagem);
+
+            if ($deletado) {
+                echo $this->success('Imagem', 'Excluída', 'fotos&id=' . $imagem->imovel);
+            } else {
+                echo $this->error('Imagem', 'Excluir', 'fotos&id=' . $imagem->imovel);
+            }
+        } else {
+            echo $this->error('Imagem', 'Não encontrada', 'fotos&id=' . $imagem->imovel);
         }
     }
 }
