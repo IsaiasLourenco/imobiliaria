@@ -7,16 +7,28 @@ use App\Models\Imovel;
 
 class ImovelDao extends Conexao
 {
-    public function listarTodos()
+    // Lista todos os imóveis
+    public function listarTodos(): array
     {
-        return $this->listar("imovel");
+        $dados = $this->listar("imovel");
+        $imoveis = [];
+        foreach ($dados as $row) {
+            $imoveis[] = $this->mapToImovel((array)$row); // <-- converte stdClass em array
+        }
+        return $imoveis;
     }
 
-    public function buscarImovelPorId($id)
+    // Busca um único imóvel por ID
+    public function buscarUnicoImovelPorId($id): ?Imovel
     {
-        return $this->listar("imovel", "WHERE id = ?", [$id]);
+        $dados = $this->listar("imovel", "WHERE id = ?", [$id]);
+        if (!$dados || count($dados) === 0) {
+            return null;
+        }
+        return $this->mapToImovel((array)$dados[0]); // <-- converte stdClass em array
     }
 
+    // Adiciona um imóvel
     public function adicionar(Imovel $imovel)
     {
         $atributos = array_keys($imovel->atributosPreenchidos());
@@ -24,18 +36,25 @@ class ImovelDao extends Conexao
         return $this->inserir('imovel', $atributos, $valores);
     }
 
+    // Edita um imóvel
     public function editar(Imovel $imovel)
     {
         $atributos = array_keys($imovel->atributosPreenchidos());
         $valores = array_values($imovel->atributosPreenchidos());
-        return $this->update('imovel', $atributos, $valores, $imovel->getId());
+        try {
+            return $this->update('imovel', $atributos, $valores, $imovel->getId());
+        } catch (\Exception $e) {
+            throw new \Exception("Erro ao atualizar imóvel: " . $e->getMessage());
+        }
     }
 
+    // Apaga um imóvel
     public function apagar($id)
     {
         return $this->deletar('imovel', $id);
     }
 
+    // Atualiza apenas o status do imóvel
     public function atualizarStatusImovel($id, $statusId)
     {
         $sql = "UPDATE imovel SET statusimovel = :statusId WHERE id = :id";
@@ -43,5 +62,41 @@ class ImovelDao extends Conexao
         $stmt->bindParam(':statusId', $statusId);
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
+    }
+
+    // Helper para mapear array de DB para objeto Imovel
+    private function mapToImovel(array $row): Imovel
+    {
+        return new Imovel(
+            $row['id'] ?? 0,
+            $row['codigo'] ?? '',
+            $row['valor'] ?? 0,
+            $row['cep'] ?? '',
+            $row['logradouro'] ?? '',
+            $row['numero'] ?? '',
+            $row['complemento'] ?? '',
+            $row['bairro'] ?? '',
+            $row['cidade'] ?? '',
+            $row['estado'] ?? '',
+            $row['quartos'] ?? 0,
+            $row['banheiros'] ?? 0,
+            $row['garagem'] ?? 0,
+            $row['imagemcapa'] ?? 'sem-foto.jpg',
+            $row['areatotal'] ?? 0,
+            $row['areaconstruida'] ?? 0,
+            $row['statusimovel'] ?? null,
+            $row['datacadastro'] ?? date('Y-m-d H:i:s'),
+            $row['tipoimovel'] ?? null,
+            $row['finalidade'] ?? null,
+            $row['proprietario'] ?? null
+        );
+    }
+
+    public function buscarUltimoCodigoPorPrefixo($prefixo)
+    {
+        $pdo = self::getConexao(); // pega a conexão PDO
+        $stmt = $pdo->prepare("SELECT codigo FROM imovel WHERE codigo LIKE :prefixo ORDER BY codigo DESC LIMIT 1");
+        $stmt->execute(['prefixo' => $prefixo . '%']);
+        return $stmt->fetchColumn(); // retorna a string do último código, ex: MgSP007
     }
 }

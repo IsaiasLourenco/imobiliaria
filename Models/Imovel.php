@@ -4,27 +4,27 @@ namespace App\Models;
 
 class Imovel
 {
-    private $id;
-    private $codigo;
-    private $valor;
-    private $cep;
-    private $logradouro;
-    private $numero;
-    private $complemento;
-    private $bairro;
-    private $cidade;
-    private $estado;
-    private $quartos;
-    private $banheiros;
-    private $garagem;
-    private $imagemcapa;
-    private $areatotal;
-    private $areaconstruida;
-    private $statusimovel;
-    private $datacadastro;
-    private $tipoimovel;
-    private $finalidade;
-    private $proprietario;
+    public $id;
+    public $codigo;
+    public $valor;
+    public $cep;
+    public $logradouro;
+    public $numero;
+    public $complemento;
+    public $bairro;
+    public $cidade;
+    public $estado;
+    public $quartos;
+    public $banheiros;
+    public $garagem;
+    public $imagemcapa;
+    public $areatotal;
+    public $areaconstruida;
+    public $statusimovel;
+    public $datacadastro;
+    public $tipoimovel;
+    public $finalidade;
+    public $proprietario;
 
     public function __construct(
         ?int $id = 0,
@@ -49,6 +49,7 @@ class Imovel
         ?string $finalidade = '',
         ?string $proprietario = '',
     ) {
+        date_default_timezone_set(timezoneId:'America/Sao_Paulo');
         $this->id = $id;
         $this->codigo = $codigo;
         $this->valor = $valor;
@@ -66,7 +67,7 @@ class Imovel
         $this->areatotal = $areatotal;
         $this->areaconstruida = $areaconstruida;
         $this->statusimovel = $statusimovel;
-        $this->datacadastro = $datacadastro;
+        $this->datacadastro = $datacadastro ?? date('Y-m-d H:i:s'); 
         $this->tipoimovel = $tipoimovel;
         $this->finalidade = $finalidade;
         $this->proprietario = $proprietario;

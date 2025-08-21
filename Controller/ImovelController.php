@@ -2,42 +2,52 @@
 
 namespace App\Controller;
 
-use App\Models\Dao\ImovelDao;
-use App\Services\ImovelService;
 use App\Models\Notifications;
 use App\Models\Imovel;
+use App\Models\Dao\ImovelDao;
+use App\Models\Dao\ProprietarioImovelDao;
+use App\Models\Dao\FinalidadeImovelDao;
+use App\Models\Dao\TipoImovelDao;
+use App\Services\ImovelService;
+use App\Services\FileUploadService;
 use App\Models\Dao\ImagemImovelDao;
 use App\Models\Dao\StatusImovelDao;
-use App\Models\Dao\TipoImovelDao;
-use App\Models\Dao\FinalidadeImovelDao;
-use App\Models\Dao\ProprietarioImovelDao;
 
 class ImovelController extends Notifications
 {
     private $imovelService;
     private $imovelDao;
-    private $imagemImovelDao;
-    private $statusImovelDao;
     private $tipoImovelDao;
     private $finalidadeImovelDao;
     private $proprietarioImovelDao;
+    private $fileUploadService;
+    private $imagemImovelDao;
+    private $statusImovelDao;
 
     public function __construct()
     {
-        $this->proprietarioImovelDao = new ProprietarioImovelDao();
-        $this->finalidadeImovelDao = new FinalidadeImovelDao();
         $this->tipoImovelDao = new TipoImovelDao();
-        $this->statusImovelDao = new StatusImovelDao();
         $this->imovelDao = new ImovelDao();
-        $this->imovelService = new ImovelService($this->imovelDao);
+        $this->finalidadeImovelDao = new FinalidadeImovelDao();
+        $this->proprietarioImovelDao = new ProprietarioImovelDao();
+
+        // Use a mesma pasta para capa e galeria (consistência)
+        $this->fileUploadService = new FileUploadService('lib/img/imagens');
+
+        // Passe o FileUploadService para o ImovelService
+        $this->imovelService = new ImovelService($this->imovelDao, $this->fileUploadService);
+
+        $this->statusImovelDao = new StatusImovelDao();
         $this->imagemImovelDao = new ImagemImovelDao();
     }
 
-    function index(): void
+    // Página inicial / index
+    function index()
     {
         $id = $_GET['id'] ?? null;
+        $imovel = null;
         if ($id) {
-            $imovel = $this->imovelDao->buscarImovelPorId($id);
+            $imovel = $this->imovelDao->buscarUnicoImovelPorId($id);
         }
 
         if ($_POST) {
@@ -52,10 +62,21 @@ class ImovelController extends Notifications
         require_once 'Views/painel/index.php';
     }
 
+    // Inserir novo imóvel
     public function inserir($dados)
     {
-        $dados['valor'] = str_replace(['R$', '.', ','], ['', '', '.'], $dados['valor']);
-        $retorno = $this->imovelService->cadastrarImovel($dados);
+        // Normaliza os dados e trata upload da CAPA
+        $dadosNormalizados = $this->imovelService->normalizarEntrada($_POST, $_FILES, 'inserir');
+
+        // Gera código automático do imóvel
+        $dadosNormalizados['codigo'] = $this->imovelService->gerarCodigoImovel(
+            $dadosNormalizados['cidade'],
+            $dadosNormalizados['estado']
+        );
+
+        // Chama serviço para cadastrar o imóvel
+        $retorno = $this->imovelService->cadastrarImovel($dadosNormalizados);
+
         if ($retorno) {
             echo $this->success('Imovel', 'Cadastrado', 'listar');
         } else {
@@ -63,19 +84,22 @@ class ImovelController extends Notifications
         }
     }
 
+
+    // Listar todos os imóveis
     function listar()
     {
         $imovel = $this->imovelDao->listarTodos();
         require_once 'Views/painel/index.php';
     }
 
+    // Formulário de cadastro ou edição
     public function cadastrar()
     {
         $id = $_GET['id'] ?? null;
         $imovel = null;
 
         if ($id) {
-            $imovel = $this->imovelDao->buscarImovelPorId($id);
+            $imovel = $this->imovelDao->buscarUnicoImovelPorId($id);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -86,28 +110,31 @@ class ImovelController extends Notifications
             }
             return;
         }
+
         $proprietarioimovel = $this->proprietarioImovelDao->listarTodos();
         $finalidadeimovel = $this->finalidadeImovelDao->listarTodos();
         $tipoimovel = $this->tipoImovelDao->listarTodos();
         $statusimovel = $this->statusImovelDao->listarTodos();
+
         $view = 'Views/imovel/cadastrar.php';
         require 'Views/painel/index.php';
     }
 
-    function editar($dados)
+    // Editar imóvel existente
+    public function editar($dados)
     {
-        $dados['proprietarioimovel'] = $_POST['proprietario'] ?? null;
-        $dados['finalidadeimovel'] = $_POST['finalidade'] ?? null;
-        $dados['tipoimovel'] = $_POST['tipo'] ?? null;
-        $dados['statusimovel'] = $_POST['status'] ?? null;
-        $dados['valor'] = str_replace(['R$', '.', ','], ['', '', '.'], $dados['valor']);
-        $retorno = $this->imovelService->editarImovel($dados);
+        // Normaliza dados e upload da CAPA
+        $dadosNormalizados = $this->imovelService->normalizarEntrada($_POST, $_FILES, 'editar');
+
+        $retorno = $this->imovelService->editarImovel($dadosNormalizados);
+
         if ($retorno) {
             echo $this->success('Imovel', 'Editado', 'listar');
         } else {
             echo $this->error('Imovel', 'Editar', 'cadastrar');
         }
 
+        // Upload da GALERIA (se houver)
         if (!empty($_FILES['imagem_galeria']['name'])) {
             $tmp = $_FILES['imagem_galeria']['tmp_name'];
             $nomeOriginal = $_FILES['imagem_galeria']['name'];
@@ -117,20 +144,21 @@ class ImovelController extends Notifications
             if (move_uploaded_file($tmp, $destino)) {
                 $salvou = $this->imagemImovelDao->inserirImagem([
                     'imagem' => $nomeFinal,
-                    'imovel' => $dados['id']
+                    'imovel' => $dadosNormalizados['id']
                 ]);
 
                 if ($salvou) {
-                    echo $this->success('Imagem', 'Adicionada à galeria', 'fotos&id=' . $dados['id']);
+                    echo $this->success('Imagem', 'Adicionada à galeria', 'fotos&id=' . $dadosNormalizados['id']);
                 } else {
-                    echo $this->error('Imagem', 'Erro ao salvar no banco', 'fotos&id=' . $dados['id']);
+                    echo $this->error('Imagem', 'Erro ao salvar no banco', 'fotos&id=' . $dadosNormalizados['id']);
                 }
             } else {
-                echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $dados['id']);
+                echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $dadosNormalizados['id']);
             }
         }
     }
 
+    // Confirmar exclusão
     function apagar()
     {
         $id = $_GET['id'] ?? null;
@@ -140,6 +168,7 @@ class ImovelController extends Notifications
         require 'Views/shared/header.php';
     }
 
+    // Excluir do banco
     function excluir()
     {
         $id = $_GET['id'] ?? null;
@@ -150,11 +179,12 @@ class ImovelController extends Notifications
         require 'Views/shared/header.php';
     }
 
+    // Detalhes do imóvel
     public function detalhes()
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            $imovel = $this->imovelDao->buscarImovelPorId($id);
+            $imovel = $this->imovelDao->buscarUnicoImovelPorId($id);
             $imagens = $this->imagemImovelDao->buscarPorImovel($id);
             $view = 'Views/imovel/detalhes.php';
             require 'Views/painel/index.php';
@@ -163,13 +193,20 @@ class ImovelController extends Notifications
         }
     }
 
+    // Fotos do imóvel
     public function fotos()
     {
         $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
         if ($id) {
-            $imovel = $this->imovelDao->buscarImovelPorId($id); // Pega os dados do imóvel
-            $fotos = $this->imagemImovelDao->buscarGaleriaPorImovel($id); // Pega as imagens
+            $imovel = $this->imovelDao->buscarUnicoImovelPorId($id);
+
+            if (!$imovel) {
+                echo $this->error('Imovel', 'Não encontrado', 'listar');
+                return;
+            }
+
+            $fotos = $this->imagemImovelDao->buscarGaleriaPorImovel($id);
 
             $view = 'Views/imovel/fotos.php';
             require 'Views/painel/index.php';
