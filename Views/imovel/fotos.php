@@ -16,13 +16,22 @@
                 $src = 'lib/img/imagens/' . $foto->imagem;
                 $alt = 'Foto ' . ($idx + 1) . ' do imóvel ' . htmlspecialchars((string)$imovel->codigo);
             ?>
-                <button class="thumb" data-index="<?= (int)$idx ?>" aria-label="Abrir <?= htmlspecialchars($alt) ?>">
-                    <img
-                        src="<?= htmlspecialchars($src) ?>"
-                        alt="<?= htmlspecialchars($alt) ?>"
-                        loading="lazy"
-                        onerror="this.onerror=null;this.src='lib/img/upload/casa-padrao.png';">
-                </button>
+                <div class="thumb-wrapper">
+                    <form method="POST" action="index.php?controller=ImovelController&metodo=excluirImagem" class="form-excluir" onsubmit="return confirm('Deseja realmente excluir esta imagem?');">
+                        <input type="hidden" name="imagemId" value="<?= (int)$foto->id ?>">
+                        <button type="submit" class="btn-excluir" title="Excluir imagem">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
+
+                    <button class="thumb" data-index="<?= (int)$idx ?>" aria-label="Abrir <?= htmlspecialchars($alt) ?>">
+                        <img
+                            src="<?= htmlspecialchars($src) ?>"
+                            alt="<?= htmlspecialchars($alt) ?>"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='lib/img/upload/casa-padrao.png';">
+                    </button>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>

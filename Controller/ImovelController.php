@@ -250,19 +250,22 @@ class ImovelController extends Notifications
         }
     }
 
-    // Excluir uma imagem do banco de dados e do servidor
-    function excluirImagem($imagemId)
+    function excluirImagem()
     {
-        // Buscar a imagem no banco
+        $imagemId = $_POST['imagemId'] ?? $_GET['imagemId'] ?? null;
+
+        if (!$imagemId) {
+            echo $this->error('Imagem', 'ID inválido', 'listar');
+            return;
+        }
+
         $imagem = $this->imagemImovelDao->buscarImagemPorId($imagemId);
 
         if ($imagem) {
-            // 1. Excluir a imagem fisicamente do servidor
             if (file_exists('lib/img/imagens/' . $imagem->imagem)) {
-                unlink('lib/img/imagens/' . $imagem->imagem); // Remove o arquivo da pasta
+                unlink('lib/img/imagens/' . $imagem->imagem);
             }
 
-            // 2. Excluir a imagem do banco de dados
             $deletado = $this->imagemImovelDao->deletarImagem($imagem->imagem);
 
             if ($deletado) {
@@ -271,7 +274,7 @@ class ImovelController extends Notifications
                 echo $this->error('Imagem', 'Excluir', 'fotos&id=' . $imagem->imovel);
             }
         } else {
-            echo $this->error('Imagem', 'Não encontrada', 'fotos&id=' . $imagem->imovel);
+            echo $this->error('Imagem', 'Não encontrada', 'listar');
         }
     }
 
