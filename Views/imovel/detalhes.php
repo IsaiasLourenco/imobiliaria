@@ -50,12 +50,15 @@ if (!$proprietario) {
         <!-- Imagem de capa -->
         <div class="imagem-capa">
             <img src="lib/img/imagens/<?= htmlspecialchars($imovel->imagemcapa ?? 'sem-foto.jpg') ?>"
-                 alt="Imagem do Imóvel" class="capa">
+                alt="Imagem do Imóvel" class="capa">
         </div>
 
         <!-- Características do Imóvel -->
         <section class="detalhes-bloco caracteristicas">
             <h2>Características do Imóvel</h2>
+            <div class="finalidade-info" style="margin-top: 10px;">
+                <p><strong>Finalidade:</strong> <?= htmlspecialchars($imovel->getFinalidadeDescricao() ?? 'Não informado') ?></p>
+            </div>
             <ul>
                 <li><strong>Quartos:</strong> <?= str_pad((string)$imovel->quartos, 2, '0', STR_PAD_LEFT) ?></li>
                 <li><strong>Banheiros:</strong> <?= str_pad((string)$imovel->banheiros, 2, '0', STR_PAD_LEFT) ?></li>

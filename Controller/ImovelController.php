@@ -90,8 +90,9 @@ class ImovelController extends Notifications
     // Listar todos os imóveis
     function listar()
     {
-        $imovel = $this->imovelDao->listarTodos();
-        require_once 'Views/painel/index.php';
+        $imovel = $this->imovelDao->listarImoveisComFinalidade();
+        $view = 'Views/imovel/listar.php';
+        require 'Views/painel/index.php';
     }
 
     // Formulário de cadastro ou edição
@@ -122,50 +123,53 @@ class ImovelController extends Notifications
         require 'Views/painel/index.php';
     }
 
-    // Editar imóvel existente
     public function editar($dados)
     {
-        // Recupera o imóvel do banco para garantir que o código não seja alterado
-        $imovel = $this->imovelDao->buscarUnicoImovelPorId($dados['id']);
-
-        // Garantir que o código não seja sobrescrito durante a edição
-        if (isset($imovel->codigo) && empty($dados['codigo'])) {
-            $dados['codigo'] = $imovel->codigo; // Mantém o código existente
-        }
-
         // Normaliza dados e upload da CAPA
         $dadosNormalizados = $this->imovelService->normalizarEntrada($dados, $_FILES, 'editar');
+
+        // Recupera o imóvel do banco para garantir que o código não seja alterado
+        $imovel = $this->imovelDao->buscarUnicoImovelPorId($dadosNormalizados['id']);
+
+        // Garantir que o código não seja sobrescrito durante a edição
+        if (isset($imovel->codigo) && empty($dadosNormalizados['codigo'])) {
+            $dadosNormalizados['codigo'] = $imovel->codigo;
+        }
 
         // Chama o serviço para editar o imóvel
         $retorno = $this->imovelService->editarImovel($dadosNormalizados);
 
         if ($retorno) {
+            // Upload da GALERIA (se houver)
+            if (!empty($_FILES['imagem_galeria']['name'])) {
+                $tmp = $_FILES['imagem_galeria']['tmp_name'];
+                $nomeOriginal = $_FILES['imagem_galeria']['name'];
+                $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
+                $destino = 'lib/img/imagens/' . $nomeFinal;
+
+                if (move_uploaded_file($tmp, $destino)) {
+                    $salvou = $this->imagemImovelDao->inserirImagem([
+                        'imagem' => $nomeFinal,
+                        'imovel' => $dadosNormalizados['id']
+                    ]);
+
+                    if ($salvou) {
+                        echo $this->success('Imovel', 'Adicionada à galeria', 'fotos&id=' . $dadosNormalizados['id']);
+                        return;
+                    } else {
+                        echo $this->error('Imagem', 'Erro ao salvar no banco', 'fotos&id=' . $dadosNormalizados['id']);
+                        return;
+                    }
+                } else {
+                    echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $dadosNormalizados['id']);
+                    return;
+                }
+            }
+
+            // Se não houve imagem, redireciona para listagem
             echo $this->success('Imovel', 'Editado', 'listar');
         } else {
             echo $this->error('Imovel', 'Editar', 'cadastrar');
-        }
-
-        // Upload da GALERIA (se houver)
-        if (!empty($_FILES['imagem_galeria']['name'])) {
-            $tmp = $_FILES['imagem_galeria']['tmp_name'];
-            $nomeOriginal = $_FILES['imagem_galeria']['name'];
-            $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
-            $destino = 'lib/img/imagens/' . $nomeFinal;
-
-            if (move_uploaded_file($tmp, $destino)) {
-                $salvou = $this->imagemImovelDao->inserirImagem([
-                    'imagem' => $nomeFinal,
-                    'imovel' => $dadosNormalizados['id']
-                ]);
-
-                if ($salvou) {
-                    echo $this->success('Imagem', 'Adicionada à galeria', 'fotos&id=' . $dadosNormalizados['id']);
-                } else {
-                    echo $this->error('Imagem', 'Erro ao salvar no banco', 'fotos&id=' . $dadosNormalizados['id']);
-                }
-            } else {
-                echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $dadosNormalizados['id']);
-            }
         }
     }
 

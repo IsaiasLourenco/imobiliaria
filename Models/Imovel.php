@@ -128,6 +128,8 @@ class Imovel
 
     public function atributosPreenchidos(): array
     {
-        return $this->toArray(); // sem filtro nenhum
+        $dados = $this->toArray();
+        unset($dados['finalidade_descricao']); // remove campo que não existe no banco
+        return $dados;
     }
 }

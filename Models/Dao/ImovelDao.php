@@ -20,13 +20,36 @@ class ImovelDao extends Conexao
     }
 
     // Busca um único imóvel por ID
+    // public function buscarUnicoImovelPorId($id): ?Imovel
+    // {
+    //     $dados = $this->listar("imovel", "WHERE id = ?", [$id]);
+    //     if (!$dados || count($dados) === 0) {
+    //         return null;
+    //     }
+    //     return $this->mapToImovel((array)$dados[0]); // <-- converte stdClass em array
+    // }
     public function buscarUnicoImovelPorId($id): ?Imovel
     {
-        $dados = $this->listar("imovel", "WHERE id = ?", [$id]);
+        $query = "SELECT 
+        imovel.*, 
+        f.descricao AS finalidade_descricao
+    FROM imovel
+    LEFT JOIN finalidade f ON imovel.finalidade = f.id
+    WHERE imovel.id = ?";
+
+        $stmt = $this->executarConsulta($query, [$id]);
+
+        if (!$stmt) {
+            return null;
+        }
+
+        $dados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
         if (!$dados || count($dados) === 0) {
             return null;
         }
-        return $this->mapToImovel((array)$dados[0]); // <-- converte stdClass em array
+
+        return $this->mapToImovel((array)$dados[0]);
     }
 
     // Adiciona um imóvel
@@ -43,7 +66,8 @@ class ImovelDao extends Conexao
         $atributos = array_keys($imovel->atributosPreenchidos());
         $valores = array_values($imovel->atributosPreenchidos());
         try {
-            return $this->update('imovel', $atributos, $valores, $imovel->getId());
+            // return $this->update('imovel', $atributos, $valores, $imovel->getId());
+            return $this->update('imovel', $atributos, $valores, $imovel->getId()) !== false;
         } catch (\Exception $e) {
             throw new \Exception("Erro ao atualizar imóvel: " . $e->getMessage());
         }
