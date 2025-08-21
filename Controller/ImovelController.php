@@ -270,4 +270,13 @@ class ImovelController extends Notifications
             echo $this->error('Imagem', 'Não encontrada', 'fotos&id=' . $imagem->imovel);
         }
     }
+
+    // Listar todos os imóveis com a descrição da finalidade
+    function listarComFinalidade()
+    {
+        // Recupera todos os imóveis com a descrição da finalidade usando JOIN
+        $imovel = $this->imovelDao->listarImoveisComFinalidade();
+
+        require_once 'Views/painel/index.php';
+    }
 }

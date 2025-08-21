@@ -25,6 +25,7 @@ class Imovel
     public $tipoimovel;
     public $finalidade;
     public $proprietario;
+    public $finalidade_descricao;
 
     public function __construct(
         ?int $id = 0,
@@ -48,8 +49,9 @@ class Imovel
         ?string $tipoimovel = '',
         ?string $finalidade = '',
         ?string $proprietario = '',
+        ?string $finalidade_descricao = '',
     ) {
-        date_default_timezone_set(timezoneId:'America/Sao_Paulo');
+        date_default_timezone_set(timezoneId: 'America/Sao_Paulo');
         $this->id = $id;
         $this->codigo = $codigo;
         $this->valor = $valor;
@@ -67,10 +69,11 @@ class Imovel
         $this->areatotal = $areatotal;
         $this->areaconstruida = $areaconstruida;
         $this->statusimovel = $statusimovel;
-        $this->datacadastro = $datacadastro ?? date('Y-m-d H:i:s'); 
+        $this->datacadastro = $datacadastro ?? date('Y-m-d H:i:s');
         $this->tipoimovel = $tipoimovel;
         $this->finalidade = $finalidade;
         $this->proprietario = $proprietario;
+        $this->finalidade_descricao = $finalidade_descricao;
     }
 
     public function getId(): int
@@ -81,6 +84,11 @@ class Imovel
     public function setId($id): void
     {
         $this->id = $id;
+    }
+
+    public function getFinalidadeDescricao()
+    {
+        return $this->finalidade_descricao;
     }
 
     public function __set($chave, $valor): void
@@ -114,6 +122,7 @@ class Imovel
             'tipoimovel' => $this->tipoimovel,
             'finalidade' => $this->finalidade,
             'proprietario' => $this->proprietario,
+            'finalidade_descricao' => $this->finalidade_descricao,
         ];
     }
 

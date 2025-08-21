@@ -4,6 +4,7 @@ namespace App\Models\Dao;
 
 use App\Models\Conexao;
 use App\Models\Imovel;
+use Pdo;
 
 class ImovelDao extends Conexao
 {
@@ -88,7 +89,8 @@ class ImovelDao extends Conexao
             $row['datacadastro'] ?? date('Y-m-d H:i:s'),
             $row['tipoimovel'] ?? null,
             $row['finalidade'] ?? null,
-            $row['proprietario'] ?? null
+            $row['proprietario'] ?? null,
+            $row['finalidade_descricao'] ?? ''
         );
     }
 
@@ -98,5 +100,32 @@ class ImovelDao extends Conexao
         $stmt = $pdo->prepare("SELECT codigo FROM imovel WHERE codigo LIKE :prefixo ORDER BY codigo DESC LIMIT 1");
         $stmt->execute(['prefixo' => $prefixo . '%']);
         return $stmt->fetchColumn(); // retorna a string do último código, ex: MgSP007
+    }
+
+    public function listarImoveisComFinalidade()
+    {
+        $query = "SELECT imovel.*, f.descricao AS finalidade_descricao 
+              FROM imovel imovel 
+              LEFT JOIN finalidade f ON imovel.finalidade = f.id";
+
+        // Executando a consulta
+        $stmt = $this->executarConsulta($query);
+
+        // Verificando se a consulta foi executada corretamente
+        if (!$stmt) {
+            echo "Erro ao executar a consulta";
+            exit();
+        }
+
+        // Verifique se a consulta retornou os dados
+        $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Se a consulta estiver correta e os dados foram retornados, continue com o mapeamento
+        $imoveis = [];
+        foreach ($dados as $row) {
+            $imoveis[] = $this->mapToImovel($row); // Mapeando para Imovel
+        }
+
+        return $imoveis;
     }
 }
