@@ -35,7 +35,12 @@ class UsuarioService
     public function editarUsuario($dados, $imagem)
     {
         $usuario = new Usuario();
-        $dados['imagem'] = $imagem;
+        if ($imagem !== null && $imagem !== '') {
+            $dados['imagem'] = $imagem;
+        } else {
+            $usuarioAntigo = $this->usuarioDao->buscarUsuarioPorId($dados['id']);
+            $dados['imagem'] = $usuarioAntigo ? $usuarioAntigo->getImagem() : '';
+        }
         foreach ($dados as $key => $valores) {
             if ($key == 'senha') {
                 $valores = password_hash($valores, PASSWORD_BCRYPT);

@@ -28,7 +28,7 @@ class ImagemImovelDao extends Conexao
     // Buscar galeria de imagens de um imóvel
     public function buscarGaleriaPorImovel($id)
     {
-        $sql = "SELECT imagem FROM imagemimovel WHERE imovel = :id";
+        $sql = "SELECT id, imagem FROM imagemimovel WHERE imovel = :id";
         $stmt = self::getConexao()->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();

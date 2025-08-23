@@ -23,23 +23,23 @@ class Usuario
     private $ativo;
 
     public function __construct(
-        ?int $id = 0,
-        ?string $nome = '',
-        ?string $usuario = '',
-        ?string $senha = '',
-        ?string $perfil = '',
-        ?string $email = '',
-        ?string $telefone = '',
-        ?string $cep = '',
-        ?string $logradouro = '',
-        ?string $numero = '',
-        ?string $complemento = '',
-        ?string $bairro = '',
-        ?string $cidade = '',
-        ?string $estado = '',
-        ?string $imagem = '',
-        ?string $datacadastro = '',
-        ?string $ativo = ''
+        $id = 0,
+        $nome = '',
+        $usuario = '',
+        $senha = '',
+        $perfil = '',
+        $email = '',
+        $telefone = '',
+        $cep = '',
+        $logradouro = '',
+        $numero = '',
+        $complemento = '',
+        $bairro = '',
+        $cidade = '',
+        $estado = '',
+        $imagem = '',
+        $datacadastro = '',
+        $ativo = ''
     ) {
         $this->id = $id;
         $this->nome = $nome;
@@ -60,24 +60,34 @@ class Usuario
         $this->ativo = $ativo;
     }
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    public function getId() { return $this->id; }
+    public function getNome() { return $this->nome; }
+    public function getUsuario() { return $this->usuario; }
+    public function getSenha() { return $this->senha; }
+    public function getPerfil() { return $this->perfil; }
+    public function getEmail() { return $this->email; }
+    public function getTelefone() { return $this->telefone; }
+    public function getCep() { return $this->cep; }
+    public function getLogradouro() { return $this->logradouro; }
+    public function getNumero() { return $this->numero; }
+    public function getComplemento() { return $this->complemento; }
+    public function getBairro() { return $this->bairro; }
+    public function getCidade() { return $this->cidade; }
+    public function getEstado() { return $this->estado; }
+    public function getImagem() { return $this->imagem; }
+    public function getDatacadastro() { return $this->datacadastro; }
+    public function getAtivo() { return $this->ativo; }
 
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
+    public function setId($id) { $this->id = $id; }
 
-    public function __set($chave, $valor): void
+    public function __set($chave, $valor)
     {
         if (property_exists($this, $chave)) {
             $this->$chave = $valor;
         }
     }
 
-    public function toArray(): array
+    public function toArray()
     {
         return [
             'id' => $this->id,
@@ -99,9 +109,9 @@ class Usuario
             'ativo' => $this->ativo
         ];
     }
-    
-    public function atributosPreenchidos(): array
+
+    public function atributosPreenchidos()
     {
-        return $this->toArray(); // sem filtro nenhum
+        return $this->toArray();
     }
 }

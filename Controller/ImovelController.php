@@ -250,12 +250,37 @@ class ImovelController extends Notifications
         }
     }
 
-    function excluirImagem()
+    public function confirmarExclusaoImagem()
     {
+        $imagemId = $_GET['imagemId'] ?? null;
+        $imovelId = $_GET['imovelId'] ?? null;
+
+        if (!$imagemId || !$imovelId) {
+            echo $this->error('Imagem', 'ID inválido', 'fotos&id=' . $imovelId);
+            return;
+        }
+
+        $imagem = $this->imagemImovelDao->buscarImagemPorId($imagemId);
+
+        if (!$imagem) {
+            echo $this->error('Imagem', 'Não encontrada', 'fotos&id=' . $imovelId);
+            return;
+        }
+
+        echo $this->confirm('excluir a imagem', 'Imovel', '', $imagemId)
+            . "<script>
+            document.querySelector('.btn-mini.bg-azul').href =
+            'index.php?controller=ImovelController&metodo=excluirImagem&imagemId={$imagemId}&imovelId={$imovelId}';
+        </script>";
+    }
+
+    public function excluirImagem()
+    {
+        $imovelId = $_POST['imovelId'] ?? $_GET['imovelId'] ?? '';
         $imagemId = $_POST['imagemId'] ?? $_GET['imagemId'] ?? null;
 
         if (!$imagemId) {
-            echo $this->error('Imagem', 'ID inválido', 'listar');
+            echo $this->error('Imagem', 'ID inválido', 'fotos&id=' . $imovelId);
             return;
         }
 
@@ -269,12 +294,14 @@ class ImovelController extends Notifications
             $deletado = $this->imagemImovelDao->deletarImagem($imagem->imagem);
 
             if ($deletado) {
-                echo $this->success('Imagem', 'Excluída', 'fotos&id=' . $imagem->imovel);
+                echo $this->success('Imovel', 'Excluída', 'fotos&id=' . $imagem->imovel);
+                return;
             } else {
                 echo $this->error('Imagem', 'Excluir', 'fotos&id=' . $imagem->imovel);
             }
         } else {
-            echo $this->error('Imagem', 'Não encontrada', 'listar');
+            echo $this->errorCustom('Erro! Imagem não encontrada.', 'ImovelController', 'fotos&id=' . $imovelId);
+            exit;
         }
     }
 

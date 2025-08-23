@@ -17,6 +17,7 @@ class ProprietarioService
     public function cadastrarProprietario($dados)
     {
         $proprietario = new Proprietario();
+        $dados['ativo'] = isset($dados['ativo']) && $dados['ativo'] !== '' ? 1 : 0;
         foreach ($dados as $key => $valores) {
             $proprietario->__set($key, $valores);
         }
@@ -26,6 +27,7 @@ class ProprietarioService
     public function editarProprietario($dados)
     {
         $proprietario = new Proprietario();
+        $dados['ativo'] = isset($dados['ativo']) && $dados['ativo'] !== '' ? 1 : 0;
         foreach ($dados as $key => $valores) {
             $proprietario->__set($key, $valores);
         }

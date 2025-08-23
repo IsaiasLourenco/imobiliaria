@@ -17,12 +17,9 @@
                 $alt = 'Foto ' . ($idx + 1) . ' do imóvel ' . htmlspecialchars((string)$imovel->codigo);
             ?>
                 <div class="thumb-wrapper">
-                    <form method="POST" action="index.php?controller=ImovelController&metodo=excluirImagem" class="form-excluir" onsubmit="return confirm('Deseja realmente excluir esta imagem?');">
-                        <input type="hidden" name="imagemId" value="<?= (int)$foto->id ?>">
-                        <button type="submit" class="btn-excluir" title="Excluir imagem">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </form>
+                    <a href="index.php?controller=ImovelController&metodo=confirmarExclusaoImagem&imagemId=<?= (int)$foto->id ?>&imovelId=<?= (int)$imovel->id ?>" class="btn-excluir" title="Excluir imagem">
+                        <i class="fa fa-trash"></i>
+                    </a>
 
                     <button class="thumb" data-index="<?= (int)$idx ?>" aria-label="Abrir <?= htmlspecialchars($alt) ?>">
                         <img
@@ -34,6 +31,17 @@
                 </div>
             <?php endforeach; ?>
         </div>
+    </div>
+
+    <div class="box-4">
+        <?php if (isset($imovel) && !empty($imovel->id)): ?>
+            <div class="limpar" style="margin-bottom: 1rem;"></div>
+            <label for="imagem_galeria" class="fonte14 fnc-preto-azulado" style="cursor: pointer;">
+                <i class="fa-solid fa-images fonte20"></i>
+                Adicionar imagens à galeria
+            </label>
+            <input type="file" name="imagem_galeria" id="imagem_galeria" accept="image/*">
+        <?php endif; ?>
     </div>
 
     <!-- Lightbox / Modal -->

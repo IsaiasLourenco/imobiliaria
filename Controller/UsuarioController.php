@@ -83,18 +83,33 @@ class UsuarioController extends Notifications
             return;
         }
         $perfil = $this->perfil->listarTodos();
-        $view = 'Views/usuarios/cadastrar.php';
+        $view = 'Views/usuario/cadastrar.php';
         require 'Views/painel/index.php';
     }
 
     function editar($dados, $file)
     {
+        $usuarioAntigo = $this->usuarioDao->buscarUsuarioPorId($dados['id']);
+
+        if (!$usuarioAntigo) {
+            echo $this->error('Usuario', 'Não encontrado para edição', 'listar');
+            return;
+        }
+
         $imagem = $this->fileUploadServiceUsuarios->uploadUsers($file['imagem']);
-        $retorno = $this->usuarioService->editarUsuario($dados, $imagem);
+
+        if ($imagem === null || $imagem === '') {
+            $dados['imagem'] = $usuarioAntigo->getImagem();
+        } else {
+            $dados['imagem'] = $imagem;
+        }
+
+        $retorno = $this->usuarioService->editarUsuario($dados, $dados['imagem']);
+
         if ($retorno) {
             echo $this->success('Usuario', 'Editado', 'listar');
         } else {
-            echo $this->error('Usuario', 'Editar', 'cadastrar');
+            echo $this->error('Usuario', 'Editar', 'cadastrar&id=' . $dados['id']);
         }
     }
 

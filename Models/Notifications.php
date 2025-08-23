@@ -140,4 +140,24 @@ abstract class Notifications
         );
         return $mensagem;
     }
+
+    protected function errorCustom($mensagem, $controller, $metodo)
+    {
+        $css = $this->getCssLink();
+        return sprintf(
+            "%s<div class='aviso'>
+            <div class='msg bg-branco'>
+                <h2 class='fonte12 poppins-black fnc-error'>
+                    %s
+                </h2>
+                <a href='index.php?controller=%s&metodo=%s' class='btn-msg fnc-cinza-claro'> Tentar Novamente </a>
+            </div>
+        </div>",
+            $css,
+            htmlspecialchars($mensagem),
+            htmlspecialchars($controller),
+            htmlspecialchars($metodo)
+        );
+    }
+    
 }

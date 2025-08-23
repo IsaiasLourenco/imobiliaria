@@ -17,10 +17,39 @@ class UsuarioDao extends Conexao
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
-    public function buscarUsuarioPorId($id)
+    public function buscarUsuarioPorId($id): ?Usuario
     {
-        return $this->listar("usuario", "WHERE id = ?", [$id]);
+        $dados = $this->listar("usuario", "WHERE id = ?", [$id]);
+        if (!$dados || count($dados) === 0) {
+            return null;
+        }
+        return $this->mapToUsuario((array)$dados[0]);
     }
+
+    private function mapToUsuario(array $row): Usuario
+    {
+        return new Usuario(
+            $row['id'] ?? 0,
+            $row['nome'] ?? '',
+            $row['usuario'] ?? '',
+            $row['senha'] ?? '',
+            $row['perfil'] ?? '',
+            $row['email'] ?? '',
+            $row['telefone'] ?? '',
+            $row['cep'] ?? '',
+            $row['logradouro'] ?? '',
+            $row['numero'] ?? '',
+            $row['complemento'] ?? '',
+            $row['bairro'] ?? '',
+            $row['cidade'] ?? '',
+            $row['estado'] ?? '',
+            $row['imagem'] ?? '',
+            $row['datacadastro'] ?? '',
+            $row['ativo'] ?? 1
+        );
+    }
+
+
 
     public function adicionar(Usuario $usuario)
     {
