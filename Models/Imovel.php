@@ -26,6 +26,7 @@ class Imovel
     public $finalidade;
     public $proprietario;
     public $finalidade_descricao;
+    public $tipo_imovel;
 
     public function __construct(
         ?int $id = 0,
@@ -50,6 +51,7 @@ class Imovel
         ?string $finalidade = '',
         ?string $proprietario = '',
         ?string $finalidade_descricao = '',
+        ?string $tipo_imovel = '',
     ) {
         date_default_timezone_set(timezoneId: 'America/Sao_Paulo');
         $this->id = $id;
@@ -74,6 +76,7 @@ class Imovel
         $this->finalidade = $finalidade;
         $this->proprietario = $proprietario;
         $this->finalidade_descricao = $finalidade_descricao;
+        $this->tipo_imovel = $tipo_imovel;
     }
 
     public function getId(): int
@@ -89,6 +92,11 @@ class Imovel
     public function getFinalidadeDescricao()
     {
         return $this->finalidade_descricao;
+    }
+
+    public function getTipoImovel()
+    {
+        return $this->tipo_imovel;
     }
 
     public function __set($chave, $valor): void
@@ -123,6 +131,7 @@ class Imovel
             'finalidade' => $this->finalidade,
             'proprietario' => $this->proprietario,
             'finalidade_descricao' => $this->finalidade_descricao,
+            'tipo_imovel' => $this->tipo_imovel,
         ];
     }
 
@@ -130,6 +139,7 @@ class Imovel
     {
         $dados = $this->toArray();
         unset($dados['finalidade_descricao']); // remove campo que não existe no banco
+        unset($dados['tipo_imovel']); // remove campo que não existe no banco
         return $dados;
     }
 }

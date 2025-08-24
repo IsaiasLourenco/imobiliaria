@@ -3,19 +3,30 @@
 namespace App\Models\Dao;
 
 use App\Models\Conexao;
+use App\Models\TipoImovel;
 
 class TipoImovelDao extends Conexao
 {
     public function listarTodos()
     {
-        return $this->listar('tipoimovel');
+        return $this->listar('tipoimovel'); // só pega todos os tipos
     }
 
-    public function buscarPorId($id)
+    public function buscarPorId($id): ?TipoImovel
     {
-        $condicao = "WHERE id = ?";
-        $parametro = [$id];
-        $resultado = $this->listar('tipoimovel', $condicao, $parametro);
-        return $resultado[0] ?? null;
+        $dados = $this->listar("tipoimovel", "WHERE id = ?", [$id]);
+        if (!$dados || count($dados) === 0) {
+            return null;
+        }
+        return $this->mapToTipoImovel($dados[0]); // Agora apenas passa o objeto direto
     }
+
+    private function mapToTipoImovel($row): TipoImovel
+    {
+        return new TipoImovel(
+            $row->id ?? 0, // Acesso por "->" em vez de array
+            $row->descricao ?? '' // Acesso por "->" em vez de array
+        );
+    }
+
 }

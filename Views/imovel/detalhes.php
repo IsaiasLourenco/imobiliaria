@@ -2,7 +2,15 @@
 require_once 'vendor/autoload.php';
 
 use App\Models\Dao\ImovelDao;
+use App\Models\Dao\TipoImovelDao;
 use App\Models\Dao\ProprietarioDao;
+
+// Instancia o DAO para buscar os dados do tipo de imóvel
+$tipoImovelDao = new TipoImovelDao();
+
+// Verifica se existe um tipo de imóvel válido para o imóvel atual
+$tipo = $tipoImovelDao->buscarPorId($imovel->tipoimovel);
+$tipoDescricao = $tipo ? $tipo->getDescricao() : 'Não informado';
 
 // Valida o ID vindo da URL
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -59,9 +67,10 @@ if (!$proprietario) {
             <div class="finalidade-info" style="margin-top: 10px; margin-bottom: 10px; ">
                 <p class="titulo-fin-tipo"><strong>Finalidade:</strong> <?= htmlspecialchars($imovel->getFinalidadeDescricao() ?? 'Não informado') ?></p>
             </div>
-            <div class="finalidade-info" style="margin-top: 10px; margin-bottom: 10px; ">
-                <p class="titulo-fin-tipo"><strong>Tipo:</strong> <?= htmlspecialchars($imovel->getFinalidadeDescricao() ?? 'Não informado') ?></p>
+            <div class="finalidade-info" style="margin-top: 10px; margin-bottom: 10px;">
+                <p class="titulo-fin-tipo"><strong>Tipo:</strong> <?= htmlspecialchars($tipoDescricao) ?></p>
             </div>
+
             <ul>
                 <li><strong>Quartos:</strong> <?= str_pad((string)$imovel->quartos, 2, '0', STR_PAD_LEFT) ?></li>
                 <li><strong>Banheiros:</strong> <?= str_pad((string)$imovel->banheiros, 2, '0', STR_PAD_LEFT) ?></li>
