@@ -56,8 +56,11 @@ if (!$proprietario) {
         <!-- Características do Imóvel -->
         <section class="detalhes-bloco caracteristicas">
             <h2>Características do Imóvel</h2>
-            <div class="finalidade-info" style="margin-top: 10px;">
-                <p><strong>Finalidade:</strong> <?= htmlspecialchars($imovel->getFinalidadeDescricao() ?? 'Não informado') ?></p>
+            <div class="finalidade-info" style="margin-top: 10px; margin-bottom: 10px; ">
+                <p class="titulo-fin-tipo"><strong>Finalidade:</strong> <?= htmlspecialchars($imovel->getFinalidadeDescricao() ?? 'Não informado') ?></p>
+            </div>
+            <div class="finalidade-info" style="margin-top: 10px; margin-bottom: 10px; ">
+                <p class="titulo-fin-tipo"><strong>Tipo:</strong> <?= htmlspecialchars($imovel->getFinalidadeDescricao() ?? 'Não informado') ?></p>
             </div>
             <ul>
                 <li><strong>Quartos:</strong> <?= str_pad((string)$imovel->quartos, 2, '0', STR_PAD_LEFT) ?></li>

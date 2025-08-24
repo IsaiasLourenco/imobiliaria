@@ -190,3 +190,7 @@
 .localizacao {
     width: 100%;
 }
+
+.detalhes-bloco .titulo-fin-tipo {
+    font-size: 2rem;
+}
