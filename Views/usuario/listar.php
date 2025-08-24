@@ -2,7 +2,7 @@
 
     <div class="box-8">
         <p class="txt-c fonte20 mg-b-1">
-            <i class="fa-solid fa-keyboard"></i>
+            <i class="fa-solid fa-user-tie"></i>
             Usuários
         </p>
     </div>

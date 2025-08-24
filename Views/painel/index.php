@@ -12,20 +12,26 @@
             <ul class="pd-10">
                 <li class="mg-b-1 pd-b-1">
                     <a href="index.php?controller=ProprietarioController&metodo=listar" class="fonte14 fnc-cinza">
-                        <i class="fa-solid fa-user-tie"></i>
-                        Proprietário
+                        <i class="fa-solid fa-users"></i>
+                        Proprietários
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
                     <a href="index.php?controller=ImovelController&metodo=listar" class="fonte14 fnc-cinza">
                         <i class="fa-solid fa-house-chimney"></i>
-                        Imóvel
+                        Imóveis
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
                     <a href="index.php?controller=UsuarioController&metodo=listar" class="fonte14 fnc-cinza">
-                        <i class="fa-solid fa-keyboard"></i>
-                        Usuário
+                        <i class="fa-solid fa-user-tie"></i>
+                        Usuários
+                    </a>
+                </li>
+                <li class="mg-b-1 pd-b-1">
+                    <a href="index.php?controller=TipoImovelController&metodo=listar" class="fonte14 fnc-cinza">
+                        <i class="fa-solid fa-building"></i>
+                        Tipo dos Imóveis
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">

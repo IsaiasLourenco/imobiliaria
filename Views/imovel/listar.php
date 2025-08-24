@@ -9,7 +9,8 @@
 
     <div class="box-4 flex justify-center item-centro">
         <a href="index.php?controller=ImovelController&metodo=cadastrar" class="btn-novo">
-            <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-house-chimney"></i>
+            <i class="fa-solid fa-plus"></i>
             Novo Imóvel
         </a>
     </div>

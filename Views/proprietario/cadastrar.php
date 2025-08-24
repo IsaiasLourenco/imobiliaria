@@ -2,13 +2,13 @@
     <?php if (!empty($proprietario)): ?>
         <h2 class="fonte20">
             <i class="fa-solid fa-pen-ruler"></i>
-            <i class="fa-solid fa-user-tie"></i>
+            <i class="fa-solid fa-users"></i>
             Editar Proprietário
         </h2>
     <?php else: ?>
         <h2 class="fonte20">
             <i class="fa-solid fa-notes-medical"></i>
-            <i class="fa-solid fa-user-tie"></i>
+            <i class="fa-solid fa-users"></i>
             Cadastrar Proprietário
         </h2>
     <?php endif; ?>
