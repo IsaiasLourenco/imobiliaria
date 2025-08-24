@@ -159,5 +159,51 @@ abstract class Notifications
             htmlspecialchars($metodo)
         );
     }
+
+    protected function successRedirect($obj, $acao, $controller, $metodo, $tempo = 2)
+    {
+        $css = $this->getCssLink();
+        $url = "index.php?controller={$controller}&metodo={$metodo}";
+        $mensagem = sprintf(
+            "%s<meta http-equiv='refresh' content='%d;url=%s'>
+        <div class='aviso'>
+            <div class='msg bg-branco'>
+                <h2 class='fonte12 poppins-black fnc-sucesso'>
+                    %s %s com sucesso!
+                </h2>
+                <p class='fonte10 fnc-cinza-claro'>Você será redirecionado em %d segundos...</p>
+                <a href='%s' class='btn-msg fnc-cinza-claro'> Redirecionar agora </a>
+            </div>
+        </div>",
+            $css,
+            $tempo,
+            htmlspecialchars($url),
+            htmlspecialchars($obj),
+            htmlspecialchars($acao),
+            $tempo,
+            htmlspecialchars($url)
+        );
+        return $mensagem;
+    }
+
+    protected function successCustom($titulo, $controller, $metodo)
+    {
+        $css = $this->getCssLink();
+        $url = "index.php?controller={$controller}&metodo={$metodo}";
+        $mensagem = sprintf(
+            "%s<div class='aviso'>
+            <div class='msg bg-branco'>
+                <h2 class='fonte12 poppins-black fnc-sucesso'>
+                    %s com sucesso!
+                </h2>
+                <a href='%s' class='btn-msg fnc-cinza-claro'> Fechar Sair </a>
+            </div>
+        </div>",
+            $css,
+            htmlspecialchars($titulo),
+            htmlspecialchars($url)
+        );
+        return $mensagem;
+    }
     
 }

@@ -20,14 +20,6 @@ class ImovelDao extends Conexao
     }
 
     // Busca um único imóvel por ID
-    // public function buscarUnicoImovelPorId($id): ?Imovel
-    // {
-    //     $dados = $this->listar("imovel", "WHERE id = ?", [$id]);
-    //     if (!$dados || count($dados) === 0) {
-    //         return null;
-    //     }
-    //     return $this->mapToImovel((array)$dados[0]); // <-- converte stdClass em array
-    // }
     public function buscarUnicoImovelPorId($id): ?Imovel
     {
         $query = "SELECT 

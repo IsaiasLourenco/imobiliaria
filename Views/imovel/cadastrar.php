@@ -38,22 +38,22 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
         </div>
         <div class="box-3">
             <label for="logradouro">Rua</label>
-            <input readonly type="text" name="logradouro" id="rua" value="<?= isset($imovel) && isset($imovel->logradouro) ? $imovel->logradouro : '' ?>" required>
+            <input readonly tabindex="4" type="text" name="logradouro" id="rua" value="<?= isset($imovel) && isset($imovel->logradouro) ? $imovel->logradouro : '' ?>" required>
         </div>
         <div class="box-1">
             <label for="numero">Numero</label>
-            <input tabindex="4" type="text" name="numero" id="numero" value="<?= isset($imovel) && isset($imovel->numero) ? $imovel->numero : '' ?>" required>
+            <input tabindex="6" type="text" name="numero" id="numero" value="<?= isset($imovel) && isset($imovel->numero) ? $imovel->numero : '' ?>" required>
         </div>
         <div class="box-4">
             <label for="complemento">Complemento</label>
-            <input tabindex="5" type="text" name="complemento" id="complemento" value="<?= isset($imovel) && isset($imovel->complemento) ? $imovel->complemento : '' ?>">
+            <input tabindex="6" type="text" name="complemento" id="complemento" value="<?= isset($imovel) && isset($imovel->complemento) ? $imovel->complemento : '' ?>">
         </div>
     </div>
 
     <div class="row">
         <div class="box-3">
             <label for="bairro">Bairro</label>
-            <input readonly type="text" name="bairro" id="bairro" value="<?= isset($imovel) && isset($imovel->bairro) ? $imovel->bairro : '' ?>" required>
+            <input readonly tabindex="7" type="text" name="bairro" id="bairro" value="<?= isset($imovel) && isset($imovel->bairro) ? $imovel->bairro : '' ?>" required>
         </div>
         <div class="box-3">
             <label for="cidade">Cidade</label>
@@ -65,30 +65,30 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
         </div>
         <div class="box-1">
             <label for="quartos">Quartos</label>
-            <input tabindex="6" type="text" name="quartos" id="quartos" value="<?= $quartosFormatado ?>" required>
+            <input tabindex="8" type="text" name="quartos" id="quartos" value="<?= $quartosFormatado ?>" required>
         </div>
         <div class="box-1">
             <label for="banheiros">Banheiros</label>
-            <input tabindex="7" type="text" name="banheiros" id="banheiros" value="<?= $banheirosFormatado ?>" required>
+            <input tabindex="9" type="text" name="banheiros" id="banheiros" value="<?= $banheirosFormatado ?>" required>
         </div>
         <div class="box-1">
             <label for="garagem">Garagem</label>
-            <input tabindex="8" type="text" name="garagem" id="garagem" value="<?= $garagemFormatado ?>" required>
+            <input tabindex="10" type="text" name="garagem" id="garagem" value="<?= $garagemFormatado ?>" required>
         </div>
         <div class="box-1">
             <label for="areatotal">Área Total</label>
-            <input tabindex="9" type="text" name="areatotal" id="areatotal" value="<?= $areaTotalFormatada ?>" required>
+            <input tabindex="11" type="text" name="areatotal" id="areatotal" value="<?= $areaTotalFormatada ?>" required>
         </div>
         <div class="box-1">
             <label for="areaconstruida">Área Const</label>
-            <input tabindex="10" type="text" name="areaconstruida" id="areaconstruida" value="<?= $areaConstruidaFormatada ?>" required>
+            <input tabindex="12" type="text" name="areaconstruida" id="areaconstruida" value="<?= $areaConstruidaFormatada ?>" required>
         </div>
     </div>
 
     <div class="row">
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="status">Status</label>
-            <select tabindex="11" name="status" id="status" required>
+            <select tabindex="13" name="status" id="status" required>
                 <option value="" disabled <?= !isset($imovel) ? 'selected' : '' ?>>Selecione status do imóvel...</option>
                 <?php if (isset($statusimovel) && count($statusimovel) > 0):
                     foreach ($statusimovel as $status):
@@ -100,7 +100,7 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="tipo">Tipo</label>
-            <select tabindex="12" name="tipo" id="tipo" required>
+            <select tabindex="14" name="tipo" id="tipo" required>
                 <option value="" disabled <?= !isset($imovel) ? 'selected' : '' ?>>Selecione tipo do imóvel...</option>
                 <?php if (isset($tipoimovel) && count($tipoimovel) > 0):
                     foreach ($tipoimovel as $tipo):
@@ -112,7 +112,7 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="finalidade">Finalidade</label>
-            <select tabindex="13" name="finalidade" id="finalidade" required>
+            <select tabindex="15" name="finalidade" id="finalidade" required>
                 <option value="" disabled <?= !isset($imovel) ? 'selected' : '' ?>>Selecione finalidade...</option>
                 <?php if (isset($finalidadeimovel) && count($finalidadeimovel) > 0):
                     foreach ($finalidadeimovel as $finalidade):
@@ -124,7 +124,7 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="proprietario">Proprietário</label>
-            <select tabindex="14" name="proprietario" id="proprietario" required>
+            <select tabindex="16" name="proprietario" id="proprietario" required>
                 <option value="" disabled <?= !isset($imovel) ? 'selected' : '' ?>>Selecione o Proprietário...</option>
                 <?php if (isset($proprietarioimovel) && count($proprietarioimovel) > 0):
                     foreach ($proprietarioimovel as $prop):

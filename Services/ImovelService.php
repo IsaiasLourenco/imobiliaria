@@ -16,10 +16,6 @@ class ImovelService
         $this->fileUploadService = $fileUploadService;
     }
 
-    /**
-     * Normaliza POST/FILES para inserir/editar imóvel.
-     * - $modo: 'inserir' | 'editar'
-     */
     public function normalizarEntrada($post, $files, $modo = 'inserir')
     {
         $dados = [];
@@ -47,7 +43,7 @@ class ImovelService
         $dados['tipoimovel']      = isset($post['tipo']) ? (int)$post['tipo'] : null;
         $dados['finalidade']      = isset($post['finalidade']) ? (int)$post['finalidade'] : null;
         $dados['proprietario']    = isset($post['proprietario']) ? (int)$post['proprietario'] : null;
-
+        $dados['datacadastro']    = date('Y-m-d');
         // Compatibilidade
         $dados['proprietarioimovel'] = $dados['proprietario'];
         $dados['finalidadeimovel']   = $dados['finalidade'];

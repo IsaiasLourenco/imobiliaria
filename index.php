@@ -12,7 +12,12 @@ if ($_GET) {
 
     if (class_exists($objClass) && method_exists($objClass, $metodo)) {
         $obj = new $objClass();
-        $obj->$metodo();
+        $ref = new ReflectionMethod($objClass, $metodo);
+        if ($ref->getNumberOfParameters() > 0) {
+            $obj->$metodo($_POST);
+        } else {
+            $obj->$metodo();
+        }
     } else {
         // Pode colocar um fallback ou mensagem de erro
         echo "Controller ou método não encontrado.";

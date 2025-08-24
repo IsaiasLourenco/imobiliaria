@@ -9,9 +9,10 @@ class ImagemImovelDao extends Conexao
     // Buscar todas as imagens de um imóvel
     public function buscarPorImovel($id)
     {
-        $pdo = new \PDO('mysql:host=localhost;dbname=imobiliaria', 'root', '');
-        $stmt = $pdo->prepare("SELECT imagem FROM imagemimovel WHERE imovel = :id");
-        $stmt->execute(['id' => $id]);
+        $sql = "SELECT imagem FROM imagemimovel WHERE imovel = :id";
+        $stmt = self::getConexao()->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 

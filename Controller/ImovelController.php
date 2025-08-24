@@ -294,7 +294,7 @@ class ImovelController extends Notifications
             $deletado = $this->imagemImovelDao->deletarImagem($imagem->imagem);
 
             if ($deletado) {
-                echo $this->success('Imovel', 'Excluída', 'fotos&id=' . $imagem->imovel);
+                echo $this->successCustom('Imagem excluída', 'ImovelController', 'fotos&id=' . $imagem->imovel);
                 return;
             } else {
                 echo $this->error('Imagem', 'Excluir', 'fotos&id=' . $imagem->imovel);
@@ -312,5 +312,30 @@ class ImovelController extends Notifications
         $imovel = $this->imovelDao->listarImoveisComFinalidade();
 
         require_once 'Views/painel/index.php';
+    }
+
+    public function adicionarImagemGaleria($dados)
+    {
+        $id = $dados['id'] ?? null;
+        $arquivo = $_FILES['imagem_galeria'] ?? null;
+
+        if ($id && $arquivo && $arquivo['tmp_name']) {
+            $nomeFinal = uniqid() . '-' . basename($arquivo['name']);
+            $destino = 'lib/img/imagens/' . $nomeFinal;
+
+            if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
+                $this->imagemImovelDao->inserirImagem([
+                    'imagem' => $nomeFinal,
+                    'imovel' => $id
+                ]);
+                echo $this->successRedirect('Imagem', 'adicionada à galeria', 'ImovelController', 'fotos&id=' . $id);
+                return;
+            } else {
+                echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $id);
+                return;
+            }
+        }
+
+        echo $this->error('Imagem', 'Dados incompletos', 'fotos&id=' . $id);
     }
 }
