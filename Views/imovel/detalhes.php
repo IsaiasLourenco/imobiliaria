@@ -83,6 +83,7 @@ if (!$proprietario) {
 
     <!-- Ações -->
     <div class="acoes">
+        <a href="index.php?controller=ImovelController&metodo=listar" class="btn-listar-todos">✅ Listar todos os imóveis</a>
         <a href="index.php?controller=ImovelController&metodo=fotos&id=<?= (int)$imovel->id ?>" class="btn-ver-fotos">📸 Ver galeria de fotos</a>
         <button class="btn-favoritar">❤️ Favoritar</button>
         <button class="btn-compartilhar">🔗 Compartilhar</button>
