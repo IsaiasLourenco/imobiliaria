@@ -41,6 +41,11 @@
 }
 
 /* Blocos */
+
+.detalhes-bloco.caracteristicas {
+    padding-left: 200px;
+}
+
 .detalhes-bloco {
     background: #fff;
     border: none;
