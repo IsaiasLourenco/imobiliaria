@@ -41,9 +41,9 @@ class TipoImovelController extends Notifications
     {
         $retorno = $this->tipoImovelService->cadastrarTipoImovel($dados);
         if ($retorno) {
-            echo $this->success('tipoimovel', 'Cadastrado', 'listar');
+            echo $this->success('TipoImovel', 'Cadastrado', 'listar');
         } else {
-            echo $this->error('tipoimovel', 'Cadastrar', 'cadastrar');
+            echo $this->error('TipoImovel', 'Cadastrar', 'cadastrar');
         }
     }
 
@@ -82,9 +82,9 @@ class TipoImovelController extends Notifications
     {
         $retorno = $this->tipoImovelService->editarTipoImovel($dados);
         if ($retorno) {
-            echo $this->success('tipoimovel', 'Editado', 'listar');
+            echo $this->success('TipoImovel', 'Editado', 'listar');
         } else {
-            echo $this->error('tipoimovel', 'Editar', 'cadastrar');
+            echo $this->error('TipoImovel', 'Editar', 'cadastrar');
         }
     }
 
@@ -92,7 +92,7 @@ class TipoImovelController extends Notifications
     {
         $id = $_GET['id'] ?? null;
         if ($id) {
-            echo $this->confirm('Excluír', 'tipoimovel', '', $id);
+            echo $this->confirm('Excluír', 'TipoImovel', '', $id);
         }
         require 'Views/shared/header.php';
     }
@@ -102,7 +102,7 @@ class TipoImovelController extends Notifications
         $id = $_GET['id'] ?? null;
         if ($id) {
             $this->tipoImovelDao->apagar($id);
-            echo $this->success('tipoimovel', 'Excluído', 'listar');
+            echo $this->success('TipoImovel', 'Excluído', 'listar');
         }
         require 'Views/shared/header.php';
     }
