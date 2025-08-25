@@ -8,11 +8,13 @@ use App\Models\Imovel;
 class ImovelService
 {
     private $imovelDao;
+    private $tipoImovelDao;
     private $fileUploadService; // opcional
 
     public function __construct(ImovelDao $imovelDao, $fileUploadService = null)
     {
         $this->imovelDao = $imovelDao;
+        $this->tipoImovelDao = new \App\Models\Dao\TipoImovelDao();
         $this->fileUploadService = $fileUploadService;
     }
 
@@ -124,10 +126,36 @@ class ImovelService
         return $this->imovelDao->atualizarStatusImovel($id, $statusId);
     }
 
-    public function gerarCodigoImovel($cidade, $estado)
+    public function gerarCodigoImovel($cidade, $estado, $tipoId)
     {
+        // Buscar descrição do tipo
+        $tipoObj = $this->tipoImovelDao->buscarPorId($tipoId);
+        $tipoDescricao = $tipoObj ? $tipoObj->getDescricao() : null;
+
+        // Verificação de segurança
+        if (!$tipoDescricao) {
+            throw new \Exception("Tipo de imóvel inválido para geração de código.");
+        }
+
+        // Mapeamento de siglas
+        $mapaTipo = [
+            'Casa' => 'Ca',
+            'Apartamento' => 'Ap',
+            'Edícula' => 'Ed',
+            'Chácara' => 'Ch',
+            'Sítio' => 'Si',
+            'Fazenda' => 'Fa',
+            'Barracão' => 'Ba',
+            'Prédio Comercial' => 'Pc',
+            'Prédio Residencial' => 'Pr',
+            // Adicione mais conforme necessário
+        ];
+
+        $siglaTipo = $mapaTipo[$tipoDescricao] ?? 'XX';
+
+        // Gerar prefixo da cidade (igual ao que você já tem)
         $palavras = explode(' ', $cidade);
-        if (count($palavras) == 1) {
+        if (count($palavras) === 1) {
             $prefixoCidade = ucfirst(substr($cidade, 0, 1)) . strtolower(substr($cidade, 1, 1));
         } else {
             $prefixoCidade = '';
@@ -137,13 +165,12 @@ class ImovelService
             $prefixoCidade = ucfirst(substr($prefixoCidade, 0, 1)) . strtolower(substr($prefixoCidade, 1));
         }
 
-        $prefixo = $prefixoCidade . strtoupper($estado); // Ex: MgSP
+        $prefixo = $prefixoCidade . strtoupper($estado) . $siglaTipo;
 
-        $ultimoCodigo = $this->imovelDao->buscarUltimoCodigoPorPrefixo($prefixo); // precisa existir esse método no DAO
-
+        $ultimoCodigo = $this->imovelDao->buscarUltimoCodigoPorPrefixo($prefixo);
         $numero = $ultimoCodigo ? (int)substr($ultimoCodigo, -3) + 1 : 1;
         $numeroFormatado = str_pad($numero, 3, '0', STR_PAD_LEFT);
 
-        return $prefixo . $numeroFormatado; // Ex: MgSP008
+        return $prefixo . $numeroFormatado;
     }
 }

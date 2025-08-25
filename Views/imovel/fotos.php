@@ -44,11 +44,11 @@
                 <i class="fa-solid fa-images fonte20"></i>
                 Adicionar imagens à galeria
             </label>
-            <input type="file" name="imagem_galeria" id="imagem_galeria" accept="image/*">
-
+            <!-- <input type="file" name="imagem_galeria" id="imagem_galeria" accept="image/*"> -->
+            <input type="file" name="imagem_galeria[]" id="imagem_galeria" accept="image/*" multiple>
             <button type="submit" class="btn bg-azul bg-azul-claro-hover fnc-branco mg-t-2">
                 <i class="fas fa-plus"></i>
-                Adicionar imagem
+                Adicionar imagens
             </button>
         </div>
 

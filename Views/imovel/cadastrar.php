@@ -160,7 +160,7 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
                     <i class="fa-solid fa-images fonte20"></i>
                     Adicionar imagens à galeria
                 </label>
-                <input type="file" name="imagem_galeria" id="imagem_galeria" accept="image/*">
+                <input type="file" name="imagem_galeria[]" id="imagem_galeria" accept="image/*" multiple>
             <?php endif; ?>
         </div>
         <div class="btn-centralizado">

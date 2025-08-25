@@ -56,6 +56,13 @@ class Conexao {
         $stmt = $this->executarConsulta($sql, $parametro);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    
+    // LISTA ÚLTIMO REGISTRO NO BANCO
+    protected function listarUltimoRegistro($tabela, $campo, $condicao = "", $parametro = []) {
+        $sql = "SELECT MAX($campo) AS ultimoValor * FROM {$tabela} {$condicao} ORDER BY id DESC";
+        $stmt = $this->executarConsulta($sql, $parametro);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 
     // INSERINDO OBJETOS NO BANCO DE DADOS
     protected function inserir($tabela, $atributos, $valores) {

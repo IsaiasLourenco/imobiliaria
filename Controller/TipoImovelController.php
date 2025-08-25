@@ -49,7 +49,11 @@ class TipoImovelController extends Notifications
 
     function listar()
     {
+        global $tipoImovel, $view, $controller, $metodo;
         $tipoImovel = $this->tipoImovelDao->listarTodos();
+        $view = 'Views/tipoimovel/listar.php';
+        $controller = 'TipoImovelController';
+        $metodo = 'listar';
         require_once 'Views/painel/index.php';
     }
 

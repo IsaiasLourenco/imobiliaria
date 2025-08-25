@@ -56,7 +56,6 @@
                 <div class="divider mg-t-1 mg-b-1"></div>
                 <?php if ($_GET['controller'] == 'PainelController' && $_GET['metodo'] == 'index'): ?>
                 <?php else:
-                    // require_once "Views/" . $controller . "/" . $metodo . ".php";
                     if (isset($view)) {
                         require_once $view;
                     } else {

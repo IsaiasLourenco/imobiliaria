@@ -72,7 +72,8 @@ class ImovelController extends Notifications
         if (empty($dadosNormalizados['codigo'])) {
             $dadosNormalizados['codigo'] = $this->imovelService->gerarCodigoImovel(
                 $dadosNormalizados['cidade'],
-                $dadosNormalizados['estado']
+                $dadosNormalizados['estado'],
+                $dadosNormalizados['tipoimovel']
             );
         }
 
@@ -141,27 +142,37 @@ class ImovelController extends Notifications
 
         if ($retorno) {
             // Upload da GALERIA (se houver)
-            if (!empty($_FILES['imagem_galeria']['name'])) {
-                $tmp = $_FILES['imagem_galeria']['tmp_name'];
-                $nomeOriginal = $_FILES['imagem_galeria']['name'];
-                $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
-                $destino = 'lib/img/imagens/' . $nomeFinal;
+            if (!empty($_FILES['imagem_galeria']['name'][0])) {
+                $errosUpload = [];
+                $sucessoUpload = false;
 
-                if (move_uploaded_file($tmp, $destino)) {
-                    $salvou = $this->imagemImovelDao->inserirImagem([
-                        'imagem' => $nomeFinal,
-                        'imovel' => $dadosNormalizados['id']
-                    ]);
+                foreach ($_FILES['imagem_galeria']['tmp_name'] as $key => $tmp) {
+                    $nomeOriginal = $_FILES['imagem_galeria']['name'][$key];
+                    $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
+                    $destino = 'lib/img/imagens/' . $nomeFinal;
 
-                    if ($salvou) {
-                        echo $this->success('Imovel', 'Adicionada à galeria', 'fotos&id=' . $dadosNormalizados['id']);
-                        return;
+                    if (move_uploaded_file($tmp, $destino)) {
+                        $salvou = $this->imagemImovelDao->inserirImagem([
+                            'imagem' => $nomeFinal,
+                            'imovel' => $dadosNormalizados['id']
+                        ]);
+
+                        if ($salvou) {
+                            $sucessoUpload = true;
+                        } else {
+                            $errosUpload[] = "Erro ao salvar no banco: $nomeOriginal";
+                        }
                     } else {
-                        echo $this->error('Imagem', 'Erro ao salvar no banco', 'fotos&id=' . $dadosNormalizados['id']);
-                        return;
+                        $errosUpload[] = "Falha no upload: $nomeOriginal";
                     }
+                }
+
+                if ($sucessoUpload) {
+                    echo $this->success('Imovel', 'Imagens adicionadas à galeria', 'fotos&id=' . $dadosNormalizados['id']);
+                    return;
                 } else {
-                    echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $dadosNormalizados['id']);
+                    $mensagemErro = implode('<br>', $errosUpload);
+                    echo $this->error('Imagem', $mensagemErro, 'fotos&id=' . $dadosNormalizados['id']);
                     return;
                 }
             }
@@ -317,21 +328,39 @@ class ImovelController extends Notifications
     public function adicionarImagemGaleria($dados)
     {
         $id = $dados['id'] ?? null;
-        $arquivo = $_FILES['imagem_galeria'] ?? null;
+        $arquivos = $_FILES['imagem_galeria'] ?? null;
 
-        if ($id && $arquivo && $arquivo['tmp_name']) {
-            $nomeFinal = uniqid() . '-' . basename($arquivo['name']);
-            $destino = 'lib/img/imagens/' . $nomeFinal;
+        if ($id && $arquivos && isset($arquivos['tmp_name'][0])) {
+            $sucesso = false;
+            $erros = [];
 
-            if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
-                $this->imagemImovelDao->inserirImagem([
-                    'imagem' => $nomeFinal,
-                    'imovel' => $id
-                ]);
-                echo $this->successRedirect('Imagem', 'adicionada à galeria', 'ImovelController', 'fotos&id=' . $id);
+            foreach ($arquivos['tmp_name'] as $key => $tmp) {
+                $nomeOriginal = $arquivos['name'][$key];
+                $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
+                $destino = 'lib/img/imagens/' . $nomeFinal;
+
+                if (move_uploaded_file($tmp, $destino)) {
+                    $salvou = $this->imagemImovelDao->inserirImagem([
+                        'imagem' => $nomeFinal,
+                        'imovel' => $id
+                    ]);
+
+                    if ($salvou) {
+                        $sucesso = true;
+                    } else {
+                        $erros[] = "Erro ao salvar no banco: $nomeOriginal";
+                    }
+                } else {
+                    $erros[] = "Falha no upload: $nomeOriginal";
+                }
+            }
+
+            if ($sucesso) {
+                echo $this->successRedirect('Imagens adicionadas', 'fotos', 'ImovelController', 'fotos', 'id=' . $id);
                 return;
             } else {
-                echo $this->error('Imagem', 'Falha no upload', 'fotos&id=' . $id);
+                $mensagemErro = implode('<br>', $erros);
+                echo $this->error('Imagem', $mensagemErro, 'fotos&id=' . $id);
                 return;
             }
         }

@@ -160,10 +160,14 @@ abstract class Notifications
         );
     }
 
-    protected function successRedirect($obj, $acao, $controller, $metodo, $tempo = 2)
+    protected function successRedirect($obj, $acao, $controller, $metodo, $params = '', $tempo = 2)
     {
         $css = $this->getCssLink();
         $url = "index.php?controller={$controller}&metodo={$metodo}";
+        if (!empty($params)) {
+            $url .= "&{$params}";
+        }
+
         $mensagem = sprintf(
             "%s<meta http-equiv='refresh' content='%d;url=%s'>
         <div class='aviso'>
@@ -205,5 +209,4 @@ abstract class Notifications
         );
         return $mensagem;
     }
-    
 }
