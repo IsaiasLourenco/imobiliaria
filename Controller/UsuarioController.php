@@ -141,4 +141,12 @@ class UsuarioController extends Notifications
             $this->usuarioService->atualizarStatus($id, $ativo);
         }
     }
+
+    public function autenticar() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        }
+        require_once 'Views/usuario/autenticar.php';
+    }
+
 }

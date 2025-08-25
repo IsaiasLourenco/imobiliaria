@@ -59,6 +59,7 @@
                         <li class="mg-l-3"><a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Aluguéis</a></li>
                         <li class="mg-l-3"><a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Depoimentos</a></li>
                         <li class="mg-l-3"><a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Contato</a></li>
+                        <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Login</a></li>
                     </ul>
                 </nav>
             </div>
