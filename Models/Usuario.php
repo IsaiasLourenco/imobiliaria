@@ -56,7 +56,7 @@ class Usuario
         $this->cidade = $cidade;
         $this->estado = $estado;
         $this->imagem = $imagem;
-        $this->datacadastro = !empty($datacadastro) ? $datacadastro : date('Y-m-d H:i:s');
+        $this->datacadastro = !empty($datacadastro) ? $datacadastro : date('Y-m-d');
         $this->ativo = $ativo;
     }
 

@@ -6,7 +6,7 @@
             <div class="saudar bg-branco pd-10">
                 <span class="fonte14">
                     <i class="fa-solid fa-handshake"></i>
-                    Seja bem vindo Usuário!
+                    Seja bem vindo <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; ?>
                 </span>
             </div>
             <ul class="pd-10">
@@ -53,6 +53,7 @@
                         </a>
                     </li>
                 </ul>
+
                 <div class="divider mg-t-1 mg-b-1"></div>
                 <?php if ($_GET['controller'] == 'PainelController' && $_GET['metodo'] == 'index'): ?>
                 <?php else:

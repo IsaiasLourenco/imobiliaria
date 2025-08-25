@@ -1,8 +1,11 @@
-<?php 
-    if ($_GET) {
-        $controller = strtolower(str_replace("Controller", "", $_GET['controller']));
-        $metodo = strtolower($_GET['metodo']);
-    }
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if ($_GET) {
+    $controller = strtolower(str_replace("Controller", "", $_GET['controller']));
+    $metodo = strtolower($_GET['metodo']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -12,19 +15,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imobiliaria - Vetor256.</title>
     <!-- CARREGANDO JS -->
-     <script src="lib/js/animacoes.js"></script>
-     <script src="lib/js/passaComEnter.js"></script>
-     <script src="lib/js/buscaCep.js"></script>
-     <script src="lib/js/cadeadoProprietario.js"></script>
-     <script src="lib/js/cadeadoUsuario.js"></script>
-     <script src="lib/js/verSenha.js"></script>
-     <script src="lib/js/carregarImagem.js"></script>
-     <script src="lib/js/galeria.js"></script>
-     <script src="lib/js/formatarCamposImovel.js"></script>
-     <script src="lib/js/selecionar.js"></script>
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-     <script src="lib/js/mascaras.js"></script>
+    <script src="lib/js/animacoes.js"></script>
+    <script src="lib/js/passaComEnter.js"></script>
+    <script src="lib/js/buscaCep.js"></script>
+    <script src="lib/js/cadeadoProprietario.js"></script>
+    <script src="lib/js/cadeadoUsuario.js"></script>
+    <script src="lib/js/verSenha.js"></script>
+    <script src="lib/js/carregarImagem.js"></script>
+    <script src="lib/js/galeria.js"></script>
+    <script src="lib/js/formatarCamposImovel.js"></script>
+    <script src="lib/js/selecionar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="lib/js/mascaras.js"></script>
     <!-- Fontawesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
     <!-- Fontes Externas -->
@@ -54,12 +57,17 @@
             <div class="box-6">
                 <nav class="wd-100 mg-t-1">
                     <ul class="flex justify-end">
-                        <li class="mg-l-3"><a href="#home" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
-                        <li class="mg-l-3"><a href="#comprar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Compras</a></li>
-                        <li class="mg-l-3"><a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Aluguéis</a></li>
-                        <li class="mg-l-3"><a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Depoimentos</a></li>
-                        <li class="mg-l-3"><a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Contato</a></li>
-                        <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Login</a></li>
+                        <?php if (!isset($controller)): ?>
+                            <li class="mg-l-3"><a href="#home" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
+                            <li class="mg-l-3"><a href="#comprar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Compras</a></li>
+                            <li class="mg-l-3"><a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Aluguéis</a></li>
+                            <li class="mg-l-3"><a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Depoimentos</a></li>
+                            <li class="mg-l-3"><a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Contato</a></li>
+                            <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Login</a></li>
+                        <?php else: ?>
+                            <li class="mg-l-3"><a href="index.php" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
+                            <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Login</a></li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
             </div>

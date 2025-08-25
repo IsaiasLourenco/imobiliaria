@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+session_start();
+
 use App\Models\Dao\UsuarioDao;
 use App\Services\UsuarioService;
 use App\Models\Notifications;
@@ -142,11 +144,38 @@ class UsuarioController extends Notifications
         }
     }
 
-    public function autenticar() {
+    public function autenticar()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $usuario = $_POST['usuario'] ?? '';
+            $senha = $_POST['senha'] ?? '';
 
+            $dadosUsuario = $this->usuarioDao->autenticar($usuario);
+            if (!empty($dadosUsuario) && password_verify($senha, $dadosUsuario[0]->senha)) {
+                $this->gerarSessao($dadosUsuario);
+                header("location:index.php?controller=PainelController&metodo=index");
+                exit;
+            } else {
+                echo $this->loginError('Usuário ou senha incorretos');
+                echo "<meta http-equiv='refresh' content='3;url=index.php'>";
+                exit;
+            }
+        } else {
+            require_once 'Views/usuario/autenticar.php';
         }
-        require_once 'Views/usuario/autenticar.php';
     }
 
+    public function gerarSessao($usuario)
+    {
+        $_SESSION['id'] = $usuario[0]->id;
+        $_SESSION['nome'] = $usuario[0]->nome;
+        $_SESSION['imagem'] = $usuario[0]->imagem;
+    }
+
+    public function logout()
+    {
+        $_SESSION = [];
+        session_destroy();
+        header("location:index.php");
+    }
 }

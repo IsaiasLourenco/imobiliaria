@@ -49,8 +49,6 @@ class UsuarioDao extends Conexao
         );
     }
 
-
-
     public function adicionar(Usuario $usuario)
     {
         $atributos = array_keys($usuario->atributosPreenchidos());
@@ -81,4 +79,10 @@ class UsuarioDao extends Conexao
         $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+    public function autenticar($usuario) {
+        // return $this->listar("USUARIO", "WHERE usuario '". $usuario ."'");
+        return $this->listar("usuario", "WHERE usuario = ?", [$usuario]);
+    }
+
 }

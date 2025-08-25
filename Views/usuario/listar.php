@@ -36,7 +36,7 @@
         ?>
                 <tr>
                     <td class="fonte10 espaco-letra fw-300 txt-c">
-                        <?= date('d/m/Y H:i:s', strtotime($valores->datacadastro)); ?>
+                        <?= date('d/m/Y', strtotime($valores->datacadastro)); ?>
                     </td>
                     <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->nome; ?></td>
                     <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->usuario; ?></td>
