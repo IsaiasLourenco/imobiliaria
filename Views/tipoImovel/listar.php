@@ -8,7 +8,7 @@
     </div>
 
     <div class="box-4 flex justify-center item-centro">
-        <a href="index.php?controller=ProprietarioController&metodo=cadastrar" class="btn-novo">
+        <a href="index.php?controller=TipoImovelController&metodo=cadastrar" class="btn-novo">
             <i class="fa-solid fa-building"></i>
             <i class="fa-solid fa-plus"></i>
             Novo Tipo de Imóvel
@@ -32,10 +32,10 @@
                 <tr>
                     <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->descricao; ?></td>
                     <td class="fonte10 espaco-letra fw-300 txt-c">
-                        <a href="index.php?controller=ProprietarioController&metodo=apagar&id=<?= $valores->id; ?>">
+                        <a href="index.php?controller=TipoImovelController&metodo=apagar&id=<?= $valores->id; ?>">
                             <i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i>
                         </a>
-                        <a href="index.php?controller=ProprietarioController&metodo=cadastrar&id=<?= $valores->id; ?>">
+                        <a href="index.php?controller=TipoImovelController&metodo=cadastrar&id=<?= $valores->id; ?>">
                             <i class="fa-solid fa-pen fnc-azul fonte14" title="Editar Registro"></i>
                         </a>
                     </td>

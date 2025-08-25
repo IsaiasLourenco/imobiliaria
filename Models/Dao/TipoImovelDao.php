@@ -29,4 +29,22 @@ class TipoImovelDao extends Conexao
         );
     }
 
+    public function adicionar(TipoImovel $tipoImovel)
+    {
+        $atributos = array_keys($tipoImovel->atributosPreenchidos());
+        $valores = array_values($tipoImovel->atributosPreenchidos());
+        return $this->inserir('tipoimovel', $atributos, $valores);
+    }
+
+    public function editar(TipoImovel $tipoImovel)
+    {
+        $atributos = array_keys($tipoImovel->atributosPreenchidos());
+        $valores = array_values($tipoImovel->atributosPreenchidos());
+        return $this->update('tipoimovel', $atributos, $valores, $tipoImovel->getId());
+    }
+
+    public function apagar($id)
+    {
+        return $this->deletar('tipoimovel', $id);
+    }
 }

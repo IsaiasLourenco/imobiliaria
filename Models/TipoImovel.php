@@ -24,16 +24,6 @@ class TipoImovel
         return $this->descricao;
     }
 
-    // public function setId(int $id): void
-    // {
-    //     $this->id = $id;
-    // }
-
-    // public function setDescricao(string $descricao): void
-    // {
-    //     $this->descricao = $descricao;
-    // }
-
 
     public function setId($id)
     {
@@ -45,17 +35,19 @@ class TipoImovel
         return $this->descricao = $descricao;
     }
 
-    public function atributosPreenchidos()
+    public function atributosPreenchidos($modo = 'insert')
     {
         $atributos = [];
 
-        if (!empty($this->descricao)) {
+        if ($modo === 'update') {
             $atributos['descricao'] = $this->descricao;
-        }
-
-        // Se quiser incluir o ID (geralmente no update, não no insert)
-        if (!empty($this->id)) {
-            $atributos['id'] = $this->id;
+            if (!empty($this->id)) {
+                $atributos['id'] = $this->id;
+            }
+        } else {
+            if (!empty($this->descricao)) {
+                $atributos['descricao'] = $this->descricao;
+            }
         }
 
         return $atributos;
