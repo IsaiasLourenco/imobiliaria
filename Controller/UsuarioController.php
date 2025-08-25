@@ -170,6 +170,7 @@ class UsuarioController extends Notifications
         $_SESSION['id'] = $usuario[0]->id;
         $_SESSION['nome'] = $usuario[0]->nome;
         $_SESSION['imagem'] = $usuario[0]->imagem;
+        $_SESSION['logado'] = true;
     }
 
     public function logout()

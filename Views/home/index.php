@@ -23,48 +23,60 @@ require_once 'Views/shared/header.php';
             <h3 class="fonte22 fnc-preto-azulado fw-300 espaco-letra txt-c mg-t-2">Oportunidades para</h3>
             <h4 class="fonte46 fnc-preto-azulado espaco-letra txt-c mg-t-2">Compra</h4>
         </div>
-        <div class="box-12 flex justify-center mg-t-2">
-            <div class="box-4 shadow-down pdp-b-2">
-                <!-- IMAGEM DO IMÓVEL -->
-                <div class="box-12">
-                    <img src="lib/img/imagens/casa6.jpg" alt="Imagem do Imóvel">
-                </div>
-                <!-- ENDEREÇO DO IMÓVEL -->
-                <div class="box-12">
-                    <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte16 espaco-letra fw-bold fnc-preto-azulado">
-                        Rua Celina, 144 - Jardim Alvorada <br>
-                        <span>Mogi Guaçu - SP</span>
-                    </p>
-                </div>
-                <!-- VALOR DO IMÓVEL -->
-                <div class="box-12">
-                    <p class="fnc-azul-hover txt-c mg-t-2 roboto-condensed fonte16 fw-300 fnc-preto-azulado">
-                        R$ 350.000,00
-                    </p>
-                    <div class="divider"></div>
-                </div>
-                <!-- DETALHES DO IMÓVEL -->
-                <div class="box-12 mg-t-2">
-                    <div class="box-3 txt-c">
-                        <i class="fa-solid fa-bed fonte20 fnc-vermelho-hover" title="Cômodos"></i>
-                    </div>
-                    <div class="box-3 txt-c">
-                        <i class="fa-solid fa-shower fonte20 fnc-vermelho-hover" title="Banheiros"></i>
-                    </div>
-                    <div class="box-3 txt-c">
-                        <i class="fa-regular fa-square fonte20 fnc-vermelho-hover" title="Área Total"></i>
-                    </div>
-                    <div class="box-3 txt-c">
-                        <i class="fa-solid fa-square-check fonte20 fnc-vermelho-hover" title="Área Construída"></i>
-                    </div>
-                </div>
-                <div class="box-12 mg-t-2">
-                    <div class="box-3 txt-c">4</div>
-                    <div class="box-3 txt-c">2</div>
-                    <div class="box-3 txt-c">350m²</div>
-                    <div class="box-3 txt-c">55m²</div>
-                </div>
-            </div>
+        <div class="box-12 flex justify-start flex-wrap mg-t-2">
+            <?php
+            if (isset($imoveis) && count($imoveis) > 0):
+                foreach ($imoveis as $dados):
+                    if ($dados->finalidade == 1):
+            ?>
+                        <div class="box-4 shadow-down pd-b-2 mg-b-2">
+                            <!-- IMAGEM DO IMÓVEL -->
+                            <div class="box-12 imagemcapa">
+                                <img src="lib/img/imagens/<?php echo $dados->imagemcapa; ?>" alt="Imagem do Imóvel">
+                            </div>
+                            <!-- ENDEREÇO DO IMÓVEL -->
+                            <div class="box-12 endereco">
+                                <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte16 espaco-letra fw-bold fnc-preto-azulado">
+                                    <?php echo $dados->logradouro ?>, <?php echo $dados->numero ?> <?php echo $dados->complemento ?> - <?php echo $dados->bairro ?> <br>
+                                    <span><?php echo $dados->cidade ?> - <?php echo $dados->estado ?></span>
+                                </p>
+                            </div>
+                            <!-- VALOR DO IMÓVEL -->
+                            <div class="box-12">
+                                <p class="fnc-azul-hover txt-c mg-t-2 roboto-condensed fonte16 fw-300 fnc-preto-azulado">
+                                    <?php echo 'R$ ' . number_format($dados->valor, 2, ',', '.'); ?>
+                                </p>
+                                <div class="divider"></div>
+                            </div>
+                            <!-- DETALHES DO IMÓVEL -->
+                            <div class="box-12 mg-t-2">
+                                <div class="box-3 txt-c">
+                                    <i class="fa-solid fa-bed fonte20 fnc-vermelho-hover" title="Cômodos"></i>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <i class="fa-solid fa-shower fonte20 fnc-vermelho-hover" title="Banheiros"></i>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <i class="fa-regular fa-square fonte20 fnc-vermelho-hover" title="Área Total"></i>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <i class="fa-solid fa-square-check fonte20 fnc-vermelho-hover" title="Área Construída"></i>
+                                </div>
+                            </div>
+                            <div class="box-12 mg-t-2">
+                                <div class="box-3 txt-c"><?php echo str_pad($dados->quartos, 3, '0', STR_PAD_LEFT); ?></div>
+                                <div class="box-3 txt-c"><?php echo str_pad($dados->banheiros, 3, '0', STR_PAD_LEFT); ?></div>
+                                <div class="box-3 txt-c">
+                                    <?php echo $dados->areatotal . ' m²'; ?>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <?php echo $dados->areaconstruida . ' m²'; ?>
+                                </div>
+                            </div>
+                        </div>
+            <?php endif;
+                endforeach;
+            endif; ?>
         </div>
     </div>
 </section>
@@ -77,48 +89,60 @@ require_once 'Views/shared/header.php';
             <h3 class="fonte22 fnc-preto-azulado fw-300 espaco-letra txt-c mg-t-2">Oportunidades para</h3>
             <h4 class="fonte46 fnc-preto-azulado espaco-letra txt-c mg-t-2">Alugar</h4>
         </div>
-        <div class="box-12 flex justify-center mg-t-2">
-            <div class="box-4 shadow-down pdp-b-2">
-                <!-- IMAGEM DO IMÓVEL -->
-                <div class="box-12">
-                    <img src="lib/img/imagens/casa8.jpg" alt="Imagem do Imóvel">
-                </div>
-                <!-- ENDEREÇO DO IMÓVEL -->
-                <div class="box-12">
-                    <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte16 espaco-letra fw-bold fnc-preto-azulado">
-                        Rua Maldonado, 22 - Jardim Ypê <br>
-                        <span>Mogi Guaçu - SP</span>
-                    </p>
-                </div>
-                <!-- VALOR DO IMÓVEL -->
-                <div class="box-12">
-                    <p class="fnc-azul-hover txt-c mg-t-2 roboto-condensed fonte16 fw-300 fnc-preto-azulado">
-                        R$ 2.000,00 por mês
-                    </p>
-                    <div class="divider"></div>
-                </div>
-                <!-- DETALHES DO IMÓVEL -->
-                <div class="box-12 mg-t-2">
-                    <div class="box-3 txt-c">
-                        <i class="fa-solid fa-bed fonte20 fnc-vermelho-hover" title="Cômodos"></i>
-                    </div>
-                    <div class="box-3 txt-c">
-                        <i class="fa-solid fa-shower fonte20 fnc-vermelho-hover" title="Banheiros"></i>
-                    </div>
-                    <div class="box-3 txt-c">
-                        <i class="fa-regular fa-square fonte20 fnc-vermelho-hover" title="Área Total"></i>
-                    </div>
-                    <div class="box-3 txt-c">
-                        <i class="fa-solid fa-square-check fonte20 fnc-vermelho-hover" title="Área Construída"></i>
-                    </div>
-                </div>
-                <div class="box-12 mg-t-2">
-                    <div class="box-3 txt-c">2</div>
-                    <div class="box-3 txt-c">1</div>
-                    <div class="box-3 txt-c">250m²</div>
-                    <div class="box-3 txt-c">40m²</div>
-                </div>
-            </div>
+        <div class="box-12 flex justify-start flex-wrap mg-t-2">
+            <?php
+            if (isset($imoveis) && count($imoveis) > 0):
+                foreach ($imoveis as $dados):
+                    if ($dados->finalidade == 2):
+            ?>
+                        <div class="box-4 shadow-down pd-b-2 mg-b-2">
+                            <!-- IMAGEM DO IMÓVEL -->
+                            <div class="box-12 imagemcapa">
+                                <img src="lib/img/imagens/<?php echo $dados->imagemcapa; ?>" alt="Imagem do Imóvel">
+                            </div>
+                            <!-- ENDEREÇO DO IMÓVEL -->
+                            <div class="box-12 endereco">
+                                <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte16 espaco-letra fw-bold fnc-preto-azulado">
+                                    <?php echo $dados->logradouro ?>, <?php echo $dados->numero ?> <?php echo $dados->complemento ?> - <?php echo $dados->bairro ?> <br>
+                                    <span><?php echo $dados->cidade ?> - <?php echo $dados->estado ?></span>
+                                </p>
+                            </div>
+                            <!-- VALOR DO IMÓVEL -->
+                            <div class="box-12">
+                                <p class="fnc-azul-hover txt-c mg-t-2 roboto-condensed fonte16 fw-300 fnc-preto-azulado">
+                                    <?php echo 'R$ ' . number_format($dados->valor, 2, ',', '.'); ?> por mês
+                                </p>
+                                <div class="divider"></div>
+                            </div>
+                            <!-- DETALHES DO IMÓVEL -->
+                            <div class="box-12 mg-t-2">
+                                <div class="box-3 txt-c">
+                                    <i class="fa-solid fa-bed fonte20 fnc-vermelho-hover" title="Cômodos"></i>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <i class="fa-solid fa-shower fonte20 fnc-vermelho-hover" title="Banheiros"></i>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <i class="fa-regular fa-square fonte20 fnc-vermelho-hover" title="Área Total"></i>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <i class="fa-solid fa-square-check fonte20 fnc-vermelho-hover" title="Área Construída"></i>
+                                </div>
+                            </div>
+                            <div class="box-12 mg-t-2">
+                                <div class="box-3 txt-c"><?php echo str_pad($dados->quartos, 3, '0', STR_PAD_LEFT); ?></div>
+                                <div class="box-3 txt-c"><?php echo str_pad($dados->banheiros, 3, '0', STR_PAD_LEFT); ?></div>
+                                <div class="box-3 txt-c">
+                                    <?php echo $dados->areatotal . ' m²'; ?>
+                                </div>
+                                <div class="box-3 txt-c">
+                                    <?php echo $dados->areaconstruida . ' m²'; ?>
+                                </div>
+                            </div>
+                        </div>
+            <?php endif;
+                endforeach;
+            endif; ?>
         </div>
     </div>
 </section>

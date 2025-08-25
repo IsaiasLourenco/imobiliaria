@@ -273,3 +273,20 @@ input[type='file'] {
 .ativo i {
     cursor: pointer;
 }
+
+.imagemcapa {
+    height: 250px;
+}
+
+.imagemcapa img {
+    min-width: 100%;
+    height: 250px;
+}
+
+.endereco {
+    min-height: 80px; /* ajuste conforme necessário */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

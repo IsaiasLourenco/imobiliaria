@@ -1,4 +1,8 @@
-<?php require_once "Views/shared/header.php"; ?>
+<?php require_once "Views/shared/header.php";
+if (!isset($_SESSION['logado'])) {
+    header("location:index.php");
+}
+?>
 <section class="painel">
     <div class="container-cem">
         <!-- MENU DE NAVEGAÇÃO -->
@@ -6,7 +10,7 @@
             <div class="saudar bg-branco pd-10">
                 <span class="fonte14">
                     <i class="fa-solid fa-handshake"></i>
-                    Seja bem vindo <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; ?>
+                    Seja bem vindo(a) <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; ?>
                 </span>
             </div>
             <ul class="pd-10">
@@ -35,7 +39,7 @@
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
-                    <a href="" class="fonte14 fnc-cinza">
+                    <a href="index.php?controller=UsuarioController&metodo=logout" class="fonte14 fnc-cinza">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         Sair
                     </a>

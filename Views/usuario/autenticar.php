@@ -1,7 +1,7 @@
 <?php
 require_once "Views/shared/header.php";
 ?>
-
+<link rel="stylesheet" href="lib/css/login.css">
 <section class="login">
     <div class="container">
         <div class="box-12 mg-t-2 flex justify-center">
