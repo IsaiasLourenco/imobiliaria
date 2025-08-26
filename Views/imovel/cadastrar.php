@@ -25,7 +25,7 @@ $areaTotalFormatada = isset($imovel) && isset($imovel->areatotal) ? $imovel->are
 $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $imovel->areaconstruida . ' m²' : '';
 ?>
 
-<form action="" method="POST" class="box-12" enctype="multipart/form-data">
+<form method="POST" class="box-12" enctype="multipart/form-data">
 
     <div class="row">
         <div class="box-2" style="background-color: transparent; color: #333;">

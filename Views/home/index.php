@@ -268,24 +268,28 @@ require_once 'Views/shared/header.php';
         <!-- FORMULÁRIO PARA ENVIO -->
         <div class="box-6">
             <h3 class="fonte22 fnc-branco espaco-letra txt-c mg-t-2 mg-b-2">Entre em contato!</h3>
-            <form action="" method="POST">
+            <form method="POST">
                 <div class="box-12 mg-b-2">
                     <label class="fnc-branco" for="nome">Nome</label>
-                    <input type="text" name="nome">
+                    <input tabindex="1" type="text" name="nome" id="nome" required>
                 </div>
                 <div class="box-12 mg-b-2">
                     <label class="fnc-branco" for="email">E-mail</label>
-                    <input type="email" name="email">
+                    <input tabindex="2" type="email" name="email" id="email" required>
+                </div>
+                <div class="box-12 mg-b-2">
+                    <label class="fnc-branco" for="telefone">Telefone</label>
+                    <input tabindex="3" type="text" name="telefone" id="telefone" required>
                 </div>
                 <div class="box-12 flex mg-b-2">
                     <div class="box-3 flex justify-start">
                         <label class="fnc-branco" for="motivo">Motivo</label>
                     </div>
                     <div class="box-4 flex" style="align-items: center;">
-                        <span class="fnc-branco">Comprar</span><input type="radio" name="motivo">
+                        <span class="fnc-branco">Comprar</span><input type="radio" name="motivo" value="Comprar">
                     </div>
                     <div class="box-4 flex" style="align-items: center;">
-                        <span class="fnc-branco">Alugar</span><input type="radio" name="motivo">
+                        <span class="fnc-branco">Alugar</span><input type="radio" name="motivo" value="Alugar">
                     </div>
                 </div>
                 <div class="box-12 mg-b-2">

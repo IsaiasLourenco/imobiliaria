@@ -15,7 +15,7 @@
 </div>
 <div class="limpar"></div>
 <div class="divider mg-b-2 mg-t-2"></div>
-<form action="" method="POST" class="box-12">
+<form method="POST" class="box-12">
 
     <div class="row">
         <div class="box-2" style="background-color: transparent; color: #333;">

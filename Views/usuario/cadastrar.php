@@ -16,11 +16,11 @@
 <div class="limpar"></div>
 <div class="divider mg-b-2 mg-t-2"></div>
 
-<form action="" method="POST" class="box-12" enctype="multipart/form-data">
+<form method="POST" class="box-12" enctype="multipart/form-data">
 
     <div class="row">
         <div class="box-3">
-            <label for="">Nome</label>
+            <label for="nome">Nome</label>
             <input tabindex="1" type="text" name="nome" value="<?= $usuario->getNome() ?>" autofocus required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
