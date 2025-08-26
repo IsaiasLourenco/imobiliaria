@@ -11,6 +11,7 @@ class Contato
     private $telefone;
     private $motivo;
     private $mensagem;
+    private $ativo;
 
     public function __construct(
         ?int $id = 0,
@@ -20,6 +21,7 @@ class Contato
         ?string $telefone = '',
         ?string $motivo = '',
         ?string $mensagem = '',
+        ?string $ativo = '',
     ) {
         $this->id = $id;
         $this->datamensagem = !empty($datamensagem) ? $datamensagem : date('Y-m-d');
@@ -28,6 +30,7 @@ class Contato
         $this->telefone = $telefone;
         $this->motivo = $motivo;
         $this->mensagem = $mensagem;
+        $this->ativo = $ativo;
     }
 
     public function getId(): int
@@ -57,6 +60,7 @@ class Contato
             'telefone' => $this->telefone,
             'motivo' => $this->motivo,
             'mensagem' => $this->mensagem,
+            'ativo' => $this->ativo,
         ];
     }
 

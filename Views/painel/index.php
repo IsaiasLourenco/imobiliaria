@@ -65,8 +65,51 @@ if (!isset($_SESSION['logado'])) {
                 </ul>
 
                 <div class="divider mg-t-1 mg-b-1"></div>
-                <?php if ($_GET['controller'] == 'PainelController' && $_GET['metodo'] == 'index'): ?>
-                <?php else:
+                <?php if ($_GET['controller'] == 'PainelController' && $_GET['metodo'] == 'index'):
+                    if (isset($mensagens) && count($mensagens) > 0):
+                        $qtdMsg = count($mensagens);
+                ?>
+                        <div class="box-12 flex justify-end">
+                            <div class="total-msg flex justify-center item-centro">
+                                <span class="fnc-vermelho fw-bold">
+                                    <?php echo $qtdMsg ?>
+                                </span>
+                            </div>
+                            <div class="icon-msg">
+                                <i class="fa-solid fa-envelope fonte20 fnc-vermelho"></i>
+                            </div>
+                        </div>
+                        <!-- Listando as mensagens de contato dos clients -->
+                        <?php foreach ($mensagens as $mensagem): ?>
+                            <div id="mensagens" class="box-4 mod borda-light shadow-down mg-b-2">
+                                <p class="fonte14 poppins-medium fw-bold fnc-preto-azulado"><i class="fa-solid fa-user fnc-vermelho"></i>
+                                    Nome: <?php echo $mensagem->nome; ?> <br></p>
+                                <p class="fonte12 fnc-preto-azulado">
+                                    <i class="fa-solid fa-envelope fnc-vermelho"></i>
+                                    <span class="fw-bold">Email:</span>
+                                    <span class="fw-normal"><?php echo $mensagem->email; ?></span><br>
+
+                                    <i class="fa-solid fa-phone fnc-vermelho"></i>
+                                    <span class="fw-bold">Telefone:</span>
+                                    <span class="fw-normal"><?php echo $mensagem->telefone; ?></span><br>
+
+                                    <i class="fa-solid fa-question fnc-vermelho"></i>
+                                    <span class="fw-bold">Motivo:</span>
+                                    <span class="fw-normal"><?php echo $mensagem->motivo; ?></span><br>
+
+                                    <i class="fa-solid fa-calendar-days fnc-vermelho mg-b-1"></i>
+                                    <span class="fw-bold mg-b-1">Data da Mensagem:</span>
+                                    <span class="fw-normal mg-b-1"><?php echo date('d/m/Y', strtotime($mensagem->datamensagem)); ?></span><br>
+                                <div style="display: block;" class="msg-cli">
+                                    <i class="fa-solid fa-message fnc-vermelho"></i>
+                                    <span class="fw-bold">Mensagem:</span> <br>
+                                    <span class="fw-normal"><?php echo $mensagem->mensagem; ?></span>
+                                </div>
+                                </p>
+                            </div>
+                <?php endforeach;
+                    endif;
+                else:
                     if (isset($view)) {
                         require_once $view;
                     } else {

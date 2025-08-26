@@ -9,7 +9,7 @@ class ContatoDao extends Conexao
 {
     public function listarTodos()
     {
-        return $this->listar("contato");
+        return $this->listar("contato", "WHERE ativo = 1");
     }
 
     public function buscarContatoPorId($id)

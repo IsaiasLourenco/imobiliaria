@@ -290,3 +290,14 @@ input[type='file'] {
     justify-content: center;
     text-align: center;
 }
+
+.total-msg {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #f9b6b6;
+}
+
+.msg-cli {
+     border: 1px solid #ddd;
+}
