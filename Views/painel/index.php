@@ -39,6 +39,12 @@ if (!isset($_SESSION['logado'])) {
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
+                    <a href="index.php?controller=FinalidadeController&metodo=listar" class="fonte14 fnc-cinza">
+                        <i class="fa-solid fa-key"></i>
+                        Finalidade dos Imóveis
+                    </a>
+                </li>
+                <li class="mg-b-1 pd-b-1">
                     <a href="index.php?controller=UsuarioController&metodo=logout" class="fonte14 fnc-cinza">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         Sair
