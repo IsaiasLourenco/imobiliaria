@@ -1,20 +1,34 @@
-<?php 
-    namespace App\Controller;
+<?php
 
-    use App\Models\Dao\ContatoDao;
-    use App\Models\Contato;
+namespace App\Controller;
 
-    class PainelController {
+use App\Models\Dao\ContatoDao;
+use App\Models\Contato;
+use App\Models\Conexao;
+use App\Services\ContatoService;
 
-        private $contatoDao;
+class PainelController
+{
+    private $contatoDao;
 
-        public function __construct() {
-            $this->contatoDao = new ContatoDao();
-        }
+    public function __construct()
+    {
+        $this->contatoDao = new ContatoDao();
+    }
 
-        function index(): void {
-            $mensagens = $this->contatoDao->listarTodos();
-            require_once 'Views/painel/index.php';
+    public function index(): void
+    {
+        $mensagens = $this->contatoDao->listarTodos();
+        require_once 'Views/painel/index.php';
+    }
+
+    public function marcarComoLida()
+    {
+        $id = $_GET['id'] ?? null;
+        $ativo = $_GET['ativo'] ?? null;
+
+        if ($id !== null && $ativo !== null) {
+            ContatoService::marcarComoLida($id, $ativo);
         }
     }
-?>
+}

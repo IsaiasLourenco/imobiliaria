@@ -284,7 +284,8 @@ input[type='file'] {
 }
 
 .endereco {
-    min-height: 80px; /* ajuste conforme necessário */
+    min-height: 80px;
+    /* ajuste conforme necessário */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -299,5 +300,34 @@ input[type='file'] {
 }
 
 .msg-cli {
-     border: 1px solid #ddd;
+    border: 1px solid #ddd;
+    height: 60px;
+    padding: 5px;
+    box-sizing: border-box;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.mod {
+    border-left: 8px solid #340b93;
+    border-radius: 10px;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fff;
+    position: absolute;
+
+}
+
+.checkbox-lida {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.check-lida {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }

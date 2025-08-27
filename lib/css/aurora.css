@@ -1104,7 +1104,7 @@ a {
 
 .grid td {
     height: 3rem;
-    vertical-align: middle;
+    vertical-align: middle; 
 }
 
 .zebra:nth-child(odd) {

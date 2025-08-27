@@ -46,7 +46,7 @@ if ($_GET) {
         <div class="container">
 
             <div class="box-6 flex justify-start item-centro">
-                <a href="index.php">
+                <a href="index.php?controller=UsuarioController&metodo=logout">
                     <h1 class="fonte36 fnc-branco">Imobiliária<span class="fonte22 fw-300"> - Vetor256.</span></h1>
                 </a>
                 <a href="https://www.facebook.com/NewProfileIsaiasLourenco" target="_blank" title="Visite nosso Facebook"><i class="fa-brands fa-facebook-f  fonte22 fnc-branco mg-r-3 fnc-vermelho-hover mg-l-14"></i></a>
