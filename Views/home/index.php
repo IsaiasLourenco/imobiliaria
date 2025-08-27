@@ -74,7 +74,7 @@ require_once 'Views/shared/header.php';
                                 </div>
                             </div>
                             <div class="box-12">
-                                <a href="" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
+                                <a href="index.php?controller=ImovelController&metodo=detalhespublico&id=<?php echo $dados->id; ?>" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
                             </div>
                         </div>
             <?php endif;
@@ -143,7 +143,7 @@ require_once 'Views/shared/header.php';
                                 </div>
                             </div>
                             <div class="box-12">
-                                <a href="" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
+                                <a href="index.php?controller=ImovelController&metodo=detalhespublico&id=<?php echo $dados->id; ?>" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
                             </div>
                         </div>
             <?php endif;

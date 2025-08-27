@@ -136,16 +136,17 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
         </div>
         <div class="box-4">
             <?php
-            $imagem = isset($imovel) && isset($imovel->imagemcapa) ? $imovel->imagemcapa : 'sem-foto.jpg';
+            $imagem = isset($imovel) && isset($imovel->imagemcapa) ? $imovel->imagemcapa : 'casa-padrao.png';
             $dirImagem = 'lib/img/imagens/' . $imagem;
-            $imagemAlt = $imagem === 'sem-foto.jpg' ? 'Escolha uma imagem...' : 'Imagem do Imóvel.';
+            $imagemAlt = $imagem === 'casa-padrao.png' ? 'Escolha uma imagem...' : 'Imagem do Imóvel.';
             ?>
             <label for="img" class="fonte14 fnc-preto-azulado" style="cursor: pointer;">
                 <i class="fa-solid fa-file-image fonte20"></i>
                 <?= $imagemAlt ?>
             </label>
             <input tabindex="13" type="file" id="img" name="imagem" value="<?= $imagem ?>" onchange="mostrar(this)">
-            <img class="logo-100" id="foto" src="<?= $dirImagem ?>" alt="<?= $imagemAlt ?>">
+            <img class="logo-100" id="foto" src="<?= $dirImagem ?>" alt="<?= $imagemAlt ?>>" 
+            onerror="this.onerror=null; this.src='lib/img/imagens/casa-padrao.png';"
         </div>
     </div>
 

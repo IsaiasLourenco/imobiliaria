@@ -238,6 +238,20 @@ class ImovelController extends Notifications
             echo $this->error('Imovel', 'Visualizar', 'listar');
         }
     }
+    
+    public function detalhespublico()
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $imovel = $this->imovelDao->buscarUnicoImovelPorId($id);
+            $imagens = $this->imagemImovelDao->buscarPorImovel($id);
+            require 'Views/shared/header-login.php';
+            require 'Views/imovel/detalhespublico.php';
+            require 'Views/shared/footer.php';
+        } else {
+            echo $this->error('Imovel', 'Visualizar', 'listar');
+        }
+    }
 
     // Fotos do imóvel
     public function fotos()
