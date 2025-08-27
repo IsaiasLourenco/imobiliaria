@@ -1,5 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
+$usuarioLogado = isset($_SESSION['logado']) && $_SESSION['logado'] === true;
 
 use App\Models\Dao\ImovelDao;
 use App\Models\Dao\TipoImovelDao;
@@ -95,7 +96,9 @@ if (!$proprietario) {
 
     <!-- Ações -->
     <div class="acoes">
-        <a href="index.php?controller=ImovelController&metodo=listar" class="btn-listar-todos">✅ Listar todos os imóveis</a>
+        <?php if ($usuarioLogado): ?>
+            <a href="index.php?controller=ImovelController&metodo=listar" class="btn-listar-todos">✅ Listar todos os imóveis</a>
+        <?php endif; ?>
         <a href="index.php?controller=ImovelController&metodo=fotos&id=<?= (int)$imovel->id ?>" class="btn-ver-fotos">📸 Ver galeria de fotos</a>
         <button class="btn-favoritar">❤️ Favoritar</button>
         <button class="btn-compartilhar">🔗 Compartilhar</button>

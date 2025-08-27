@@ -58,15 +58,14 @@ if ($_GET) {
                 <nav class="wd-100 mg-t-1">
                     <ul class="flex justify-end">
                         <?php if (!isset($controller)): ?>
-                            <li class="mg-l-3"><a href="#home" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
-                            <li class="mg-l-3"><a href="#comprar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Compras</a></li>
-                            <li class="mg-l-3"><a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Aluguéis</a></li>
-                            <li class="mg-l-3"><a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Depoimentos</a></li>
-                            <li class="mg-l-3"><a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Contato</a></li>
-                            <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Login</a></li>
-                        <?php else: ?>
-                            <li class="mg-l-3"><a href="index.php" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Home</a></li>
-                            <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16">Login</a></li>
+                            <li class="mg-l-3"><a href="#home" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Home</a></li>
+                            <li class="mg-l-3"><a href="#comprar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Compras</a></li>
+                            <li class="mg-l-3"><a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Aluguéis</a></li>
+                            <li class="mg-l-3"><a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Depoimentos</a></li>
+                            <li class="mg-l-3"><a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Contato</a></li>
+                            <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Login</a></li>
+                            <li class="mg-l-3"><a href="index.php" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Home</a></li>
+                            <li class="mg-l-3"><a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte14">Login</a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>

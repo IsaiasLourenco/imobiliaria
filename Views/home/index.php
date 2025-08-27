@@ -73,6 +73,9 @@ require_once 'Views/shared/header.php';
                                     <?php echo $dados->areaconstruida . ' m²'; ?>
                                 </div>
                             </div>
+                            <div class="box-12">
+                                <a href="" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
+                            </div>
                         </div>
             <?php endif;
                 endforeach;
@@ -138,6 +141,9 @@ require_once 'Views/shared/header.php';
                                 <div class="box-3 txt-c">
                                     <?php echo $dados->areaconstruida . ' m²'; ?>
                                 </div>
+                            </div>
+                            <div class="box-12">
+                                <a href="" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
                             </div>
                         </div>
             <?php endif;
