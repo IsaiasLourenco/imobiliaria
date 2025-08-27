@@ -36,7 +36,7 @@ require_once 'Views/shared/header.php';
                             </div>
                             <!-- ENDEREÇO DO IMÓVEL -->
                             <div class="box-12 endereco">
-                                <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte16 espaco-letra fw-bold fnc-preto-azulado">
+                                <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte14 espaco-letra fw-bold fnc-preto-azulado">
                                     <?php echo $dados->logradouro ?>, <?php echo $dados->numero ?> <?php echo $dados->complemento ?> - <?php echo $dados->bairro ?> <br>
                                     <span><?php echo $dados->cidade ?> - <?php echo $dados->estado ?></span>
                                 </p>
@@ -102,7 +102,7 @@ require_once 'Views/shared/header.php';
                             </div>
                             <!-- ENDEREÇO DO IMÓVEL -->
                             <div class="box-12 endereco">
-                                <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte16 espaco-letra fw-bold fnc-preto-azulado">
+                                <p class=" txt-c fnc-vermelho-hover pd-l-2 mg-t-2 roboto-condensed fonte14 espaco-letra fw-bold fnc-preto-azulado">
                                     <?php echo $dados->logradouro ?>, <?php echo $dados->numero ?> <?php echo $dados->complemento ?> - <?php echo $dados->bairro ?> <br>
                                     <span><?php echo $dados->cidade ?> - <?php echo $dados->estado ?></span>
                                 </p>
