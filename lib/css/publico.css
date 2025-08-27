@@ -16,3 +16,23 @@ body {
 footer {
     flex-shrink: 0;
 }
+
+/* Grid de miniaturas */
+.galeria-wrapper-publico {
+  margin-top: 20px;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 16px;
+  padding: 10px;
+}
+
+/* Título da galeria */
+.galeria-titulo-publico {
+  margin-left: 20px;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 10rem;
+}

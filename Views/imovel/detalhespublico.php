@@ -55,6 +55,9 @@
                 <p><strong>Nome:</strong> <?= htmlspecialchars($proprietario->nome ?? 'Não informado') ?></p>
                 <p><strong>Telefone:</strong> <?= htmlspecialchars($proprietario->contato ?? 'Não informado') ?></p>
                 <p><strong>Email:</strong> <?= htmlspecialchars($proprietario->email ?? 'Não informado') ?></p>
+                <h3>Interessado?</h3>
+                <h3>Entre em contato</h3>
+                
             </section>
 
             <!-- Imagem de capa -->
