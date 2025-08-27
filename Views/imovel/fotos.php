@@ -38,22 +38,33 @@
 <?php endif; ?>
 
 <?php if (isset($imovel) && !empty($imovel->id)): ?>
-    <form action="index.php?controller=ImovelController&metodo=adicionarImagemGaleria" method="POST" enctype="multipart/form-data" class="box-12">
-        <div class="box-4 btn-centralizado" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-left: 20px;">
-            <label for="imagem_galeria" class="fonte14 fnc-preto-azulado" style="cursor: pointer;">
-                <i class="fa-solid fa-images fonte20"></i>
-                Adicionar imagens à galeria
-            </label>
-            <!-- <input type="file" name="imagem_galeria" id="imagem_galeria" accept="image/*"> -->
-            <input type="file" name="imagem_galeria[]" id="imagem_galeria" accept="image/*" multiple>
-            <button type="submit" class="btn bg-azul bg-azul-claro-hover fnc-branco mg-t-2">
-                <i class="fas fa-plus"></i>
-                Adicionar imagens
-            </button>
-        </div>
+    <form action="index.php?controller=ImovelController&metodo=adicionarImagemGaleria"
+        method="POST" enctype="multipart/form-data"
+        class="box-12"
+        style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+
+        <label for="imagem_galeria" class="fonte14 fnc-preto-azulado" style="cursor: pointer;">
+            <i class="fa-solid fa-images fonte20"></i>
+            Adicionar imagens à galeria
+        </label>
+
+        <input type="file" name="imagem_galeria[]" id="imagem_galeria" accept="image/*" multiple>
+
+        <button type="submit" class="btn bg-azul bg-azul-claro-hover fnc-branco mg-t-2">
+            <i class="fas fa-plus"></i>
+            Adicionar imagens
+        </button>
+
+        <a href="index.php?controller=ImovelController&metodo=detalhes&id=<?= $imovel->id ?>"
+            class="btn bg-vermelho bg-vermelho-claro-hover fnc-branco mg-t-2"
+            style="border: 2px solid black;">
+            <i class="fa-solid fa-backward"></i>
+            Voltar para detalhes
+        </a>
 
         <input type="hidden" name="id" value="<?= (int)$imovel->id ?>">
     </form>
+
 <?php endif; ?>
 
 <!-- Lightbox / Modal -->

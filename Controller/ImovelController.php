@@ -275,6 +275,28 @@ class ImovelController extends Notifications
         }
     }
 
+    public function fotospublicas()
+    {
+        $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+        if ($id) {
+            $imovel = $this->imovelDao->buscarUnicoImovelPorId($id);
+
+            if (!$imovel) {
+                echo $this->error('Imovel', 'Não encontrado', 'listar');
+                return;
+            }
+
+            $fotos = $this->imagemImovelDao->buscarGaleriaPorImovel($id);
+
+            require 'Views/shared/header-login.php';
+            require 'Views/imovel/fotospublico.php';
+            require 'Views/shared/footer.php';
+        } else {
+            echo $this->error('Imovel', 'Visualizar Fotos', 'listar');
+        }
+    }
+
     public function confirmarExclusaoImagem()
     {
         $imagemId = $_GET['imagemId'] ?? null;

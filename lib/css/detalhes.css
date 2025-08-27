@@ -54,10 +54,10 @@
     margin-bottom: 1.5rem;
 }
 .detalhes-bloco h2 {
-    font-size: 1.3rem;
+    font-size: 2rem;
     margin-bottom: 0.8rem;
     padding-bottom: 0.3rem;
-    color: #444;
+    color: red;
 }
 .detalhes-bloco p,
 .detalhes-bloco li {
