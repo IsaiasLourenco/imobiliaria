@@ -121,7 +121,7 @@ class UsuarioController extends Notifications
         if ($id) {
             echo $this->confirm('Excluír', 'Usuario', '', $id);
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     function excluir()
@@ -131,7 +131,7 @@ class UsuarioController extends Notifications
             $this->usuarioDao->apagar($id);
             echo $this->success('Usuario', 'Excluído', 'listar');
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     public function alterarCadeado()

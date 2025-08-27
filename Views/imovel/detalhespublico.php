@@ -55,15 +55,19 @@
                 <p><strong>Nome:</strong> <?= htmlspecialchars($proprietario->nome ?? 'Não informado') ?></p>
                 <p><strong>Telefone:</strong> <?= htmlspecialchars($proprietario->contato ?? 'Não informado') ?></p>
                 <p><strong>Email:</strong> <?= htmlspecialchars($proprietario->email ?? 'Não informado') ?></p>
-                <h3>Interessado?</h3>
-                <h3>Entre em contato</h3>
-                
             </section>
 
             <!-- Imagem de capa -->
             <div class="imagem-capa">
                 <img src="lib/img/imagens/<?= htmlspecialchars($imovel->imagemcapa ?? 'sem-foto.jpg') ?>"
                     alt="Imagem do Imóvel" class="capa" onerror="this.onerror=null; this.src='lib/img/imagens/casa-padrao.png';">
+                <h3 class="txt-c mg-t-1">Interessado?<br>Entre em contato</h3>
+                <a href="https://wa.me/5519996745466?text=Olá, gostaria de saber mais sobre o imóvel código <?= urlencode($imovel->codigo) ?>."
+                    target="_blank"
+                    title="Nos mande uma mensagem"
+                    class="btn-big bg-whats bg-whats-hover">
+                    <i class="fa-brands fa-whatsapp fnc-branco fonte20"></i>
+                </a>
             </div>
 
             <!-- Características do Imóvel -->
@@ -106,3 +110,36 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector('.btn-favoritar').addEventListener('click', function() {
+        const id = <?= json_encode($imovel->id) ?>;
+        let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+        if (!favoritos.includes(id)) {
+            favoritos.push(id);
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            alert('Imóvel favoritado!');
+        } else {
+            alert('Esse imóvel já está nos favoritos.');
+        }
+    });
+</script>
+
+<script>
+    document.querySelector('.btn-compartilhar').addEventListener('click', function() {
+        const url = window.location.href;
+        const titulo = "Imóvel disponível na Imobiliária Vetor256";
+        const texto = "Confira esse imóvel incrível: " + url;
+
+        if (navigator.share) {
+            navigator.share({
+                title: titulo,
+                text: texto,
+                url: url
+            }).catch((error) => console.log('Erro ao compartilhar:', error));
+        } else {
+            alert("Seu navegador não suporta compartilhamento direto.");
+        }
+    });
+</script>

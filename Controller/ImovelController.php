@@ -191,7 +191,7 @@ class ImovelController extends Notifications
         if ($id) {
             echo $this->confirm('Excluír', 'Imovel', '', $id);
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     // Excluir do banco
@@ -222,7 +222,7 @@ class ImovelController extends Notifications
                 echo $this->error('Imovel', 'Excluir', 'listar');
             }
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     // Detalhes do imóvel

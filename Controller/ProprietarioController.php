@@ -91,7 +91,7 @@ class ProprietarioController extends Notifications
         if ($id) {
             echo $this->confirm('Excluír', 'Proprietario', '', $id);
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     function excluir()
@@ -101,7 +101,7 @@ class ProprietarioController extends Notifications
             $this->proprietarioDao->apagar($id);
             echo $this->success('Proprietario', 'Excluído', 'listar');
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     public function alterarCadeado()

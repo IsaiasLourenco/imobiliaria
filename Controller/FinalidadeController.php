@@ -91,7 +91,7 @@ class FinalidadeController extends Notifications
         if ($id) {
             echo $this->confirm('Excluír', 'Finalidade', '', $id);
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     function excluir()
@@ -101,7 +101,7 @@ class FinalidadeController extends Notifications
             $this->finalidadeDao->apagar($id);
             echo $this->success('Finalidade', 'Excluída', 'listar');
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
 }

@@ -98,7 +98,7 @@ class TipoImovelController extends Notifications
         if ($id) {
             echo $this->confirm('Excluír', 'TipoImovel', '', $id);
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 
     function excluir()
@@ -108,6 +108,6 @@ class TipoImovelController extends Notifications
             $this->tipoImovelDao->apagar($id);
             echo $this->success('TipoImovel', 'Excluído', 'listar');
         }
-        require 'Views/shared/header.php';
+        require 'Views/shared/header-login.php';
     }
 }

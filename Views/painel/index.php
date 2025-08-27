@@ -1,4 +1,4 @@
-<?php require_once "Views/shared/header.php";
+<?php require_once "Views/shared/header-login.php";
 if (!isset($_SESSION['logado'])) {
     header("location:index.php");
 }
