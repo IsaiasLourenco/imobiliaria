@@ -1,20 +1,21 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .conteudo {
-    flex: 1;
+  flex: 1;
 }
 
 footer {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 /* Grid de miniaturas */
@@ -35,4 +36,95 @@ footer {
   font-size: 3rem;
   font-weight: bold;
   margin-top: 10rem;
+}
+
+.card-imovel {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  max-width: 360px;
+}
+
+.card-imovel:hover {
+  transform: scale(1.02);
+}
+
+.card-imovel h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.card-imovel p {
+  margin: 0.3rem 0;
+  color: #555;
+  text-align: center;
+}
+
+.card-imovel .btn {
+  margin-top: 1rem;
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.card-imovel .btn:hover {
+  background-color: #0056b3;
+}
+
+#favoritos-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.card-imovel .btn+button {
+  margin-left: 0.5rem;
+}
+
+h2.fonte24 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.btn-remover {
+  background-color: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.btn-remover:hover {
+  background-color: #e67467;
+
+}
+
+.btn-detalhes {
+  background-color: #393cd4;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.btn-detalhes:hover {
+  background-color: #8082fa;
 }

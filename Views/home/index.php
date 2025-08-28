@@ -73,7 +73,7 @@ require_once 'Views/shared/header.php';
                                     <?php echo $dados->areaconstruida . ' m²'; ?>
                                 </div>
                             </div>
-                            <div class="box-12">
+                            <div class="box-12 mg-t-2">
                                 <a href="index.php?controller=ImovelController&metodo=detalhespublico&id=<?php echo $dados->id; ?>" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
                             </div>
                         </div>
@@ -142,7 +142,7 @@ require_once 'Views/shared/header.php';
                                     <?php echo $dados->areaconstruida . ' m²'; ?>
                                 </div>
                             </div>
-                            <div class="box-12">
+                            <div class="box-12 mg-t-2">
                                 <a href="index.php?controller=ImovelController&metodo=detalhespublico&id=<?php echo $dados->id; ?>" class="btn btn-borda-vermelho fnc-vermelho poppins-black mg-auto mg-t-1">Detalhes</a>
                             </div>
                         </div>
@@ -152,8 +152,15 @@ require_once 'Views/shared/header.php';
         </div>
     </div>
 </section>
-<div class="limpar"></div>
 <div class="divider mg-t-2"></div>
+<!-- FAVORITOS -->
+<section class="favoritos bg-gradiente-azul-roxo mg-t-1" id="favoritos">
+    <h2 class="txt-c mg-b-2">FAVORITOS</h2>
+    <div class="container flex justify-center">
+        <a href="index.php?controller=ImovelController&metodo=favoritos" class="btn bg-gradiente-azul-roxo bg-gradiente-azul-roxo-hover mg-b-1 flex item-centro">⭐ Meus Favoritos</a>
+    </div>
+</section>
+<div class="divider"></div>
 <!-- DEPOIMENTOS -->
 <section class="depoimentos mg-t-2" id="depoimentos">
     <div class="container">

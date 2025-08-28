@@ -158,7 +158,7 @@ img {
     margin-top: 0;
 }
 
-.mg-t-1 {
+.bg-vermelho {
     margin-top: 1rem;
 }
 
@@ -1034,6 +1034,11 @@ select :focus{
 /* PALETA DE CORES  #E4ECF2 */
 .bg-azul {
     background-color: #46a5e4;
+    transition: .15s ease-in-out;
+}
+
+.bg-azul-escuro-hover:hover {
+    background-color: #075E54;
     transition: .15s ease-in-out;
 }
 

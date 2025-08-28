@@ -61,6 +61,7 @@ if ($_GET) {
                             <li class="mg-l-3"><a href="#home" class="fnc-branco fnc-vermelho-hover espaco-letra fonte12">Home</a></li>
                             <li class="mg-l-3"><a href="#comprar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte12">Compras</a></li>
                             <li class="mg-l-3"><a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte12">Aluguéis</a></li>
+                            <li class="mg-l-3"><a href="#favoritos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte12">Favoritos</a></li>
                             <li class="mg-l-3"><a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte12">Depoimentos</a></li>
                             <li class="mg-l-3"><a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte12">Contato</a></li>
                             <li class="mg-l-3"><a href="index.php" class="fnc-branco fnc-vermelho-hover espaco-letra fonte12">Home</a></li>

@@ -238,7 +238,7 @@ class ImovelController extends Notifications
             echo $this->error('Imovel', 'Visualizar', 'listar');
         }
     }
-    
+
     public function detalhespublico()
     {
         $id = $_GET['id'] ?? null;
@@ -402,5 +402,26 @@ class ImovelController extends Notifications
         }
 
         echo $this->error('Imagem', 'Dados incompletos', 'fotos&id=' . $id);
+    }
+
+    public function apiBuscar()
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $imovel = $this->imovelDao->buscarUnicoImovelPorId($id);
+            if ($imovel) {
+                header('Content-Type: application/json');
+                echo json_encode($imovel);
+                return;
+            }
+        }
+        echo json_encode(['erro' => 'Imóvel não encontrado']);
+    }
+
+    public function favoritos()
+    {
+        require 'Views/shared/header-login.php';
+        require 'Views/imovel/favoritos.php';
+        require 'Views/shared/footer.php';
     }
 }

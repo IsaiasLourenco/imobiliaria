@@ -125,6 +125,11 @@
     background-attachment: fixed;
 }
 
+.favoritos h2 a {
+    border: none;
+    border-bottom: 1px solid #f4f4f4;
+}
+
 .contato-form form input,
 .contato-form form textarea {
     border: none;
