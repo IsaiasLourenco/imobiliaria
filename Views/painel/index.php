@@ -11,7 +11,9 @@ if (!isset($_SESSION['logado'])) {
             <div class="saudar bg-branco pd-10">
                 <span class="fonte14">
                     <i class="fa-solid fa-handshake"></i>
-                    Seja bem vindo(a) <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; ?>
+                    <span class="desktop-only">Seja bem vindo(a)</span>
+                    <span class="mobile-only">Bem-vindo</span>
+                    <?php echo isset($_SESSION['nome']) ? ' ' . $_SESSION['nome'] : ' Visitante'; ?>
                 </span>
             </div>
             <ul class="pd-10">
@@ -32,12 +34,16 @@ if (!isset($_SESSION['logado'])) {
                 </li>
                 <li class="mg-b-1 pd-b-1">
                     <a href="index.php?controller=TipoImovelController&metodo=listar" class="fonte14 fnc-cinza">
-                        <i class="fa-solid fa-building"></i> Tipo dos Imóveis
+                        <i class="fa-solid fa-building"></i>
+                        <span class="desktop-only">Tipo dos Imóveis</span>
+                        <span class="mobile-only">Tipo</span>
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
                     <a href="index.php?controller=FinalidadeController&metodo=listar" class="fonte14 fnc-cinza">
-                        <i class="fa-solid fa-key"></i> Finalidade dos Imóveis
+                        <i class="fa-solid fa-key"></i>
+                        <span class="desktop-only">Finalidade dos Imóveis</span>
+                        <span class="mobile-only">Finalidade</span>
                     </a>
                 </li>
                 <li class="mg-b-1 pd-b-1">
@@ -53,7 +59,8 @@ if (!isset($_SESSION['logado'])) {
             <div class="wd-100 coluna bg-branco pd-b-2">
                 <ul class="wd-100 flex justify-end mg-t-1 mg-b-1">
                     <li style="margin-left: auto;">
-                        <a href="index.php?controller=PainelController&metodo=index" class="fnc-vermelho-hover fonte14 fnc-preto-azulado mg-r-1">
+                        <a href="index.php?controller=PainelController&metodo=index"
+                            class="fnc-vermelho-hover fonte14 fnc-preto-azulado mg-r-1">
                             <i class="fa-solid fa-house-chimney"></i> Home Painel
                         </a>
                     </li>
@@ -106,10 +113,12 @@ if (!isset($_SESSION['logado'])) {
 
                                             <i class="fa-solid fa-calendar-days fnc-vermelho"></i>
                                             <span class="fw-bold">Data da Mensagem:</span>
-                                            <span class="fw-normal"><?php echo date('d/m/Y', strtotime($mensagem->datamensagem)); ?></span>
+                                            <span
+                                                class="fw-normal"><?php echo date('d/m/Y', strtotime($mensagem->datamensagem)); ?></span>
                                         </p>
 
-                                        <div class="msg-cli fonte12 fnc-preto-azulado bg-cinza overflow-scroll" style="height: 100px; padding: 5px; word-break: break-word; white-space: normal;">
+                                        <div class="msg-cli fonte12 fnc-preto-azulado bg-cinza overflow-scroll"
+                                            style="height: 100px; padding: 5px; word-break: break-word; white-space: normal;">
                                             <i class="fa-solid fa-message fnc-vermelho"></i>
                                             <span class="fw-bold">Mensagem:</span><br>
                                             <span class="fw-normal"><?php echo $mensagem->mensagem; ?></span>
@@ -138,3 +147,6 @@ if (!isset($_SESSION['logado'])) {
         </section>
     </div>
 </section>
+
+<?php require_once "Views/shared/footer.php"; ?>
+

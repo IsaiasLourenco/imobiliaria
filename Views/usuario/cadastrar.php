@@ -21,62 +21,75 @@
     <div class="row">
         <div class="box-3">
             <label for="nome">Nome</label>
-            <input tabindex="1" type="text" name="nome" value="<?= $usuario->getNome() ?>" autofocus required>
+            <input tabindex="1" type="text" name="nome" value="<?= isset($usuario) ? $usuario->getNome() : '' ?>"
+                autofocus required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="usuario">Usuário</label>
-            <input tabindex="2" type="text" name="usuario" id="usuario" value="<?= $usuario->getUsuario() ?>" required>
+            <input tabindex="2" type="text" name="usuario" id="usuario"
+                value="<?= isset($usuario) ? $usuario->getUsuario() : '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="senha">Senha</label>
             <div style="position: relative;">
-                <input tabindex="3" type="password" name="senha" id="senha" value="<?= $usuario->getSenha() ?>" style="padding-right: 40px;" required>
-                <span id="toggleSenha" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                <input tabindex="3" type="password" name="senha" id="senha"
+                    value="<?= isset($usuario) ? $usuario->getSenha() : '' ?>" style="padding-right: 40px;" required>
+                <span id="toggleSenha"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
                     👁️
                 </span>
             </div>
         </div>
         <div class="box-3">
             <label for="email">Email</label>
-            <input tabindex="4" type="email" name="email" id="email" value="<?= $usuario->getEmail() ?>" required>
+            <input tabindex="4" type="email" name="email" id="email"
+                value="<?= isset($usuario) ? $usuario->getEmail() : '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="telefone">Telefone</label>
-            <input tabindex="5" type="text" name="telefone" id="telefone" value="<?= $usuario->getTelefone() ?>" required>
+            <input tabindex="5" type="text" name="telefone" id="telefone"
+                value="<?= isset($usuario) ? $usuario->getTelefone() : '' ?>" required>
         </div>
     </div>
 
     <div class="row">
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="cep">CEP</label>
-            <input tabindex="6" type="text" name="cep" id="cep" value="<?= $usuario->getCep() ?>" required>
+            <input tabindex="6" type="text" name="cep" id="cep" value="<?= isset($usuario) ? $usuario->getCep() : '' ?>"
+                required>
         </div>
         <div class="box-3">
             <label for="logradouro">Rua</label>
-            <input readonly type="text" name="logradouro" id="rua" value="<?= $usuario->getLogradouro() ?>" required>
+            <input readonly type="text" name="logradouro" id="rua"
+                value="<?= isset($usuario) ? $usuario->getLogradouro() : '' ?>" required>
         </div>
         <div class="box-1">
             <label for="numero">Numero</label>
-            <input tabindex="7" type="text" name="numero" id="numero" value="<?= $usuario->getNumero() ?>" required>
+            <input tabindex="7" type="text" name="numero" id="numero"
+                value="<?= isset($usuario) ? $usuario->getNumero() : '' ?>" required>
         </div>
         <div class="box-3">
             <label for="complemento">Complemento</label>
-            <input tabindex="8" type="text" name="complemento" id="complemento" value="<?= $usuario->getComplemento() ?>">
+            <input tabindex="8" type="text" name="complemento" id="complemento"
+                value="<?= isset($usuario) ? $usuario->getComplemento() : '' ?>">
         </div>
         <div class="box-3">
             <label for="bairro">Bairro</label>
-            <input readonly type="text" name="bairro" id="bairro" value="<?= $usuario->getBairro() ?>" required>
+            <input readonly type="text" name="bairro" id="bairro"
+                value="<?= isset($usuario) ? $usuario->getBairro() : '' ?>" required>
         </div>
     </div>
 
     <div class="row">
         <div class="box-3">
             <label for="cidade">Cidade</label>
-            <input readonly type="text" name="cidade" id="cidade" value="<?= $usuario->getCidade() ?>" required>
+            <input readonly type="text" name="cidade" id="cidade"
+                value="<?= isset($usuario) ? $usuario->getCidade() : '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="estado">Estado</label>
-            <input readonly type="text" name="estado" id="estado" value="<?= $usuario->getEstado() ?>" required>
+            <input readonly type="text" name="estado" id="estado"
+                value="<?= isset($usuario) ? $usuario->getEstado() : '' ?>" required>
         </div>
         <div class="box-2" style="background-color: transparent; color: #333;">
             <label for="perfil">Perfil</label>
@@ -87,7 +100,7 @@
 
                 <?php if (isset($perfil) && count($perfil) > 0):
                     foreach ($perfil as $valores):
-                        $idPerfilUsuario = $usuario->getPerfil();
+                        $idPerfilUsuario = isset($usuario) ? $usuario->getPerfil() : '';
                         $selected = ($idPerfilUsuario == $valores->id) ? 'selected' : '';
                         echo "<option value='{$valores->id}' {$selected}>{$valores->descricao}</option>";
                     endforeach;
@@ -96,7 +109,7 @@
         </div>
         <div class="box-5">
             <?php
-            $imagem = isset($id) && $id != '' ? $usuario->getImagem() : 'user-padrao.png';
+            $imagem = (isset($usuario) && isset($id) && $id != '') ? $usuario->getImagem() : 'user-padrao.png';
             $dirImagem = 'lib/img/users-imagens/' . $imagem;
             $imagemAlt = $imagem === 'user-padrao.png' ? 'Escolha uma imagem...' : 'Imagem do Usuário.';
             ?>
@@ -104,7 +117,8 @@
                 <i class="fa-solid fa-file-image fonte20"></i>
                 <?php echo $imagemAlt; ?>
             </label>
-            <input tabindex="13" type="file" id="img" name="imagem" value="<?php echo $imagem; ?>" onchange="mostrar(this)">
+            <input tabindex="13" type="file" id="img" name="imagem" value="<?php echo $imagem; ?>"
+                onchange="mostrar(this)">
             <img class="logo-100" id="foto" src="<?php echo $dirImagem ?>" alt="<?php echo $imagemAlt; ?>">
         </div>
     </div>
@@ -117,8 +131,11 @@
                 <?= !empty($usuario) ? 'Atualizar' : 'Cadastrar' ?>
             </button>
         </div>
-        <?php if (!empty($usuario->getId())): ?>
+        <?php if (isset($usuario) && !empty($usuario->getId())): ?>
             <input type="hidden" name="id" value="<?= $usuario->getId() ?>">
+            <input type="hidden" name="ativo" value="<?= isset($usuario) ? $usuario->getAtivo() : '1' ?>">
+        <?php else: ?>
+            <input type="hidden" name="ativo" value="1">
         <?php endif; ?>
     </div>
 </form>

@@ -51,7 +51,7 @@ class TipoImovelController extends Notifications
     {
         global $tipoImovel, $view, $controller, $metodo;
         $tipoImovel = $this->tipoImovelDao->listarTodos();
-        $view = 'Views/tipoimovel/listar.php';
+        $view = 'Views/tipoImovel/listar.php';
         $controller = 'TipoImovelController';
         $metodo = 'listar';
         require_once 'Views/painel/index.php';
@@ -78,7 +78,7 @@ class TipoImovelController extends Notifications
             return;
         }
 
-        $view = 'Views/tipoimovel/cadastrar.php';
+        $view = 'Views/tipoImovel/cadastrar.php';
         require 'Views/painel/index.php';
     }
 
