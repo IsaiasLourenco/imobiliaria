@@ -1,3 +1,7 @@
+/* ==========================================================================
+   Páginas públicas internas (favoritos, detalhes e fotos públicas). Carregado por cada view pública.
+   ========================================================================== */
+
 html,
 body {
   height: 100%;
@@ -19,6 +23,7 @@ footer {
 }
 
 /* Grid de miniaturas */
+
 .galeria-wrapper-publico {
   margin-top: 20px;
 }
@@ -31,6 +36,7 @@ footer {
 }
 
 /* Título da galeria */
+
 .galeria-titulo-publico {
   margin-left: 20px;
   font-size: 3rem;
@@ -110,7 +116,6 @@ h2.fonte24 {
 
 .btn-remover:hover {
   background-color: #e67467;
-
 }
 
 .btn-detalhes {

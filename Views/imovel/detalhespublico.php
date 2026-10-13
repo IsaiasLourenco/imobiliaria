@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="lib/css/publico.css">
+<link rel="stylesheet" href="lib/css/paginas/publico.css">
 <div class="conteudo mg-t-10">
     <?php
     require_once 'vendor/autoload.php';

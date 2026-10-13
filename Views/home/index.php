@@ -197,7 +197,7 @@ require_once 'Views/shared/header.php';
                             negociar condições muito vantajosas. Recomendo fortemente para quem busca segurança e confiança na compra ou
                             aluguel de um imóvel.
                         </p>
-                        <cite class="fonte22 fnc-vermelho fw-600 mg-t-2">Moacyr Cussolim - Mogi Guaçu - SP</cite>
+                        <cite class="fonte22 fnc-vermelho fw-600 mg-t-2">Sandra de Sá - Mogi Guaçu - SP</cite>
                     </div>
                     <!-- SLIDE 4 -->
                     <div class="slide">

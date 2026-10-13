@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Botões: .btn e variações, botões com borda colorida, .btn-novo e .btn-centralizado.
+   ========================================================================== */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: .5rem;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  transition: .2s;
+}
+
+.btn-100 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  border: none;
+  font-weight: 600;
+  border-radius: .5rem;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  transition: .2s;
+}
+
+.btn-big {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  border: none;
+  font-weight: 600;
+  border-radius: .5rem;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  transition: .2s;
+}
+
+.small-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  height: 3rem;
+  border: 1px solid #ccc;
+  font-weight: 600;
+  border-radius: .5rem;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  transition: .2s;
+}
+
+.btn-borda-verde {
+  border: solid .2rem #3cc47c;
+  transition: .15s ease-in-out;
+}
+
+.btn-borda-verde:hover {
+  color: #FFF;
+  background-color: #3cc47c;
+  transition: .15s ease-in-out;
+}
+
+.btn-borda-azul {
+  border: solid .2rem #0375b4;
+  transition: .15s ease-in-out;
+}
+
+.btn-borda-azul:hover {
+  color: #FFF;
+  background-color: #0375b4;
+  transition: .15s ease-in-out;
+}
+
+.btn-borda-vermelho {
+  border: solid .2rem #ff3b3f;
+  transition: .15s ease-in-out;
+}
+
+.btn-borda-vermelho:hover {
+  color: #FFF;
+  background-color: #ff3b3f;
+  transition: .15s ease-in-out;
+}
+
+.btn-centralizado {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-novo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-novo i {
+  font-size: 1.6rem;
+}
+
+.btn-novo:hover {
+  background-color: #0056b3;
+}

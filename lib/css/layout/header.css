@@ -1,0 +1,64 @@
+/* ==========================================================================
+   Cabeçalho fixo no topo, barra vermelha e botão hambúrguer.
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.barra.bg-vermelho {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header-logo-area {
+  display: flex;
+  align-items: center;
+}
+
+.menu-hamburguer {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.menu-hamburguer span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-hamburguer.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-hamburguer.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburguer.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}

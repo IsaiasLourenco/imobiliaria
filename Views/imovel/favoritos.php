@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="lib/css/publico.css">
+<link rel="stylesheet" href="lib/css/paginas/publico.css">
 
 <div class="conteudo box-12">
     <h2 class="txt-c fonte24 mg-t-1 mg-b-2">Meus Imóveis Favoritos</h2>

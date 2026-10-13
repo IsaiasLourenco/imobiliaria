@@ -31,9 +31,9 @@
             foreach ($proprietario as $valores):
         ?>
                 <tr>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->nome; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->contato; ?></td>
-                    <td class="fonte12 espaco-letra fw-300 txt-c">
+                    <td data-label="Nome" class="cel-x fonte12 espaco-letra fw-300 txt-c"><?= $valores->nome; ?></td>
+                    <td data-label="Contato" class="cel-x fonte12 espaco-letra fw-300 txt-c"><?= $valores->contato; ?></td>
+                    <td data-label="Ativo" class="cel-ativo fonte12 espaco-letra fw-300 txt-c">
                         <?php if ($valores->ativo == '1'): ?>
                             <span class="ativo" data-id="<?= $valores->id; ?>" data-status="0">
                                 <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
@@ -44,7 +44,7 @@
                             </span>
                         <?php endif; ?>
                     </td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                    <td data-label="Ações" class="cel-acoes fonte10 espaco-letra fw-300 txt-c">
                         <a href="index.php?controller=ProprietarioController&metodo=apagar&id=<?= $valores->id; ?>">
                             <i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i>
                         </a>
@@ -55,9 +55,9 @@
                 </tr>
             <?php endforeach;
         else: ?>
-            <td colspan="7">
+            <tr class="sem-registro"><td colspan="7">
                 <h6 class="txt-c fonte16 poppins-medium">Nenhum Registro encontrado!</h6>
-            </td>
+            </td></tr>
         <?php endif; ?>
     </tbody>
     <tfoot>

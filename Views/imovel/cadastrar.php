@@ -145,8 +145,8 @@ $areaConstruidaFormatada = isset($imovel) && isset($imovel->areaconstruida) ? $i
                 <?= $imagemAlt ?>
             </label>
             <input tabindex="13" type="file" id="img" name="imagem" value="<?= $imagem ?>" onchange="mostrar(this)">
-            <img class="logo-100" id="foto" src="<?= $dirImagem ?>" alt="<?= $imagemAlt ?>>" 
-            onerror="this.onerror=null; this.src='lib/img/imagens/casa-padrao.png';"
+            <img class="logo-100" id="foto" src="<?= $dirImagem ?>" alt="<?= $imagemAlt ?>"
+                onerror="this.onerror=null; this.src='lib/img/imagens/casa-padrao.png';">
         </div>
     </div>
 

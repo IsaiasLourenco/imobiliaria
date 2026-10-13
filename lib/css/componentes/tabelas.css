@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Tabelas de listagem (.grid): cabeçalho, células, linhas alternadas e ícone de status (.ativo).
+   ========================================================================== */
+
+.grid th {
+  height: 4rem;
+}
+
+.grid td {
+  height: 3rem;
+  vertical-align: middle;
+}
+
+.zebra:nth-child(odd) {
+  background-color: rgba(245, 245, 245);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #000;
+  color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fff;
+  color: #000;
+}
+
+.ativo i {
+  cursor: pointer;
+}

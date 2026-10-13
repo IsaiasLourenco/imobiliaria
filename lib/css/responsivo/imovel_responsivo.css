@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Imóveis — ajustes de tela pequena: card da listagem, detalhes e galeria
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* card da listagem de imóveis */
+  .painel .grid-imoveis tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.2rem;
+  }
+  .painel .grid.grid-imoveis td { display: block; text-align: left; }
+  .painel .grid.grid-imoveis td::before { display: block; margin-bottom: .2rem; max-width: none; }
+
+  .painel .grid.grid-imoveis .cel-codigo { grid-area: 1 / 1; font-size: 1.8rem; font-weight: 700; }
+  .painel .grid.grid-imoveis .cel-finalidade { grid-area: 1 / 2; text-align: right; }
+  .painel .grid.grid-imoveis .cel-valor { grid-area: 2 / 1 / 2 / 3; font-size: 2rem; font-weight: 700; }
+  .painel .grid.grid-imoveis .cel-rua { grid-area: 3 / 1; }
+  .painel .grid.grid-imoveis .cel-numero { grid-area: 3 / 2; }
+  .painel .grid.grid-imoveis .cel-bairro { grid-area: 4 / 1 / 4 / 3; }
+  .painel .grid.grid-imoveis .cel-cidade { grid-area: 5 / 1; }
+  .painel .grid.grid-imoveis .cel-estado { grid-area: 5 / 2; }
+  .painel .grid.grid-imoveis .cel-detalhes { grid-area: 6 / 1; border-bottom: 0; display: flex; align-items: center; gap: .4rem; }
+  .painel .grid.grid-imoveis .cel-detalhes::before { display: none; }
+  .painel .grid.grid-imoveis .cel-acoes { grid-area: 6 / 2; display: flex; justify-content: flex-end; border-bottom: 0; }
+  .painel .grid.grid-imoveis .cel-acoes::before,
+  .painel .grid.grid-imoveis .cel-codigo::before,
+  .painel .grid.grid-imoveis .cel-valor::before,
+  .painel .grid.grid-imoveis .cel-finalidade::before { display: none; }
+
+  /* detalhes do imóvel */
+  .detalhes-bloco.caracteristicas { padding-left: 1.2rem; }
+  .detalhes-topo { flex-direction: column; }
+  .imagem-capa { flex: 0 0 auto; order: -1; }
+  .detalhes-bloco h2 { font-size: 2rem; }
+  .detalhes-bloco p, .detalhes-bloco li { font-size: 1.4rem; }
+  .detalhes-bloco .titulo-fin-tipo { font-size: 1.6rem; }
+  .acoes { flex-direction: column; gap: 1rem; }
+  .acoes { align-items: stretch; }
+  .acoes button { flex: none; width: 100%; max-width: none; }
+  .acoes a { width: 100%; text-align: center; padding: 1.2rem 1.4rem; }
+
+  /* galeria */
+  .galeria-titulo { margin: 0 1.2rem; font-size: 2rem; }
+}

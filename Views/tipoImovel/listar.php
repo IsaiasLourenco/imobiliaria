@@ -30,8 +30,8 @@
             foreach ($tipoImovel as $valores):
         ?>
                 <tr>
-                    <td class="fonte12 espaco-letra fw-300 txt-c"><?= $valores->descricao; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                    <td data-label="Descrição" class="cel-x fonte12 espaco-letra fw-300 txt-c"><?= $valores->descricao; ?></td>
+                    <td data-label="Ações" class="cel-acoes fonte10 espaco-letra fw-300 txt-c">
                         <a href="index.php?controller=TipoImovelController&metodo=apagar&id=<?= $valores->id; ?>">
                             <i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i>
                         </a>
@@ -42,9 +42,9 @@
                 </tr>
             <?php endforeach;
         else: ?>
-            <td colspan="7">
+            <tr class="sem-registro"><td colspan="7">
                 <h6 class="txt-c fonte16 poppins-medium">Nenhum Registro encontrado!</h6>
-            </td>
+            </td></tr>
         <?php endif; ?>
     </tbody>
     <tfoot>

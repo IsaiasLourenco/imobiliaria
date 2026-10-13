@@ -1,7 +1,7 @@
 <?php if (!$fotos || count($fotos) === 0): ?>
     <p style="margin-left: 20px; margin-bottom: 20px;">Nenhuma foto disponível para este imóvel.</p>
 <?php else: ?>
-    <link rel="stylesheet" href="lib/css/galeria.css">
+    <link rel="stylesheet" href="lib/css/paginas/galeria.css">
 
     <h2 class="galeria-titulo txt-c">
         Galeria de Fotos do Imóvel

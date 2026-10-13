@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Cores: texto (.fnc-*) e fundo (.bg-*). Carregado depois dos componentes (como no CSS original).
+   ========================================================================== */
+
+.fnc-branco {
+  color: #FFF;
+  transition: .15s ease-in-out;
+}
+.fnc-preto-puro {
+  color: #000000;
+  transition: .15s ease-in-out;
+}
+.fnc-error {
+  color: #F96F6C;
+  transition: .15s ease-in-out;
+}
+.fnc-vermelho {
+  color: #E50E0B;
+  transition: .15s ease-in-out;
+}
+.fnc-vermelho-claro {
+  color: #ee9906;
+  transition: .15s ease-in-out;
+}
+.fnc-sucesso {
+  color: #3cc47c;
+  transition: .15s ease-in-out;
+}
+.fnc-preto-azulado {
+  color: #091d35;
+  transition: .15s ease-in-out;
+}
+.fnc-preto-azulado-claro {
+  color: #1d2d42;
+  transition: .15s ease-in-out;
+}
+.fnc-vermelho-claro-hover:hover {
+  color: #F96F6C;
+  transition: .15s ease-in-out;
+}
+.fnc-vermelho-hover:hover {
+  color: #E50E0B;
+  transition: .15s ease-in-out;
+}
+.fnc-preto-puro-hover:hover {
+  color: #000000;
+  transition: .15s ease-in-out;
+}
+.fnc-azul-hover:hover {
+  color: blue;
+  font-weight: bold;
+  transition: .15s ease-in-out;
+}
+.fnc-preto-azulado-claro-hover:hover {
+  color: #1d2d42;
+  transition: .15s ease-in-out;
+}
+.fnc-preto-azulado-hover:hover {
+  color: #091d35;
+  transition: .15s ease-in-out;
+}
+.fnc-cinza {
+  color: #BEC8D6;
+  transition: .15s ease-in-out;
+}
+.fnc-azul {
+  color: #0e6df1;
+  transition: .15s ease-in-out;
+}
+.bg-azul {
+  background-color: #46a5e4;
+  transition: .15s ease-in-out;
+}
+.bg-azul-escuro-hover:hover {
+  background-color: #075E54;
+  transition: .15s ease-in-out;
+}
+.bg-azul-escuro { background-color: #146693; }
+.bg-cinza {
+  background-color: #e4ecf2;
+  transition: .15s ease-in-out;
+}
+.bg-cinza-claro {
+  background: #f1f1f1;
+  transition: .15s ease-in-out;
+}
+.bg-vermelho {
+  background-color: red;
+  transition: .15s ease-in-out;
+}
+.bg-vermelho-claro {
+  background-color: #F96F6C;
+  transition: .15s ease-in-out;
+}
+.bg-whats {
+  background-color: #25D366;
+  transition: .15s ease-in-out;
+}
+.bg-whats-hover:hover {
+  background-color: #075E54;
+  transition: .15s ease-in-out;
+}
+.bg-preto-azulado-escuro {
+  background-color: #091d35;
+  transition: .15s ease-in-out;
+}
+.bg-preto-azulado-claro {
+  background-color: #1d2d42;
+  transition: .15s ease-in-out;
+}
+.bg-branco {
+  background-color: #fff;
+  transition: .15s ease-in-out;
+}
+.bg-vermelho-claro-hover:hover {
+  background-color: #F96F6C;
+  transition: .15s ease-in-out;
+}
+.bg-gradiente-azul-roxo {
+  background-image: linear-gradient(90deg, #26cdfd, #b425ff);
+  transition: .40s ease-in-out;
+}
+.bg-gradiente-azul-roxo-hover:hover {
+  background-image: linear-gradient(90deg, #b425ff, #26cdfd);
+  transition: .40s ease-in-out;
+}

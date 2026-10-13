@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="lib/css/publico.css">
+<link rel="stylesheet" href="lib/css/paginas/publico.css">
 <div class="conteudo">
     <?php if (!$fotos || count($fotos) === 0): ?>
         <p style="margin-left: 20px; margin-bottom: 20px;">Nenhuma foto disponível para este imóvel.</p>
     <?php else: ?>
-        <link rel="stylesheet" href="lib/css/galeria.css">
+        <link rel="stylesheet" href="lib/css/paginas/galeria.css">
 
         <div class="mg-t-4">
             <h2 class="galeria-titulo-publico txt-c">

@@ -7,7 +7,9 @@ if (!isset($_SESSION['logado'])) {
 <section class="painel">
     <div class="container-cem">
         <!-- MENU DE NAVEGAÇÃO -->
-        <div class="box-dois bg-preto-azulado-escuro hg-full">
+        <div class="painel-overlay" id="painelOverlay"></div>
+        <div class="box-dois menu-painel bg-preto-azulado-escuro hg-full" id="menuPainel">
+            <div class="menu-painel-topo"><span class="fonte16 fnc-branco">Menu</span><button type="button" class="menu-painel-fechar" id="menuPainelFechar" aria-label="Fechar menu">&times;</button></div>
             <div class="saudar bg-branco pd-10">
                 <span class="fonte14">
                     <i class="fa-solid fa-handshake"></i>

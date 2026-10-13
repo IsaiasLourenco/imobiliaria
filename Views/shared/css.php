@@ -1,0 +1,20 @@
+<!-- CSS: ordem importa (igual ao original). Responsivo sempre por último. -->
+<link rel="stylesheet" href="lib/css/base/variaveis.css">
+<link rel="stylesheet" href="lib/css/base/reset.css">
+<link rel="stylesheet" href="lib/css/base/tipografia.css">
+<link rel="stylesheet" href="lib/css/base/utilitarios.css">
+<link rel="stylesheet" href="lib/css/componentes/botoes.css">
+<link rel="stylesheet" href="lib/css/componentes/formularios.css">
+<link rel="stylesheet" href="lib/css/base/cores.css">
+<link rel="stylesheet" href="lib/css/componentes/tabelas.css">
+<link rel="stylesheet" href="lib/css/layout/grid.css">
+<link rel="stylesheet" href="lib/css/layout/header.css">
+<link rel="stylesheet" href="lib/css/layout/painel.css">
+<link rel="stylesheet" href="lib/css/componentes/mensagens.css">
+<link rel="stylesheet" href="lib/css/paginas/imovel.css">
+<link rel="stylesheet" href="lib/css/paginas/home.css">
+<link rel="stylesheet" href="lib/css/responsivo/layout_responsivo.css">
+<link rel="stylesheet" href="lib/css/responsivo/tabelas_responsivo.css">
+<link rel="stylesheet" href="lib/css/responsivo/formularios_responsivo.css">
+<link rel="stylesheet" href="lib/css/responsivo/imovel_responsivo.css">
+<link rel="stylesheet" href="lib/css/responsivo/home_responsivo.css">

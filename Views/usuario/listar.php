@@ -35,15 +35,15 @@
             foreach ($usuario as $valores):
         ?>
                 <tr>
-                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                    <td data-label="Data Cadastro" class="cel-x fonte10 espaco-letra fw-300 txt-c">
                         <?= date('d/m/Y', strtotime($valores->datacadastro)); ?>
                     </td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->nome; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->usuario; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->email; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->telefone; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME_PERFIL ?? '—'; ?></td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                    <td data-label="Nome" class="cel-x fonte10 espaco-letra fw-300 txt-c"><?= $valores->nome; ?></td>
+                    <td data-label="Usuário" class="cel-x fonte10 espaco-letra fw-300 txt-c"><?= $valores->usuario; ?></td>
+                    <td data-label="Email" class="cel-x fonte10 espaco-letra fw-300 txt-c"><?= $valores->email; ?></td>
+                    <td data-label="Telefone" class="cel-x fonte10 espaco-letra fw-300 txt-c"><?= $valores->telefone; ?></td>
+                    <td data-label="Perfil" class="cel-x fonte10 espaco-letra fw-300 txt-c"><?= $valores->NOME_PERFIL ?? '—'; ?></td>
+                    <td data-label="Ativo" class="cel-ativo fonte10 espaco-letra fw-300 txt-c">
                         <?php if ($valores->ativo == '1'): ?>
                             <span class="ativo" data-id="<?= $valores->id; ?>" data-status="0">
                                 <i class="fa-solid fa-lock-open fnc-sucesso fonte14" title="Ativo"></i>
@@ -54,7 +54,7 @@
                             </span>
                         <?php endif; ?>
                     </td>
-                    <td class="fonte10 espaco-letra fw-300 txt-c">
+                    <td data-label="Ações" class="cel-acoes fonte10 espaco-letra fw-300 txt-c">
                         <a href="index.php?controller=UsuarioController&metodo=apagar&id=<?= $valores->id; ?>">
                             <i class="fa-solid fa-trash-can fnc-vermelho fonte14" title="Apagar Registro"></i>
                         </a>
@@ -65,9 +65,9 @@
                 </tr>
             <?php endforeach;
         else: ?>
-            <td colspan="8">
+            <tr class="sem-registro"><td colspan="8">
                 <h6 class="txt-c fonte16 poppins-medium">Nenhum Registro encontrado!</h6>
-            </td>
+            </td></tr>
         <?php endif; ?>
     </tbody>
     <tfoot>

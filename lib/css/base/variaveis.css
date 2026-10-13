@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Variáveis globais (custom properties)
+   Cores e medidas usadas pelo CSS responsivo e pelos componentes novos.
+   As classes antigas (.fnc-*, .bg-*) continuam com seus valores fixos.
+   ========================================================================== */
+
+:root {
+  /* Cores — as mesmas já usadas em .fnc-* e .bg-* */
+  --cor-preto-azulado: #091d35;
+  --cor-preto-azulado-claro: #1d2d42;
+  --cor-azul-escuro: #146693;
+  --cor-azul: #0e6df1;
+  --cor-azul-botao: #007bff;
+  --cor-vermelho: #E50E0B;
+  --cor-cinza: #BEC8D6;
+  --cor-cinza-claro: #e4ecf2;
+  --cor-borda: #d4d5d8;
+  --cor-fundo: #edecec;
+  --cor-branco: #fff;
+
+  /* Medidas */
+  --toque-minimo: 4.4rem;            /* alvo de toque confortável (44px) */
+  --raio-card: .8rem;
+  --sombra-card: 0 .2rem .8rem rgba(9, 29, 53, .08);
+  --largura-menu: 30rem;             /* largura da gaveta do menu no celular/tablet */
+
+  /* Camadas */
+  --z-header: 1000;
+  --z-overlay: 1090;
+  --z-menu: 1100;
+}
+
+/* --------------------------------------------------------------------------
+   BREAKPOINTS (variáveis CSS não funcionam dentro de @media: use os números)
+
+   1024px  notebook pequeno / tablet deitado
+           -> menu lateral vira gaveta (botão hambúrguer no cabeçalho)
+    768px  tablet em pé / celular grande
+           -> tabelas viram cards, formulários em coluna, blocos empilhados
+    480px  celular pequeno
+           -> ajustes finos (botões 100%, fontes um pouco menores)
+
+   Abordagem desktop-first: o desktop fica nos arquivos normais (sem @media)
+   e a pasta responsivo/ só sobrescreve com max-width.
+   -------------------------------------------------------------------------- */

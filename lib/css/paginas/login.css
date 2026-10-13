@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Tela de login: fundo com imagem e caixa de acesso. Carregado por usuario/autenticar.php.
+   ========================================================================== */
+
+body {
+  background-image: url('../../img/banner2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.login {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 40px 0;
+  border-radius: 8px;
+}

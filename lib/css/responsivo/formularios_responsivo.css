@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Formulários do painel
+   769–1024px: 2 colunas | até 768px: 1 coluna (campos .box-1 em pares)
+   ========================================================================== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .painel form .row { display: flex; flex-wrap: wrap; align-items: flex-start; }
+  .painel form .row > .box-1, .painel form .row > .box-2, .painel form .row > .box-3,
+  .painel form .row > .box-4, .painel form .row > .box-5, .painel form .row > .box-6,
+  .painel form .row > .box-7 { width: 48.4848%; }
+  .painel form .row > .box-8, .painel form .row > .box-9, .painel form .row > .box-10,
+  .painel form .row > .box-11, .painel form .row > .box-12 { width: 98.4848%; }
+}
+
+@media (max-width: 768px) {
+  .painel form { max-width: 64rem; margin-left: auto; margin-right: auto; }
+  .painel form .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.2rem; }
+  .painel form .row > div { grid-column: 1 / -1; min-width: 0; }
+  .painel form .row > .box-1 { grid-column: auto; }
+  .painel input, .painel select, .painel textarea { height: 4.4rem; font-size: 1.6rem; }
+  .painel .btn-centralizado .btn { width: 100%; max-width: none; height: 4.8rem; }
+  .painel .btn-ver-fotos { display: block; text-align: center; }
+}
