@@ -147,11 +147,10 @@ class ImovelController extends Notifications
                 $sucessoUpload = false;
 
                 foreach ($_FILES['imagem_galeria']['tmp_name'] as $key => $tmp) {
-                    $nomeOriginal = $_FILES['imagem_galeria']['name'][$key];
-                    $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
-                    $destino = 'lib/img/imagens/' . $nomeFinal;
+                    $nomeOriginal = htmlspecialchars(basename($_FILES['imagem_galeria']['name'][$key]));
+                    $nomeFinal = $this->fileUploadService->uploadItemLista($_FILES['imagem_galeria'], $key);
 
-                    if (move_uploaded_file($tmp, $destino)) {
+                    if ($nomeFinal !== '') {
                         $salvou = $this->imagemImovelDao->inserirImagem([
                             'imagem' => $nomeFinal,
                             'imovel' => $dadosNormalizados['id']
@@ -366,16 +365,15 @@ class ImovelController extends Notifications
         $id = $dados['id'] ?? null;
         $arquivos = $_FILES['imagem_galeria'] ?? null;
 
-        if ($id && $arquivos && isset($arquivos['tmp_name'][0])) {
+        if ($id && $arquivos && !empty($arquivos['name'][0])) {
             $sucesso = false;
             $erros = [];
 
             foreach ($arquivos['tmp_name'] as $key => $tmp) {
-                $nomeOriginal = $arquivos['name'][$key];
-                $nomeFinal = uniqid() . '-' . basename($nomeOriginal);
-                $destino = 'lib/img/imagens/' . $nomeFinal;
+                $nomeOriginal = htmlspecialchars(basename($arquivos['name'][$key]));
+                $nomeFinal = $this->fileUploadService->uploadItemLista($arquivos, $key);
 
-                if (move_uploaded_file($tmp, $destino)) {
+                if ($nomeFinal !== '') {
                     $salvou = $this->imagemImovelDao->inserirImagem([
                         'imagem' => $nomeFinal,
                         'imovel' => $id
@@ -395,13 +393,13 @@ class ImovelController extends Notifications
                 echo $this->successRedirect('Imagens adicionadas', 'fotos', 'ImovelController', 'fotos', 'id=' . $id);
                 return;
             } else {
-                $mensagemErro = implode('<br>', $erros);
-                echo $this->error('Imagem', $mensagemErro, 'fotos&id=' . $id);
+                $mensagemErro = implode(' | ', $erros);
+                echo $this->errorCustom($mensagemErro, 'ImovelController', 'fotos&id=' . $id);
                 return;
             }
         }
 
-        echo $this->error('Imagem', 'Dados incompletos', 'fotos&id=' . $id);
+        echo $this->errorCustom('Selecione pelo menos uma foto', 'ImovelController', 'fotos&id=' . $id);
     }
 
     public function apiBuscar()

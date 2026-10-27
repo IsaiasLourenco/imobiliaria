@@ -1,6 +1,10 @@
 /* ==========================================================================
-   Site público (home) — ajustes de tela pequena
-   ========================================================================== */
-@media (max-width: 768px) {
-  .baner { background-position: center 30% !important; background-size: cover !important; min-height: 60vh; }
+Site público (home) — ajustes de tela pequena
+========================================================================== */
+@media (max-width:768px) {
+  .baner {
+    background-position: center 30% !important;
+    background-size: cover !important;
+    min-height: 60vh;
+  }
 }

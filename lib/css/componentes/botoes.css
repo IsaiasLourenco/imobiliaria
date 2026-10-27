@@ -123,3 +123,8 @@
 .btn-novo:hover {
   background-color: #0056b3;
 }
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}

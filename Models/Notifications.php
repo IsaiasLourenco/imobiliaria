@@ -7,7 +7,9 @@ abstract class Notifications
     // A URL do CSS pode ser centralizada, evitando repetição de código
     private function getCssLink()
     {
-        return "<link rel='stylesheet' type='text/css' href='lib/css/aurora.css' />";
+        ob_start();
+        require 'Views/shared/css.php';
+        return ob_get_clean();
     }
 
     // Gera uma mensagem de sucesso e a retorna como string
@@ -20,7 +22,7 @@ abstract class Notifications
                     <h2 class='fonte12 poppins-black fnc-sucesso'>
                         %s %s com sucesso!
                     </h2>
-                        <a href='index.php?controller=%sController&metodo=%s' class='btn-msg fnc-cinza-claro'> Fechar Sair </a>                    
+                        <a href='index.php?controller=%sController&metodo=%s' class='btn-msg fnc-cinza-claro'> Fechar e Sair </a>
                 </div>
             </div>",
             $css,
@@ -41,7 +43,7 @@ abstract class Notifications
                 <h2 class='fonte12 poppins-black fnc-error'>
                     Erro ao %s %s!
                 </h2>
-                <a href='index.php?controller=%sController&metodo=%s' class='btn-msg fnc-cinza-claro'> Tentar Novamente </a>                    
+                <a href='index.php?controller=%sController&metodo=%s' class='btn-msg fnc-cinza-claro'> Tentar Novamente </a>
             </div>
         </div>",
             $css,
@@ -90,7 +92,7 @@ abstract class Notifications
                     <h2 class='fonte12 poppins-black fnc-error'>
                       %s!
                     </h2>
-                        <a href='index.php' class='btn-msg fnc-preto-azulado-claro'> Fechar Sair </a>                    
+                        <a href='index.php' class='btn-msg fnc-preto-azulado-claro'> Fechar e Sair </a>
                 </div>
             </div>",
             $css,
@@ -200,7 +202,7 @@ abstract class Notifications
                 <h2 class='fonte12 poppins-black fnc-sucesso'>
                     %s com sucesso!
                 </h2>
-                <a href='%s' class='btn-msg fnc-cinza-claro'> Fechar Sair </a>
+                <a href='%s' class='btn-msg fnc-cinza-claro'> Fechar e Sair </a>
             </div>
         </div>",
             $css,

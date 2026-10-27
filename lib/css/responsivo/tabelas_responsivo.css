@@ -1,15 +1,24 @@
 /* ==========================================================================
-   Tabelas de listagem do painel: no celular cada linha vira um card.
-   Requer data-label em cada <td> (ver Views/(pasta)/listar.php).
-   ========================================================================== */
-@media (max-width: 768px) {
+Tabelas de listagem do painel: no celular cada linha vira um card.
+Requer data-label em cada <td> (ver Views/(pasta)/listar.php).
+========================================================================== */
+@media (max-width:768px) {
   .painel .grid,
-  .painel .grid tbody { display: block; width: 100%; }
+  .painel .grid tbody {
+    display: block;
+    width: 100%;
+  }
 
   /* cabeçalho some visualmente, mas continua para leitores de tela */
   .painel .grid thead {
-    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-    overflow: hidden; clip: rect(0 0 0 0); border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
   }
 
   .painel .grid tbody tr {
@@ -23,6 +32,7 @@
     border-radius: var(--raio-card);
     box-shadow: var(--sombra-card);
   }
+
   .painel .grid td {
     display: flex;
     align-items: center;
@@ -35,6 +45,7 @@
     text-align: right;
     overflow-wrap: anywhere;
   }
+
   .painel .grid td::before {
     content: attr(data-label);
     flex: 0 0 auto;
@@ -44,20 +55,45 @@
     color: var(--cor-azul-escuro);
     text-align: left;
   }
-  .painel .grid td:last-child { border-bottom: 0; justify-content: flex-end; }
-  .painel .grid td:last-child::before { display: none; }
+
+  .painel .grid td:last-child {
+    border-bottom: 0;
+    justify-content: flex-end;
+  }
+
+  .painel .grid td:last-child::before {
+    display: none;
+  }
 
   /* ícones de ação e de status: alvo de toque de 44px */
   .painel .grid td a,
   .painel .grid .ativo {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-width: var(--toque-minimo); min-height: var(--toque-minimo);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--toque-minimo);
+    min-height: var(--toque-minimo);
   }
+
   .painel .grid td a i,
-  .painel .grid .ativo i { font-size: 1.8rem; }
+  .painel .grid .ativo i {
+    font-size: 1.8rem;
+  }
 
   /* sem registros: texto simples, sem card */
-  .painel .grid tbody tr.sem-registro { border: 0; box-shadow: none; background: transparent; padding: 0; }
-  .painel .grid tr.sem-registro td { justify-content: center; border: 0; }
-  .painel .grid tr.sem-registro td::before { display: none; }
+  .painel .grid tbody tr.sem-registro {
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  .painel .grid tr.sem-registro td {
+    justify-content: center;
+    border: 0;
+  }
+
+  .painel .grid tr.sem-registro td::before {
+    display: none;
+  }
 }

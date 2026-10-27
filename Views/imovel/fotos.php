@@ -50,7 +50,7 @@
 
         <input type="file" name="imagem_galeria[]" id="imagem_galeria" accept="image/*" multiple>
 
-        <button type="submit" class="btn bg-azul bg-azul-claro-hover fnc-branco mg-t-2">
+        <button type="submit" id="btnAdicionar" class="btn bg-azul bg-azul-claro-hover fnc-branco mg-t-2" disabled>
             <i class="fas fa-plus"></i>
             Adicionar imagens
         </button>
@@ -64,6 +64,12 @@
 
         <input type="hidden" name="id" value="<?= (int)$imovel->id ?>">
     </form>
+
+    <script>
+        document.getElementById('imagem_galeria').addEventListener('change', function () {
+            document.getElementById('btnAdicionar').disabled = (this.files.length === 0);
+        });
+    </script>
 
 <?php endif; ?>
 
